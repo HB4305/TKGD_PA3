@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PA3: Paper Prototype & Formative Testing — Freestyle Chess Mobile Web</title>
+
+    <!-- Fonts: Archivo (display) + Nunito (body) — Swiss Modern preset -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;800;900&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES — SWISS MODERN THEME
+           Clean, precise, Bauhaus-inspired
+           =========================================== */
+        :root {
+            /* Colors — Swiss Modern */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-primary: #0a0a0a;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+            --accent: #ff3300;
+            --accent-light: rgba(255, 51, 0, 0.08);
+            --accent-medium: rgba(255, 51, 0, 0.15);
+            --grid-color: rgba(0, 0, 0, 0.04);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --stage-bg: #e8e8e8;
+            --slide-bg: #ffffff;
+
+            /* Typography — authored at 1920×1080 stage size (scaled up for high legibility) */
+            --font-display: 'Archivo', sans-serif;
+            --font-body: 'Nunito', sans-serif;
+            --title-size: 108px;
+            --subtitle-size: 42px;
+            --body-size: 32px;
+            --small-size: 26px;
+            --caption-size: 22px;
+
+            /* Spacing */
+            --slide-padding: 80px;
+            --content-gap: 36px;
+
+            /* Animation */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+            --duration-normal: 0.6s;
+            --duration-slow: 0.9s;
+        }
+
+        /* ===========================================
+           BASE RESET
+           =========================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ===========================================
+           FIXED 16:9 STAGE: MANDATORY BASE STYLES
+           Include this ENTIRE file in every presentation.
+           Slides are authored at 1920×1080 and scaled as a whole.
+           =========================================== */
+        html, body {
+            width: 100%; height: 100%;
+            margin: 0; overflow: hidden;
+            background: var(--stage-bg);
+        }
+
+        .deck-viewport {
+            position: fixed; inset: 0;
+            overflow: hidden;
+            background: var(--stage-bg);
+        }
+
+        .deck-stage {
+            position: absolute; left: 0; top: 0;
+            width: 1920px; height: 1080px;
+            overflow: hidden; transform-origin: 0 0;
+            background: var(--slide-bg);
+        }
+
+        .slide {
+            position: absolute; inset: 0;
+            width: 1920px; height: 1080px;
+            overflow: hidden; display: block;
+            visibility: hidden; opacity: 0; pointer-events: none;
+            background: var(--slide-bg);
+            transition: opacity 0.5s ease;
+        }
+
+        .slide.active, .slide.visible {
+            visibility: visible; opacity: 1;
+            pointer-events: auto; z-index: 1;
+        }
+
+        img, video, canvas, svg {
+            max-width: 100%; max-height: 100%;
+        }
+
+        .deck-controls {
+            position: fixed; left: 50%; bottom: 22px;
+            transform: translateX(-50%); z-index: 1000;
+        }
+
+        @media print {
+            html, body { width: 1920px; height: auto; overflow: visible; background: #fff; }
+            .deck-viewport { position: static; overflow: visible; background: #fff; }
+            .deck-stage { position: static; width: auto; height: auto; transform: none !important; background: none; }
+            .slide { position: relative; display: block !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; width: 1920px; height: 1080px; break-after: page; page-break-after: always; }
+            .slide:last-child { break-after: auto; page-break-after: auto; }
+            .deck-controls { display: none !important; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+        }
+
+        /* ===========================================
+           SWISS MODERN — GRID PATTERN BACKGROUND
+           Visible structural grid lines (Bauhaus)
+           =========================================== */
+        .slide::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .slide > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===========================================
+           SWISS MODERN — GEOMETRIC ACCENT ELEMENTS
+           =========================================== */
+        .geo-line {
+            position: absolute;
+            background: var(--accent);
+        }
+        .geo-line--h { height: 4px; }
+        .geo-line--v { width: 4px; }
+
+        .geo-circle {
+            position: absolute;
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+        }
+
+        .geo-dot {
+            position: absolute;
+            width: 14px; height: 14px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .geo-square {
+            position: absolute;
+            border: 3px solid var(--text-primary);
+        }
+
+        /* ===========================================
+           TYPOGRAPHY
+           =========================================== */
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+
+        p, li, span, td, th {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            line-height: 1.5;
+            font-size: 26px;
+        }
+
+        /* ===========================================
+           ANIMATIONS — Entrance Reveals
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity var(--duration-slow) var(--ease-out-expo),
+                        transform var(--duration-slow) var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal,
+        .slide.visible .reveal-left,
+        .slide.visible .reveal-right,
+        .slide.visible .reveal-scale {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* Stagger children */
+        .reveal:nth-child(1), .reveal-left:nth-child(1) { transition-delay: 0.1s; }
+        .reveal:nth-child(2), .reveal-left:nth-child(2), .reveal-right:nth-child(1) { transition-delay: 0.2s; }
+        .reveal:nth-child(3), .reveal-left:nth-child(3), .reveal-right:nth-child(2) { transition-delay: 0.3s; }
+        .reveal:nth-child(4), .reveal-left:nth-child(4), .reveal-right:nth-child(3) { transition-delay: 0.4s; }
+        .reveal:nth-child(5) { transition-delay: 0.5s; }
+        .reveal:nth-child(6) { transition-delay: 0.6s; }
+
+        /* ===========================================
+           SLIDE LAYOUTS
+           =========================================== */
+        .slide-content {
+            padding: var(--slide-padding);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-content--top {
+            justify-content: flex-start;
+            padding-top: 90px;
+        }
+
+        /* Section number (Swiss Modern signature) */
+        .section-num {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 220px;
+            color: var(--accent-light);
+            position: absolute;
+            right: 60px; top: 20px;
+            line-height: 1;
+            letter-spacing: -0.05em;
+        }
+
+        /* Slide number indicator */
+        .slide-number {
+            position: absolute;
+            bottom: 30px; right: 40px;
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+        }
+
+        /* Presenter tag */
+        .presenter-tag {
+            position: absolute;
+            bottom: 30px; left: 40px;
+            font-family: var(--font-body);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* Accent bar (top of slide) */
+        .accent-bar {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 6px;
+            background: var(--accent);
+        }
+
+        /* Tag label */
+        .tag {
+            display: inline-block;
+            padding: 8px 24px;
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .tag--filled {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* Two-column layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Paper prototype image styling */
+        .proto-img {
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            object-fit: contain;
+            background: #fafafa;
+        }
+
+        .proto-img--phone {
+            max-height: 540px;
+            border-radius: 16px;
+        }
+
+        .proto-img--small {
+            max-height: 420px;
+        }
+
+        /* Variant card */
+        .variant-card {
+            background: var(--bg-secondary);
+            border-radius: 14px;
+            padding: 36px 40px;
+            border-left: 6px solid var(--accent);
+        }
+
+        .variant-card h3 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .variant-card p {
+            font-size: 26px;
+            color: var(--text-secondary);
+        }
+
+        /* Comparison table */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 24px;
+        }
+        .compare-table th {
+            font-family: var(--font-display);
+            font-weight: 700;
+            text-align: left;
+            padding: 16px 22px;
+            border-bottom: 3px solid var(--text-primary);
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .compare-table td {
+            padding: 16px 22px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 24px;
+        }
+        .compare-table tr:hover td {
+            background: var(--accent-light);
+        }
+        .compare-table .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Flow step */
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 16px;
+        }
+        .flow-step__num {
+            width: 48px; height: 48px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        .flow-step__text {
+            font-size: 26px;
+            color: var(--text-primary);
+        }
+
+        /* Metric badge */
+        .metric-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+        }
+        .metric-badge--red {
+            background: var(--accent);
+            color: #fff;
+        }
+        .metric-badge--outline {
+            border: 2px solid var(--text-primary);
+            color: var(--text-primary);
+        }
+
+        /* Placeholder box */
+        .placeholder-box {
+            border: 3px dashed var(--border-color);
+            border-radius: 14px;
+            padding: 44px;
+            text-align: center;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-size: 28px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Role cards */
+        .role-card {
+            background: #fff;
+            border: 2px solid var(--border-color);
+            border-radius: 14px;
+            padding: 34px 28px;
+            text-align: center;
+        }
+        .role-card__icon {
+            font-size: 56px;
+            margin-bottom: 14px;
+        }
+        .role-card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .role-card p {
+            font-size: 22px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Agenda item */
+        .agenda-item {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            padding: 22px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .agenda-item:last-child { border-bottom: none; }
+        .agenda-item__num {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 54px;
+            color: var(--accent);
+            min-width: 90px;
+        }
+        .agenda-item__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 34px;
+        }
+        .agenda-item__desc {
+            font-size: 24px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Problem card */
+        .problem-card {
+            background: #fff;
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 44px;
+            position: relative;
+            overflow: hidden;
+        }
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 6px; height: 100%;
+            background: var(--accent);
+        }
+        .problem-card__id {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 24px;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .problem-card__title {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+        .problem-card__desc {
+            font-size: 26px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Big number stat */
+        .stat-big {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 84px;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .stat-label {
+            font-family: var(--font-body);
+            font-size: 26px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Progress bar / nav dots */
+        .nav-dots {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 1000;
+        }
+        .nav-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+        .nav-dot.active {
+            background: var(--accent);
+            transform: scale(1.6);
+        }
+
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 20px; right: 20px;
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: rgba(0,0,0,0.3);
+            z-index: 1000;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===========================================
+           TITLE SLIDE SPECIAL
+           =========================================== */
+        .title-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .title-slide .slide-content {
+            text-align: left;
+            max-width: 1400px;
+            justify-content: center;
+        }
+        .title-slide h1 {
+            font-size: 92px;
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 28px;
+        }
+        .title-slide h1 .accent {
+            color: var(--accent);
+        }
+        .title-slide .subtitle {
+            font-family: var(--font-body);
+            font-size: 36px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 44px;
+            line-height: 1.6;
+        }
+        .title-slide .meta {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        /* Chess pawn icon (CSS-drawn) */
+        .chess-icon {
+            position: absolute;
+            right: 120px; top: 50%;
+            transform: translateY(-50%);
+            width: 280px; height: 360px;
+            opacity: 0.06;
+        }
+        .chess-icon svg {
+            width: 100%; height: 100%;
+            fill: var(--text-primary);
+        }
+
+        /* Scenario box */
+        .scenario-box {
+            background: var(--accent-light);
+            border-left: 6px solid var(--accent);
+            padding: 32px 40px;
+            border-radius: 0 14px 14px 0;
+            margin: 24px 0;
+        }
+        .scenario-box p {
+            font-size: 28px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .scenario-box .label {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 12px;
+            font-style: normal;
+        }
+
+        /* Thank you slide */
+        .thankyou-slide .slide-content {
+            text-align: center;
+            align-items: center;
+        }
+        .thankyou-slide h1 {
+            font-size: 120px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div class="deck-viewport">
+        <main class="deck-stage" id="deckStage">
+
+            <!-- ===========================================
+                 SLIDE 1: TITLE SLIDE
+                 Presenter: Người 1
+                 =========================================== -->
+            <section class="slide title-slide active" data-presenter="1">
+                <div class="accent-bar"></div>
+                <div class="slide-content">
+                    <div class="tag reveal" style="margin-bottom: 28px;">CSC13112 — UI/UX DESIGN</div>
+                    <h1 class="reveal">Paper Prototype &<br><span class="accent">Formative Testing</span></h1>
+                    <p class="subtitle reveal">Freestyle Chess Mobile Web — Group 06</p>
+                    <p class="meta reveal">Project Assignment 3 · ThS. Phạm Nguyễn Sơn Tùng · 2026</p>
+                </div>
+                <!-- Decorative chess pawn -->
+                <div class="chess-icon reveal-scale" style="transition-delay: 0.5s;">
+                    <svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="22" r="18"/>
+                        <path d="M35 42 C35 35, 65 35, 65 42 L68 80 C68 82, 32 82, 32 80 Z"/>
+                        <rect x="25" y="82" width="50" height="12" rx="4"/>
+                        <rect x="20" y="96" width="60" height="14" rx="4"/>
+                        <ellipse cx="50" cy="118" rx="38" ry="10"/>
+                    </svg>
+                </div>
+                <!-- Geometric accents -->
+                <div class="geo-line geo-line--h" style="width: 200px; bottom: 120px; left: 80px;"></div>
+                <div class="geo-dot" style="bottom: 116px; left: 290px;"></div>
+                <div class="geo-circle" style="width: 60px; height: 60px; top: 80px; right: 80px;"></div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 2: AGENDA
+                 Presenter: Người 1
+                 =========================================== -->
+            <section class="slide" data-presenter="1">
+                <div class="accent-bar"></div>
+                <div class="section-num">00</div>
+                <div class="slide-content slide-content--top">
+                    <h2 class="reveal" style="font-size: 64px; margin-bottom: 36px;">Agenda</h2>
+                    <div class="agenda-item reveal">
+                        <span class="agenda-item__num">01</span>
+                        <div>
+                            <div class="agenda-item__title">Problem Recap & Approach</div>
+                            <div class="agenda-item__desc">Key issues identified from PA2</div>
+                        </div>
+                    </div>
+                    <div class="agenda-item reveal">
+                        <span class="agenda-item__num">02</span>
+                        <div>
+                            <div class="agenda-item__title">Task 1 — Navigation Bar</div>
+                            <div class="agenda-item__desc">3 paper prototype variants for one-handed navigation</div>
+                        </div>
+                    </div>
+                    <div class="agenda-item reveal">
+                        <span class="agenda-item__num">03</span>
+                        <div>
+                            <div class="agenda-item__title">Task 2 — Schedule</div>
+                            <div class="agenda-item__desc">3 paper prototype variants for tournament lookup</div>
+                        </div>
+                    </div>
+                    <div class="agenda-item reveal">
+                        <span class="agenda-item__num">04</span>
+                        <div>
+                            <div class="agenda-item__title">Formative Testing</div>
+                            <div class="agenda-item__desc">Plan, procedure & results</div>
+                        </div>
+                    </div>
+                    <div class="agenda-item reveal">
+                        <span class="agenda-item__num">05</span>
+                        <div>
+                            <div class="agenda-item__title">Conclusion & Improvements</div>
+                            <div class="agenda-item__desc">Best variant selection & roadmap to PA4</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 1</div>
+                <div class="slide-number">02 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 3: PROBLEM RECAP FROM PA2
+                 Presenter: Người 1
+                 =========================================== -->
+            <section class="slide" data-presenter="1">
+                <div class="accent-bar"></div>
+                <div class="section-num">01</div>
+                <div class="slide-content slide-content--top">
+                    <div class="tag reveal" style="margin-bottom: 20px;">PROBLEM RECAP FROM PA2</div>
+                    <h2 class="reveal" style="font-size: 56px; margin-bottom: 36px;">Top Priority Issues</h2>
+                    <div class="two-col" style="gap: 40px;">
+                        <div class="problem-card reveal">
+                            <div class="problem-card__id">P-01 · Navigation</div>
+                            <div class="problem-card__title">Hamburger Menu Unreachable</div>
+                            <div class="problem-card__desc">Menu button at top-left corner is difficult to reach with one hand while walking. Users struggle with thumb-zone accessibility on mobile.</div>
+                        </div>
+                        <div class="problem-card reveal">
+                            <div class="problem-card__id">P-05 · Schedule</div>
+                            <div class="problem-card__title">Incomplete Match Details</div>
+                            <div class="problem-card__desc">Schedule page lacks detailed matchup information: player lists, time details, pairings, and tournament brackets are missing.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 1</div>
+                <div class="slide-number">03 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 4: OUR APPROACH
+                 Presenter: Người 1
+                 =========================================== -->
+            <section class="slide" data-presenter="1">
+                <div class="accent-bar"></div>
+                <div class="section-num">01</div>
+                <div class="slide-content slide-content--top">
+                    <div class="tag reveal" style="margin-bottom: 20px;">OUR APPROACH</div>
+                    <h2 class="reveal" style="font-size: 56px; margin-bottom: 36px;">2 Tasks × 3 Variants = 6 Paper Prototypes</h2>
+                    <div class="two-col reveal" style="align-items: start; gap: 60px;">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 24px;">
+                                <div class="stat-big">2</div>
+                                <div>
+                                    <div style="font-family: var(--font-display); font-weight: 800; font-size: 32px;">Tasks</div>
+                                    <div class="stat-label">Key user scenarios</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 24px;">
+                                <div class="stat-big">3</div>
+                                <div>
+                                    <div style="font-family: var(--font-display); font-weight: 800; font-size: 32px;">Variants Each</div>
+                                    <div class="stat-label">Compared per task</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 20px;">
+                                <div class="stat-big">6</div>
+                                <div>
+                                    <div style="font-family: var(--font-display); font-weight: 800; font-size: 32px;">Total Prototypes</div>
+                                    <div class="stat-label">Hand-drawn on paper</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="variant-card" style="margin-bottom: 20px; border-left-color: var(--accent);">
+                                <h3>Task 1: Navigation Bar</h3>
+                                <p>Bottom Nav · FAB Menu · Bottom Hamburger</p>
+                            </div>
+                            <div class="variant-card" style="border-left-color: var(--text-primary);">
+                                <h3>Task 2: Schedule</h3>
+                                <p>Accordion Cards · Date Filter + Detail · Vertical Timeline</p>
+                            </div>
+                            <div style="margin-top: 24px;">
+                                <span class="metric-badge metric-badge--outline">Phone Case Prototype</span>
+                                <span class="metric-badge metric-badge--outline" style="margin-left: 8px;">Think-Aloud Testing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 1</div>
+                <div class="slide-number">04 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 5: TASK 1 OVERVIEW
+                 Presenter: Người 2
+                 =========================================== -->
+            <section class="slide" data-presenter="2">
+                <div class="accent-bar"></div>
+                <div class="section-num">02</div>
+                <div class="slide-content slide-content--top">
+                    <div class="tag tag--filled reveal" style="margin-bottom: 20px;">TASK 1</div>
+                    <h2 class="reveal" style="font-size: 58px; margin-bottom: 20px;">One-Handed Navigation</h2>
+                    <div class="scenario-box reveal">
+                        <div class="label">User Scenario</div>
+                        <p>"The user is walking while using the phone with one hand (thumb only). They want to quickly switch from the Home screen to the Schedule page."</p>
+                    </div>
+                    <div style="margin-top: 24px;">
+                        <div class="flow-step reveal">
+                            <div class="flow-step__num">!</div>
+                            <div class="flow-step__text"><strong>Task:</strong> Navigate from Home to Schedule using only your thumb.</div>
+                        </div>
+                    </div>
+                    <div class="two-col reveal" style="margin-top: 30px; gap: 40px;">
+                        <div>
+                            <img src="paper_prototype/phone_case.JPG" alt="Phone case prototype" class="proto-img" style="max-height: 300px;">
+                        </div>
+                        <div>
+                            <img src="paper_prototype/home.JPG" alt="Home screen prototype" class="proto-img" style="max-height: 300px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 2</div>
+                <div class="slide-number">05 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 6: TASK 1 — VARIANT 1: BOTTOM NAV BAR
+                 Presenter: Người 2
+                 =========================================== -->
+            <section class="slide" data-presenter="2">
+                <div class="accent-bar"></div>
+                <div class="section-num">02</div>
+                <div class="slide-content slide-content--top">
+                    <div class="two-col" style="height: 100%; align-items: center;">
+                        <div>
+                            <span class="metric-badge metric-badge--red reveal">VARIANT 1</span>
+                            <h2 class="reveal" style="font-size: 50px; margin-top: 16px; margin-bottom: 16px;">Fixed Bottom Navigation Bar</h2>
+                            <p class="reveal" style="font-size: 28px; color: var(--text-secondary); margin-bottom: 28px;">
+                                A persistent tab bar (Home, Schedule, Rating, Videos) fixed at the bottom of the screen — always within thumb reach.
+                            </p>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">1</div>
+                                <div class="flow-step__text">User sees Bottom Nav Bar on Home screen</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">2</div>
+                                <div class="flow-step__text">Tap "Schedule" icon directly with thumb</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">✓</div>
+                                <div class="flow-step__text"><strong>Done — only 1 tap!</strong></div>
+                            </div>
+                            <div class="reveal" style="margin-top: 20px; display: flex; gap: 12px;">
+                                <span class="metric-badge metric-badge--red">1 Tap</span>
+                                <span class="metric-badge metric-badge--outline">High Reachability</span>
+                                <span class="metric-badge metric-badge--outline">Low Cognitive Load</span>
+                            </div>
+                        </div>
+                        <div class="reveal-right" style="text-align: center; transition-delay: 0.3s;">
+                            <img src="paper_prototype/nav_1.JPG" alt="Bottom Nav Bar components" class="proto-img proto-img--phone" style="max-height: 600px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 2</div>
+                <div class="slide-number">06 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 7: TASK 1 — VARIANT 2: FAB MENU
+                 Presenter: Người 2
+                 =========================================== -->
+            <section class="slide" data-presenter="2">
+                <div class="accent-bar"></div>
+                <div class="section-num">02</div>
+                <div class="slide-content slide-content--top">
+                    <div class="two-col" style="height: 100%; align-items: center;">
+                        <div>
+                            <span class="metric-badge metric-badge--red reveal">VARIANT 2</span>
+                            <h2 class="reveal" style="font-size: 50px; margin-top: 16px; margin-bottom: 16px;">Floating Action Button (FAB)</h2>
+                            <p class="reveal" style="font-size: 28px; color: var(--text-secondary); margin-bottom: 28px;">
+                                A floating circular button at bottom-right that expands into a radial/fan menu with navigation shortcuts.
+                            </p>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">1</div>
+                                <div class="flow-step__text">Tap FAB button at bottom-right</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">2</div>
+                                <div class="flow-step__text">Radial menu opens with navigation items</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">3</div>
+                                <div class="flow-step__text">Tap "Schedule" from the expanded menu</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">✓</div>
+                                <div class="flow-step__text"><strong>Done — 2 taps, minimal screen clutter</strong></div>
+                            </div>
+                            <div class="reveal" style="margin-top: 20px; display: flex; gap: 12px;">
+                                <span class="metric-badge metric-badge--red">2 Taps</span>
+                                <span class="metric-badge metric-badge--outline">Very High Reachability</span>
+                            </div>
+                        </div>
+                        <div class="reveal-right" style="text-align: center; transition-delay: 0.3s;">
+                            <img src="paper_prototype/nav_2.JPG" alt="FAB Menu components" class="proto-img proto-img--phone" style="max-height: 600px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 2</div>
+                <div class="slide-number">07 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 8: TASK 1 — VARIANT 3: BOTTOM HAMBURGER
+                 Presenter: Người 2
+                 =========================================== -->
+            <section class="slide" data-presenter="2">
+                <div class="accent-bar"></div>
+                <div class="section-num">02</div>
+                <div class="slide-content slide-content--top">
+                    <div class="two-col" style="height: 100%; align-items: center;">
+                        <div>
+                            <span class="metric-badge metric-badge--red reveal">VARIANT 3</span>
+                            <h2 class="reveal" style="font-size: 50px; margin-top: 16px; margin-bottom: 16px;">Bottom Hamburger Menu</h2>
+                            <p class="reveal" style="font-size: 28px; color: var(--text-secondary); margin-bottom: 28px;">
+                                Move the traditional hamburger menu from top-left to bottom — reachable by thumb. Opens full-screen overlay menu.
+                            </p>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">1</div>
+                                <div class="flow-step__text">Tap hamburger button at bottom edge</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">2</div>
+                                <div class="flow-step__text">Full-screen menu overlay appears</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">3</div>
+                                <div class="flow-step__text">Tap "Schedule" from the menu list</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">✓</div>
+                                <div class="flow-step__text"><strong>Done — 2 taps, full menu access</strong></div>
+                            </div>
+                            <div class="reveal" style="margin-top: 20px; display: flex; gap: 12px;">
+                                <span class="metric-badge metric-badge--red">2 Taps</span>
+                                <span class="metric-badge metric-badge--outline">Complete Menu Items</span>
+                            </div>
+                        </div>
+                        <div class="reveal-right" style="text-align: center; transition-delay: 0.3s;">
+                            <img src="paper_prototype/nav_3_menu.JPG" alt="Bottom Hamburger full-screen menu" class="proto-img proto-img--phone" style="max-height: 600px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 2</div>
+                <div class="slide-number">08 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 9: TASK 2 OVERVIEW
+                 Presenter: Người 3
+                 =========================================== -->
+            <section class="slide" data-presenter="3">
+                <div class="accent-bar"></div>
+                <div class="section-num">03</div>
+                <div class="slide-content slide-content--top">
+                    <div class="tag tag--filled reveal" style="margin-bottom: 20px;">TASK 2</div>
+                    <h2 class="reveal" style="font-size: 58px; margin-bottom: 20px;">Schedule & Tournament Lookup</h2>
+                    <div class="scenario-box reveal">
+                        <div class="label">User Scenario</div>
+                        <p>"A chess follower wants to find the player list for a past tournament, or view detailed matchup info (e.g., L.Q.Liem vs Magnus Carlsen)."</p>
+                    </div>
+                    <div style="margin-top: 24px;">
+                        <div class="flow-step reveal">
+                            <div class="flow-step__num">!</div>
+                            <div class="flow-step__text"><strong>Task:</strong> Find a tournament and view its player list / match details.</div>
+                        </div>
+                    </div>
+                    <div class="three-col reveal" style="margin-top: 30px; gap: 30px;">
+                        <div class="variant-card" style="text-align: center;">
+                            <h3 style="font-size: 28px;">Variant 1</h3>
+                            <p style="font-size: 22px;">Accordion Cards</p>
+                        </div>
+                        <div class="variant-card" style="text-align: center;">
+                            <h3 style="font-size: 28px;">Variant 2</h3>
+                            <p style="font-size: 22px;">Date Filter + Detail Page</p>
+                        </div>
+                        <div class="variant-card" style="text-align: center;">
+                            <h3 style="font-size: 28px;">Variant 3</h3>
+                            <p style="font-size: 22px;">Vertical Timeline</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 3</div>
+                <div class="slide-number">09 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 10: TASK 2 — VARIANT 1: ACCORDION CARDS
+                 Presenter: Người 3
+                 =========================================== -->
+            <section class="slide" data-presenter="3">
+                <div class="accent-bar"></div>
+                <div class="section-num">03</div>
+                <div class="slide-content slide-content--top">
+                    <div class="two-col" style="height: 100%; align-items: center;">
+                        <div>
+                            <span class="metric-badge metric-badge--red reveal">VARIANT 1</span>
+                            <h2 class="reveal" style="font-size: 48px; margin-top: 16px; margin-bottom: 16px;">Accordion / Collapsible Cards</h2>
+                            <p class="reveal" style="font-size: 26px; color: var(--text-secondary); margin-bottom: 24px;">
+                                Schedule page split into <strong>SOON</strong> (upcoming) and <strong>PREVIOUS</strong> (past) sections. Past cards are collapsed with ▼ icon — tap to expand inline.
+                            </p>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">1</div>
+                                <div class="flow-step__text">Scroll to PREVIOUS section</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">2</div>
+                                <div class="flow-step__text">Tap card or ▼ icon to expand</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">3</div>
+                                <div class="flow-step__text">Player list appears inline (▲ to collapse)</div>
+                            </div>
+                            <div class="reveal" style="margin-top: 16px; display: flex; gap: 12px;">
+                                <span class="metric-badge metric-badge--outline">Fast Lookup</span>
+                                <span class="metric-badge metric-badge--outline">No Page Switch</span>
+                            </div>
+                        </div>
+                        <div class="reveal-right" style="text-align: center; transition-delay: 0.3s; display: flex; gap: 16px; justify-content: center;">
+                            <img src="paper_prototype/schedule_1_default_collapsed.JPG" alt="Schedule accordion collapsed" class="proto-img proto-img--small" style="max-height: 500px;">
+                            <img src="paper_prototype/schedule_1_default_expanded.JPG" alt="Schedule accordion expanded" class="proto-img proto-img--small" style="max-height: 500px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 3</div>
+                <div class="slide-number">10 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 11: TASK 2 — VARIANT 2: DATE FILTER + DETAIL
+                 Presenter: Người 3
+                 =========================================== -->
+            <section class="slide" data-presenter="3">
+                <div class="accent-bar"></div>
+                <div class="section-num">03</div>
+                <div class="slide-content slide-content--top">
+                    <div class="two-col" style="height: 100%; align-items: center;">
+                        <div>
+                            <span class="metric-badge metric-badge--red reveal">VARIANT 2</span>
+                            <h2 class="reveal" style="font-size: 48px; margin-top: 16px; margin-bottom: 16px;">Date Filter + Detail Page</h2>
+                            <p class="reveal" style="font-size: 26px; color: var(--text-secondary); margin-bottom: 24px;">
+                                Dropdown filters for Month & Year + date strip at top. Each match card has a "Detail →" button leading to a <strong>dedicated match detail screen</strong> with player info & chessboard.
+                            </p>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">1</div>
+                                <div class="flow-step__text">Select Month / Year / Date from filters</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">2</div>
+                                <div class="flow-step__text">Browse filtered match list</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">3</div>
+                                <div class="flow-step__text">Tap "Detail →" on a match card</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">4</div>
+                                <div class="flow-step__text">Full detail: L.Q.Liem vs Carlsen + board</div>
+                            </div>
+                            <div class="reveal" style="margin-top: 16px; display: flex; gap: 12px;">
+                                <span class="metric-badge metric-badge--outline">Rich Detail</span>
+                                <span class="metric-badge metric-badge--outline">Professional</span>
+                            </div>
+                        </div>
+                        <div class="reveal-right" style="text-align: center; transition-delay: 0.3s; display: flex; gap: 16px; justify-content: center;">
+                            <img src="paper_prototype/schedule_2_default_collapsed.JPG" alt="Schedule date filter view" class="proto-img proto-img--small" style="max-height: 500px;">
+                            <img src="paper_prototype/match.JPG" alt="Match detail page" class="proto-img proto-img--small" style="max-height: 500px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 3</div>
+                <div class="slide-number">11 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 12: TASK 2 — VARIANT 3: VERTICAL TIMELINE
+                 Presenter: Người 3
+                 =========================================== -->
+            <section class="slide" data-presenter="3">
+                <div class="accent-bar"></div>
+                <div class="section-num">03</div>
+                <div class="slide-content slide-content--top">
+                    <div class="two-col" style="height: 100%; align-items: center;">
+                        <div>
+                            <span class="metric-badge metric-badge--red reveal">VARIANT 3</span>
+                            <h2 class="reveal" style="font-size: 48px; margin-top: 16px; margin-bottom: 16px;">Vertical Interactive Timeline</h2>
+                            <p class="reveal" style="font-size: 26px; color: var(--text-secondary); margin-bottom: 24px;">
+                                A continuous vertical timeline with a red <strong>"Today"</strong> marker at center. Scroll up for <strong>Past</strong> tournaments, scroll down for <strong>Future</strong> events — infinite, intuitive browsing.
+                            </p>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">↑</div>
+                                <div class="flow-step__text">Scroll UP → Past tournaments appear</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num" style="background: #c41e3a;">●</div>
+                                <div class="flow-step__text"><strong style="color: #c41e3a;">Today</strong> — Red marker as anchor point</div>
+                            </div>
+                            <div class="flow-step reveal">
+                                <div class="flow-step__num">↓</div>
+                                <div class="flow-step__text">Scroll DOWN → Future tournaments appear</div>
+                            </div>
+                            <div class="reveal" style="margin-top: 16px; display: flex; gap: 12px;">
+                                <span class="metric-badge metric-badge--outline">Unique UX</span>
+                                <span class="metric-badge metric-badge--outline">Intuitive Scrolling</span>
+                            </div>
+                        </div>
+                        <div class="reveal-right" style="text-align: center; transition-delay: 0.3s;">
+                            <img src="paper_prototype/schedule_3_default.JPG" alt="Vertical timeline" class="proto-img proto-img--phone" style="max-height: 600px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 3</div>
+                <div class="slide-number">12 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 13: COMPARISON TABLE
+                 Presenter: Người 3
+                 =========================================== -->
+            <section class="slide" data-presenter="3">
+                <div class="accent-bar"></div>
+                <div class="section-num">03</div>
+                <div class="slide-content slide-content--top">
+                    <h2 class="reveal" style="font-size: 56px; margin-bottom: 32px;">Variants Comparison</h2>
+
+                    <div class="reveal" style="margin-bottom: 28px;">
+                        <div class="tag" style="margin-bottom: 16px;">TASK 1 — NAVIGATION BAR</div>
+                        <table class="compare-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">Criteria</th>
+                                    <th>V1: Bottom Nav</th>
+                                    <th>V2: FAB Menu</th>
+                                    <th>V3: Bottom Hamburger</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Tap Count</td><td class="highlight">1 Tap ★</td><td>2 Taps</td><td>2 Taps</td></tr>
+                                <tr><td>Thumb Reachability</td><td class="highlight">Very High</td><td class="highlight">Very High</td><td>High</td></tr>
+                                <tr><td>Cognitive Load</td><td class="highlight">Low</td><td>Medium</td><td>Higher</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="reveal">
+                        <div class="tag" style="margin-bottom: 16px;">TASK 2 — SCHEDULE</div>
+                        <table class="compare-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">Criteria</th>
+                                    <th>V1: Accordion</th>
+                                    <th>V2: Date Filter</th>
+                                    <th>V3: Timeline</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Lookup Speed</td><td class="highlight">Very Fast</td><td>Medium</td><td>Fast</td></tr>
+                                <tr><td>Info Completeness</td><td>Adequate</td><td class="highlight">Very High ★</td><td>Adequate</td></tr>
+                                <tr><td>Interaction UX</td><td>Simple, Familiar</td><td>Professional</td><td class="highlight">Unique, Visual</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 3</div>
+                <div class="slide-number">13 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 14: FORMATIVE TESTING PLAN
+                 Presenter: Người 4
+                 =========================================== -->
+            <section class="slide" data-presenter="4">
+                <div class="accent-bar"></div>
+                <div class="section-num">04</div>
+                <div class="slide-content slide-content--top">
+                    <div class="tag tag--filled reveal" style="margin-bottom: 20px;">FORMATIVE TESTING</div>
+                    <h2 class="reveal" style="font-size: 56px; margin-bottom: 32px;">Testing Plan</h2>
+                    <div class="two-col reveal" style="align-items: start; gap: 50px;">
+                        <div>
+                            <div style="margin-bottom: 28px;">
+                                <h3 style="font-size: 30px; margin-bottom: 8px; color: var(--accent);">Objective</h3>
+                                <p style="font-size: 26px; color: var(--text-secondary);">Evaluate the usability of 6 lo-fi paper prototypes through formative testing before building hi-fi prototypes.</p>
+                            </div>
+                            <div style="margin-bottom: 28px;">
+                                <h3 style="font-size: 30px; margin-bottom: 8px; color: var(--accent);">Target Users</h3>
+                                <p style="font-size: 26px; color: var(--text-secondary);">2-3 participants with no prior knowledge of the prototypes. Chess followers / mobile web users.</p>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 30px; margin-bottom: 8px; color: var(--accent);">Method</h3>
+                                <p style="font-size: 26px; color: var(--text-secondary);">Paper Prototype Testing with Think-Aloud Protocol. Qualitative + quantitative data collection.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="margin-bottom: 28px;">
+                                <h3 style="font-size: 30px; margin-bottom: 8px; color: var(--accent);">Metrics</h3>
+                                <div class="flow-step" style="margin-bottom: 10px;">
+                                    <div class="flow-step__num" style="width: 36px; height: 36px; font-size: 16px;">1</div>
+                                    <div class="flow-step__text" style="font-size: 24px;">Tap count per task</div>
+                                </div>
+                                <div class="flow-step" style="margin-bottom: 10px;">
+                                    <div class="flow-step__num" style="width: 36px; height: 36px; font-size: 16px;">2</div>
+                                    <div class="flow-step__text" style="font-size: 24px;">Task completion time</div>
+                                </div>
+                                <div class="flow-step" style="margin-bottom: 10px;">
+                                    <div class="flow-step__num" style="width: 36px; height: 36px; font-size: 16px;">3</div>
+                                    <div class="flow-step__text" style="font-size: 24px;">Errors / hesitations observed</div>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-step__num" style="width: 36px; height: 36px; font-size: 16px;">4</div>
+                                    <div class="flow-step__text" style="font-size: 24px;">Qualitative user feedback</div>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 30px; margin-bottom: 8px; color: var(--accent);">Success Criteria</h3>
+                                <p style="font-size: 26px; color: var(--text-secondary);">Task completed without critical errors. Users can navigate intuitively without help.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 4</div>
+                <div class="slide-number">14 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 15: TESTING PROCEDURE & ROLES
+                 Presenter: Người 4
+                 =========================================== -->
+            <section class="slide" data-presenter="4">
+                <div class="accent-bar"></div>
+                <div class="section-num">04</div>
+                <div class="slide-content slide-content--top">
+                    <h2 class="reveal" style="font-size: 56px; margin-bottom: 36px;">Testing Procedure & Roles</h2>
+                    <div class="three-col reveal" style="gap: 36px;">
+                        <div class="role-card">
+                            <div class="role-card__icon">🎙️</div>
+                            <h3>Facilitator</h3>
+                            <p>Reads the scenario script. Guides user through tasks. Encourages think-aloud protocol. Does not hint or assist.</p>
+                        </div>
+                        <div class="role-card" style="border-color: var(--accent);">
+                            <div class="role-card__icon">🖥️</div>
+                            <h3>Computer</h3>
+                            <p>Stands behind the paper prototype. Swaps paper pieces when user taps an element. Simulates system feedback silently.</p>
+                        </div>
+                        <div class="role-card">
+                            <div class="role-card__icon">📝</div>
+                            <h3>Observer</h3>
+                            <p>Counts taps, measures time. Notes errors, hesitations, rage clicks. Records video for analysis. Captures qualitative feedback.</p>
+                        </div>
+                    </div>
+                    <div class="reveal" style="margin-top: 36px;">
+                        <div style="background: var(--bg-secondary); padding: 28px 36px; border-radius: 12px; display: flex; align-items: center; gap: 40px;">
+                            <div style="text-align: center;">
+                                <div class="stat-big" style="font-size: 64px;">2—3</div>
+                                <div class="stat-label">Participants</div>
+                            </div>
+                            <div style="width: 2px; height: 60px; background: var(--border-color);"></div>
+                            <div style="text-align: center;">
+                                <div class="stat-big" style="font-size: 56px;">2</div>
+                                <div class="stat-label">Tasks Per Session</div>
+                            </div>
+                            <div style="width: 2px; height: 60px; background: var(--border-color);"></div>
+                            <div style="text-align: center;">
+                                <div class="stat-big" style="font-size: 56px;">3</div>
+                                <div class="stat-label">Variants Per Task</div>
+                            </div>
+                            <div style="width: 2px; height: 60px; background: var(--border-color);"></div>
+                            <div style="text-align: center;">
+                                <div class="stat-big" style="font-size: 56px;">6</div>
+                                <div class="stat-label">Total Test Rounds</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 4</div>
+                <div class="slide-number">15 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 16: TESTING RESULTS (PLACEHOLDER)
+                 Presenter: Người 4
+                 =========================================== -->
+            <section class="slide" data-presenter="4">
+                <div class="accent-bar"></div>
+                <div class="section-num">04</div>
+                <div class="slide-content slide-content--top">
+                    <h2 class="reveal" style="font-size: 56px; margin-bottom: 32px;">Testing Results</h2>
+                    <div class="two-col reveal" style="gap: 40px; align-items: start;">
+                        <div>
+                            <div class="tag" style="margin-bottom: 16px;">QUANTITATIVE DATA</div>
+                            <div class="placeholder-box" style="margin-bottom: 20px;">
+                                📊 Tap count, completion time, error rate<br>per variant — to be filled after testing
+                            </div>
+                            <table class="compare-table" style="font-size: 22px;">
+                                <thead>
+                                    <tr><th>Metric</th><th>V1</th><th>V2</th><th>V3</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Avg. Taps</td><td>—</td><td>—</td><td>—</td></tr>
+                                    <tr><td>Avg. Time (s)</td><td>—</td><td>—</td><td>—</td></tr>
+                                    <tr><td>Error Count</td><td>—</td><td>—</td><td>—</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <div class="tag" style="margin-bottom: 16px;">QUALITATIVE FEEDBACK</div>
+                            <div class="placeholder-box">
+                                💬 User observations, pain points, positive reactions, think-aloud notes — to be filled after testing
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <div class="tag" style="margin-bottom: 16px;">KEY FINDINGS</div>
+                                <div class="placeholder-box">
+                                    🔍 Top insights from formative testing sessions — to be filled after testing
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 4</div>
+                <div class="slide-number">16 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 17: BEST VARIANT SELECTION (PLACEHOLDER)
+                 Presenter: Người 5
+                 =========================================== -->
+            <section class="slide" data-presenter="5">
+                <div class="accent-bar"></div>
+                <div class="section-num">05</div>
+                <div class="slide-content slide-content--top">
+                    <div class="tag tag--filled reveal" style="margin-bottom: 20px;">CONCLUSION</div>
+                    <h2 class="reveal" style="font-size: 56px; margin-bottom: 32px;">Best Variant Selection</h2>
+                    <div class="two-col reveal" style="gap: 40px; align-items: start;">
+                        <div>
+                            <h3 style="font-size: 32px; margin-bottom: 16px; color: var(--accent);">Task 1: Navigation</h3>
+                            <div class="placeholder-box" style="min-height: 180px;">
+                                🏆 Selected variant & rationale<br>based on testing results — to be filled
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 28px; margin-bottom: 16px; color: var(--accent);">Task 2: Schedule</h3>
+                            <div class="placeholder-box" style="min-height: 180px;">
+                                🏆 Selected variant & rationale<br>based on testing results — to be filled
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal" style="margin-top: 32px;">
+                        <div class="tag" style="margin-bottom: 16px;">IMPROVEMENTS IDENTIFIED</div>
+                        <div class="placeholder-box">
+                            📋 List of specific improvements to apply in the hi-fi prototype (PA4) — to be filled after peer review
+                        </div>
+                    </div>
+                </div>
+                <div class="presenter-tag">Presenter 5</div>
+                <div class="slide-number">17 / 18</div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 18: THANK YOU & Q&A
+                 Presenter: Người 5
+                 =========================================== -->
+            <section class="slide thankyou-slide" data-presenter="5">
+                <div class="accent-bar"></div>
+                <div class="slide-content" style="text-align: center; align-items: center;">
+                    <div class="tag reveal" style="margin-bottom: 32px;">PA3 — FREESTYLE CHESS MOBILE WEB</div>
+                    <h1 class="reveal" style="font-size: 110px; margin-bottom: 16px;">Thank You<span style="color: var(--accent);">.</span></h1>
+                    <p class="reveal" style="font-size: 38px; color: var(--text-secondary); margin-bottom: 40px;">Questions & Feedback Welcome</p>
+                    <div class="reveal" style="display: flex; gap: 16px; justify-content: center;">
+                        <span class="metric-badge metric-badge--red">Group 06</span>
+                        <span class="metric-badge metric-badge--outline">CSC13112</span>
+                        <span class="metric-badge metric-badge--outline">ThS. Phạm Nguyễn Sơn Tùng</span>
+                    </div>
+                    <p class="reveal" style="font-size: 24px; color: var(--text-muted); margin-top: 40px;">
+                        Next: PA4 → Hi-fi Prototype & Final User Study
+                    </p>
+                </div>
+                <!-- Geometric decorations -->
+                <div class="geo-circle" style="width: 120px; height: 120px; bottom: 100px; left: 100px; opacity: 0.3;"></div>
+                <div class="geo-line geo-line--h" style="width: 160px; top: 100px; right: 100px; opacity: 0.3;"></div>
+                <div class="geo-dot" style="top: 96px; right: 270px; opacity: 0.3;"></div>
+                <div class="geo-square" style="width: 50px; height: 50px; bottom: 200px; right: 140px; opacity: 0.15;"></div>
+                <div class="presenter-tag">Presenter 5</div>
+                <div class="slide-number">18 / 18</div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Navigation dots -->
+    <div class="nav-dots" id="navDots"></div>
+    <!-- Slide counter -->
+    <div class="slide-counter" id="slideCounter"></div>
+
+    <script>
+        /* ===========================================
+           SLIDE PRESENTATION CONTROLLER
+           Fixed 16:9 stage with keyboard/touch nav
+           =========================================== */
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.stage = document.getElementById('deckStage');
+                this.navDots = document.getElementById('navDots');
+                this.counter = document.getElementById('slideCounter');
+                this.isAnimating = false;
+
+                this.setupStageScale();
+                this.setupNavDots();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupWheelNav();
+                this.showSlide(0);
+            }
+
+            /* --- Stage Scaling (fixed 1920×1080) --- */
+            setupStageScale() {
+                const scale = () => {
+                    const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+                    const x = (window.innerWidth - 1920 * factor) / 2;
+                    const y = (window.innerHeight - 1080 * factor) / 2;
+                    this.stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
+                };
+                scale();
+                window.addEventListener('resize', scale);
+            }
+
+            /* --- Navigation Dots --- */
+            setupNavDots() {
+                this.slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'nav-dot';
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    dot.addEventListener('click', () => this.showSlide(i));
+                    this.navDots.appendChild(dot);
+                });
+            }
+
+            /* --- Keyboard Navigation --- */
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.target.getAttribute && e.target.getAttribute('contenteditable')) return;
+                    switch(e.key) {
+                        case 'ArrowRight':
+                        case 'ArrowDown':
+                        case ' ':
+                        case 'PageDown':
+                            e.preventDefault();
+                            this.nextSlide();
+                            break;
+                        case 'ArrowLeft':
+                        case 'ArrowUp':
+                        case 'PageUp':
+                            e.preventDefault();
+                            this.prevSlide();
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            this.showSlide(0);
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            this.showSlide(this.slides.length - 1);
+                            break;
+                    }
+                });
+            }
+
+            /* --- Touch / Swipe Navigation --- */
+            setupTouchNav() {
+                let startX = 0, startY = 0;
+                const threshold = 50;
+
+                this.stage.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+
+                this.stage.addEventListener('touchend', (e) => {
+                    const dx = e.changedTouches[0].clientX - startX;
+                    const dy = e.changedTouches[0].clientY - startY;
+                    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > threshold) {
+                        dx < 0 ? this.nextSlide() : this.prevSlide();
+                    }
+                }, { passive: true });
+            }
+
+            /* --- Mouse Wheel Navigation (throttled) --- */
+            setupWheelNav() {
+                let lastWheel = 0;
+                document.addEventListener('wheel', (e) => {
+                    const now = Date.now();
+                    if (now - lastWheel < 800) return;
+                    lastWheel = now;
+                    e.deltaY > 0 ? this.nextSlide() : this.prevSlide();
+                }, { passive: true });
+            }
+
+            /* --- Show Slide --- */
+            showSlide(index) {
+                if (this.isAnimating) return;
+                this.currentSlide = Math.max(0, Math.min(index, this.slides.length - 1));
+
+                this.slides.forEach((slide, i) => {
+                    const isActive = i === this.currentSlide;
+                    slide.classList.toggle('active', isActive);
+                    slide.classList.toggle('visible', isActive);
+                });
+
+                // Update nav dots
+                const dots = this.navDots.querySelectorAll('.nav-dot');
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === this.currentSlide));
+
+                // Update counter
+                this.counter.textContent = `${String(this.currentSlide + 1).padStart(2, '0')} / ${String(this.slides.length).padStart(2, '0')}`;
+
+                // Brief animation lock
+                this.isAnimating = true;
+                setTimeout(() => this.isAnimating = false, 400);
+            }
+
+            nextSlide() { this.showSlide(this.currentSlide + 1); }
+            prevSlide() { this.showSlide(this.currentSlide - 1); }
+        }
+
+        /* --- Initialize on DOM ready --- */
+        document.addEventListener('DOMContentLoaded', () => {
+            new SlidePresentation();
+        });
+    </script>
+</body>
+</html>

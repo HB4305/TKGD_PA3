@@ -1,6 +1,6 @@
 # THIẾT KẾ TASK WORKFLOW & USER FLOW (PA3 - FREESTYLE CHESS MOBILE WEB)
 
-**Môn học:** CSC13112 - Thiết kế UI/UX (TS. Lê Khánh Duy)  
+**Môn học:** CSC13112 - Thiết kế UI/UX (ThS. Phạm Nguyễn Sơn Tùng)  
 **Nhóm thực hiện:** Nhóm 06  
 **Phạm vi sản phẩm:** Freestyle Chess Mobile Web (Smartphone Browser)  
 **Mục tiêu tài liệu:** Đặc tả chi tiết các luồng thao tác của người dùng (Task Workflows / User Flows) cho 2 kịch bản trọng tâm, áp dụng cho 6 phương án Paper Prototype nhằm phục vụ công tác Kiểm thử định hình (Formative Testing) và báo cáo PA3.
