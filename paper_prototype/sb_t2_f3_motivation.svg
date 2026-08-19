@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+
+<style>
+  .bg { fill: #faf9f6; }
+  .frame { fill: none; stroke: #1c1712; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+  .ink { fill: none; stroke: #1c1712; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thin { fill: none; stroke: #1c1712; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thick { fill: none; stroke: #1c1712; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+  .head { fill: #ffffff; stroke: #1c1712; stroke-width: 3.2; }
+  .eye { fill: #1c1712; }
+  .shade { fill: #e2e8f0; opacity: 0.7; }
+  .shade-dark { fill: #cbd5e1; opacity: 0.8; }
+  .accent-yellow { fill: #fbbf24; opacity: 0.9; }
+  .accent-amber { fill: #f59e0b; }
+  .accent-red { fill: #ef4444; }
+  .accent-green { fill: #10b981; }
+  .accent-blue { fill: #3b82f6; }
+  .stroke-red { stroke: #ef4444; stroke-width: 3; stroke-dasharray: 6 4; fill: none; stroke-linecap: round; }
+  .stroke-green { stroke: #10b981; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+  .stroke-blue { stroke: #3b82f6; stroke-width: 3; fill: none; stroke-linecap: round; }
+  .phone-body { fill: #ffffff; stroke: #1c1712; stroke-width: 3; rx: 10; }
+  .phone-screen { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 6; }
+</style>
+
+  <rect class="bg" width="400" height="500" rx="16"/>
+  <rect class="frame" x="8" y="8" width="384" height="484" rx="12"/>
+
+  <!-- Idea bulb above phone -->
+  <g transform="translate(180, 25)">
+    <path class="accent-yellow" d="M 20 10 C 5 10, 0 25, 10 38 C 15 44, 18 50, 18 55 H 22 C 22 50, 25 44, 30 38 C 40 25, 35 10, 20 10 Z" />
+    <path class="ink" d="M 20 10 C 5 10, 0 25, 10 38 C 15 44, 18 50, 18 55 H 22 C 22 50, 25 44, 30 38 C 40 25, 35 10, 20 10 Z" />
+    <rect x="16" y="55" width="8" height="6" class="ink" />
+    <path stroke="#f59e0b" stroke-width="3" stroke-linecap="round" d="M 20 -2 V 6 M -2 20 H 6 M 34 20 H 42 M 4 4 L 10 10 M 36 4 L 30 10" />
+  </g>
+
+  <!-- Character on left pointing excitedly -->
+  <circle cx="80" cy="140" r="30" class="head" />
+  <circle cx="88" cy="135" r="3" class="eye" />
+  <circle cx="98" cy="135" r="3" class="eye" />
+  <path class="ink" d="M 85 152 Q 93 162 101 152" /> <!-- Happy open smile -->
+  <path class="ink-thick" d="M 80 170 V 250 M 80 200 L 130 180" />
+
+  <!-- Phone UI REDESIGN SOLUTION (Past vs Upcoming + Filter Drill Down) -->
+  <g transform="translate(145, 100)">
+    <rect x="0" y="0" width="225" height="360" rx="18" class="phone-body" />
+    <rect x="10" y="15" width="205" height="330" rx="10" class="phone-screen" />
+
+    <!-- TOP TAB SWITCHER: PAST vs UPCOMING -->
+    <rect x="20" y="30" width="185" height="42" rx="21" fill="#e0f2fe" stroke="#3b82f6" stroke-width="2.5" />
+    <!-- Active Tab Pill (PAST EVENTS) -->
+    <rect x="24" y="34" width="90" height="34" rx="17" fill="#3b82f6" />
+    <rect x="40" y="47" width="58" height="8" rx="2" fill="#ffffff" />
+    <!-- Inactive Tab (UPCOMING) -->
+    <rect x="125" y="47" width="60" height="8" rx="2" fill="#64748b" />
+
+    <!-- FILTER BAR (Year/Format/Tournament dropdowns) -->
+    <g transform="translate(20, 82)">
+      <rect x="0" y="0" width="55" height="26" rx="6" fill="#ffffff" stroke="#1c1712" stroke-width="1.5" />
+      <path d="M 12 13 L 20 13 M 35 13 L 42 17 L 42 9 Z" fill="#1c1712" />
+
+      <rect x="62" y="0" width="60" height="26" rx="6" fill="#ffffff" stroke="#1c1712" stroke-width="1.5" />
+      <rect x="128" y="0" width="57" height="26" rx="6" fill="#3b82f6" />
+      <!-- Filter Funnel Icon -->
+      <path d="M 145 7 L 167 7 L 159 15 V 20 L 153 18 V 15 Z" fill="#ffffff" />
+    </g>
+
+    <!-- DRILL DOWN HIERARCHY FLOW -->
+    <!-- Card 1: Event Level -->
+    <rect x="20" y="120" width="185" height="55" rx="8" fill="#ffffff" stroke="#1c1712" stroke-width="2" />
+    <circle cx="42" cy="147" r="14" fill="#fbbf24" stroke="#1c1712" stroke-width="1.5" />
+    <rect x="68" y="137" width="90" height="10" rx="2" fill="#1e293b" />
+    <rect x="68" y="152" width="60" height="8" rx="2" fill="#64748b" />
+
+    <!-- Downward Arrow showing 1-click drill down into Match Roster -->
+    <path class="ink-thick" stroke="#3b82f6" stroke-width="4" d="M 112 180 V 215 M 102 205 L 112 220 L 122 205" />
+
+    <!-- Card 2: Match Roster Detail (Target Outcome) -->
+    <rect x="20" y="228" width="185" height="100" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2.5" />
+    <!-- Player Roster Rows -->
+    <circle cx="42" cy="252" r="10" fill="#10b981" />
+    <rect x="60" y="247" width="70" height="10" rx="2" fill="#064e3b" />
+    <rect x="145" y="247" width="45" height="10" rx="2" fill="#10b981" />
+
+    <line x1="30" y1="274" x2="195" y2="274" stroke="#a7f3d0" stroke-width="1.5" />
+
+    <circle cx="42" cy="296" r="10" fill="#10b981" />
+    <rect x="60" y="291" width="75" height="10" rx="2" fill="#064e3b" />
+    <rect x="145" y="291" width="45" height="10" rx="2" fill="#10b981" />
+  </g>
+</svg>

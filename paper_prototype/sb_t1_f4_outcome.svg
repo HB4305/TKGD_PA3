@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+
+<style>
+  .bg { fill: #faf9f6; }
+  .frame { fill: none; stroke: #1c1712; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+  .ink { fill: none; stroke: #1c1712; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thin { fill: none; stroke: #1c1712; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thick { fill: none; stroke: #1c1712; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+  .head { fill: #ffffff; stroke: #1c1712; stroke-width: 3.2; }
+  .eye { fill: #1c1712; }
+  .shade { fill: #e2e8f0; opacity: 0.7; }
+  .shade-dark { fill: #cbd5e1; opacity: 0.8; }
+  .accent-yellow { fill: #fbbf24; opacity: 0.9; }
+  .accent-amber { fill: #f59e0b; }
+  .accent-red { fill: #ef4444; }
+  .accent-green { fill: #10b981; }
+  .accent-blue { fill: #3b82f6; }
+  .stroke-red { stroke: #ef4444; stroke-width: 3; stroke-dasharray: 6 4; fill: none; stroke-linecap: round; }
+  .stroke-green { stroke: #10b981; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+  .stroke-blue { stroke: #3b82f6; stroke-width: 3; fill: none; stroke-linecap: round; }
+  .phone-body { fill: #ffffff; stroke: #1c1712; stroke-width: 3; rx: 10; }
+  .phone-screen { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 6; }
+</style>
+
+  <rect class="bg" width="400" height="500" rx="16"/>
+  <rect class="frame" x="8" y="8" width="384" height="484" rx="12"/>
+
+  <!-- Background sparkle / happy atmosphere -->
+  <path class="ink-thin" stroke="#f59e0b" stroke-width="2" d="M 40 60 L 50 60 M 45 55 L 45 65" />
+  <path class="ink-thin" stroke="#10b981" stroke-width="2" d="M 340 80 L 354 80 M 347 73 L 347 87" />
+  <circle cx="330" cy="140" r="4" class="accent-yellow" />
+
+  <!-- Character walking happily & using phone with ease -->
+  <!-- Head -->
+  <circle cx="150" cy="120" r="34" class="head" />
+  <!-- Happy eyes -->
+  <path class="ink-thick" d="M 138 115 Q 143 108 148 115" />
+  <path class="ink-thick" d="M 158 115 Q 163 108 168 115" />
+  <!-- Big joyful smile -->
+  <path class="ink-thick" d="M 140 132 Q 153 148 166 132 Z" fill="#1c1712" />
+
+  <!-- Body -->
+  <path class="shade" d="M 130 160 C 130 150, 170 150, 170 160 L 165 260 H 135 Z" />
+  <path class="ink" d="M 130 160 C 130 150, 170 150, 170 160 L 165 260 H 135 Z" />
+
+  <!-- Legs walking stance -->
+  <path class="ink-thick" d="M 140 260 L 115 370 L 95 372" />
+  <path class="ink-thick" d="M 160 260 L 185 365 L 205 368" />
+  <!-- Shadow on ground -->
+  <ellipse cx="150" cy="375" rx="60" ry="10" class="shade-dark" />
+  <path class="ink-thick" d="M 40 376 H 360" />
+
+  <!-- Hand holding phone comfortably close to body -->
+  <path class="ink-thick" d="M 165 170 L 210 210 L 200 230" />
+
+  <!-- Smartphone with Bottom Nav Active -->
+  <g transform="translate(195, 185) rotate(-5)">
+    <rect x="0" y="0" width="130" height="210" rx="12" class="phone-body" />
+    <rect x="6" y="8" width="118" height="194" rx="8" class="phone-screen" />
+    
+    <!-- Content sketch -->
+    <rect x="14" y="20" width="102" height="40" rx="6" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1.5" />
+    <rect x="14" y="68" width="102" height="75" rx="6" class="shade" />
+
+    <!-- Bottom Navigation Bar - Effortlessly Tapped -->
+    <rect x="12" y="152" width="106" height="36" rx="18" fill="#10b981" stroke="#1c1712" stroke-width="2" />
+    <!-- Nav Icons inside bottom bar -->
+    <circle cx="32" cy="170" r="7" fill="#ffffff" />
+    <circle cx="65" cy="170" r="7" fill="#a7f3d0" />
+    <circle cx="98" cy="170" r="7" fill="#a7f3d0" />
+
+    <!-- Thumb tapping effortlessly on bottom bar -->
+    <circle cx="32" cy="170" r="14" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="3 2" />
+    <path class="ink-thick" stroke="#1c1712" d="M 15 200 C 15 180, 25 175, 32 170" />
+  </g>
+
+  <!-- Big Green Success Badge / Checkmark -->
+  <g transform="translate(290, 290)">
+    <circle cx="30" cy="30" r="28" fill="#10b981" stroke="#1c1712" stroke-width="3" />
+    <path d="M 18 30 L 26 38 L 42 20" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+</svg>

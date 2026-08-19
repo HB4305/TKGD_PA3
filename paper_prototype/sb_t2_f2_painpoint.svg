@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+
+<style>
+  .bg { fill: #faf9f6; }
+  .frame { fill: none; stroke: #1c1712; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+  .ink { fill: none; stroke: #1c1712; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thin { fill: none; stroke: #1c1712; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thick { fill: none; stroke: #1c1712; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+  .head { fill: #ffffff; stroke: #1c1712; stroke-width: 3.2; }
+  .eye { fill: #1c1712; }
+  .shade { fill: #e2e8f0; opacity: 0.7; }
+  .shade-dark { fill: #cbd5e1; opacity: 0.8; }
+  .accent-yellow { fill: #fbbf24; opacity: 0.9; }
+  .accent-amber { fill: #f59e0b; }
+  .accent-red { fill: #ef4444; }
+  .accent-green { fill: #10b981; }
+  .accent-blue { fill: #3b82f6; }
+  .stroke-red { stroke: #ef4444; stroke-width: 3; stroke-dasharray: 6 4; fill: none; stroke-linecap: round; }
+  .stroke-green { stroke: #10b981; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+  .stroke-blue { stroke: #3b82f6; stroke-width: 3; fill: none; stroke-linecap: round; }
+  .phone-body { fill: #ffffff; stroke: #1c1712; stroke-width: 3; rx: 10; }
+  .phone-screen { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 6; }
+</style>
+
+  <rect class="bg" width="400" height="500" rx="16"/>
+  <rect class="frame" x="8" y="8" width="384" height="484" rx="12"/>
+
+  <!-- Confused Character on the left looking at phone -->
+  <circle cx="85" cy="110" r="32" class="head" />
+  <!-- Puzzled expression -->
+  <circle cx="78" cy="105" r="3" class="eye" />
+  <circle cx="92" cy="105" r="3" class="eye" />
+  <path class="ink" d="M 75 125 Q 85 118 95 125" /> <!-- Flat confused mouth -->
+  <path class="ink-thin" d="M 72 96 L 84 100 M 88 100 L 98 96" /> <!-- Eyebrows -->
+
+  <!-- Hand scratching head -->
+  <path class="ink-thick" d="M 85 142 L 50 130 L 55 100" />
+  
+  <!-- Floating big Red Question Mark -->
+  <text x="120" y="80" font-family="sans-serif" font-size="44" font-weight="bold" fill="#ef4444">?</text>
+
+  <!-- Large Phone displaying OLD BROKEN / INCOMPLETE WEB TABLE -->
+  <g transform="translate(120, 100)">
+    <rect x="0" y="0" width="240" height="360" rx="18" class="phone-body" />
+    <rect x="10" y="15" width="220" height="330" rx="10" class="phone-screen" />
+
+    <!-- Website Header (Old web layout) -->
+    <rect x="20" y="30" width="200" height="35" rx="4" class="shade" />
+    <rect x="30" y="42" width="80" height="10" rx="2" fill="#64748b" />
+
+    <!-- TABLE WITH MISSING DATA / ERRORS -->
+    <rect x="20" y="80" width="200" height="240" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+    
+    <!-- Table Header -->
+    <rect x="20" y="80" width="200" height="30" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+    <rect x="30" y="90" width="40" height="8" rx="2" fill="#475569" />
+    <rect x="90" y="90" width="50" height="8" rx="2" fill="#475569" />
+    <rect x="160" y="90" width="40" height="8" rx="2" fill="#475569" />
+
+    <!-- Row 1 - Missing Roster (Red Cross / Null) -->
+    <line x1="20" y1="150" x2="220" y2="150" stroke="#e2e8f0" stroke-width="1.5" />
+    <rect x="30" y="125" width="45" height="10" rx="2" class="shade" />
+    <text x="100" y="135" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ef4444">N/A</text>
+    <text x="165" y="135" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ef4444">???</text>
+
+    <!-- Row 2 - Missing Score -->
+    <line x1="20" y1="210" x2="220" y2="210" stroke="#e2e8f0" stroke-width="1.5" />
+    <rect x="30" y="175" width="55" height="10" rx="2" class="shade" />
+    <text x="100" y="188" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ef4444">EMPTY</text>
+    <text x="165" y="188" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ef4444">???</text>
+
+    <!-- Row 3 - Blank -->
+    <line x1="20" y1="270" x2="220" y2="270" stroke="#e2e8f0" stroke-width="1.5" />
+    <rect x="30" y="235" width="40" height="10" rx="2" class="shade" />
+    <text x="100" y="248" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ef4444">NO DATA</text>
+
+    <!-- Highlight Box around missing info -->
+    <rect x="85" y="115" width="125" height="150" rx="8" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="6 4" />
+    <!-- Big red X badge -->
+    <circle cx="190" cy="130" r="14" fill="#ef4444" />
+    <path d="M 183 123 L 197 137 M 197 123 L 183 137" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+  </g>
+</svg>

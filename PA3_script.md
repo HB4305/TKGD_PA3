@@ -63,13 +63,16 @@ Bây giờ xin mời [Tên Người 2] trình bày chi tiết Task 1."
 ## 👤 NGƯỜI 2: TASK 1 — NAVIGATION BAR (~2 phút)
 
 ### 📌 Slide 5 — Task 1 Overview & Storyboard
-> **[Cue: Slide hiển thị scenario + storyboard 4 khung]**
+> **[Cue: Slide hiển thị 4 khung tranh sketch vẽ tay: Khung 1 (Đi bộ) → Khung 2 (Ngón tay với menu trên suýt rơi máy) → Khung 3 (Ý tưởng đưa xuống đáy) → Khung 4 (Thao tác 1 tay mượt mà)]**
 
-"Task 1 tập trung vào vấn đề **điều hướng bằng một tay**. Nhóm đã xây dựng một kịch bản Storyboard trực quan:
+"Task 1 tập trung giải quyết bài toán **điều hướng bằng một tay khi đang di chuyển**. Nhóm đã xây dựng câu chuyện qua 4 khung tranh phác thảo trên slide:
 
-Nhân vật là **Ninh**, vừa đi bộ vừa dùng điện thoại bằng tay phải. Khi cố với ngón cái lên góc trên bên trái để mở menu cũ, ngón tay bị quá tầm với, suýt làm rơi máy — đây chính là **nỗi đau P-01**. Động lực thiết kế đặt ra là cần chuyển toàn bộ khu vực điều hướng xuống vùng đáy màn hình trong tầm với ngón tay cái.
+- **Khung 1 (Bối cảnh):** Bạn **Ninh**, 22 tuổi, đang vừa đi bộ trên khuôn viên vừa cầm điện thoại bằng tay phải để mở trang web Freestyle Chess.
+- **Khung 2 (Nỗi đau P-01):** Khi Ninh cố với ngón cái lên tận góc trên bên trái để bấm nút Hamburger `[≡]`, ngón tay bị quá tầm với, chiếc điện thoại nghiêng ngả suýt rơi khỏi tay.
+- **Khung 3 (Động lực):** Ninh nhận ra cần phải chuyển toàn bộ hệ thống điều hướng xuống **vùng đáy màn hình** — nơi ngón tay cái nghỉ tự nhiên và dễ với nhất.
+- **Khung 4 (Kết quả):** Nhờ đưa menu xuống đáy, Ninh có thể vừa bước đi vừa chuyển trang Lịch đấu chỉ với 1 chạm cực kỳ an toàn và thoải mái.
 
-Từ bối cảnh đó, nhóm đề xuất **3 phương án Paper Prototype** giải quyết ở đáy màn hình mà tôi sẽ trình bày ngay sau đây."
+Để hiện thực hóa kịch bản này, nhóm đề xuất **3 phương án Paper Prototype** mà tôi sẽ trình bày ngay sau đây."
 
 **→ Chuyển slide**
 
@@ -113,13 +116,16 @@ Bây giờ xin mời [Tên Người 3] trình bày Task 2."
 ## 👤 NGƯỜI 3: TASK 2 — SCHEDULE (~2 phút)
 
 ### 📌 Slide 9 — Task 2 Overview & Storyboard
-> **[Cue: Slide hiển thị scenario + storyboard 4 khung]**
+> **[Cue: Slide hiển thị 4 khung tranh sketch vẽ tay: Khung 1 (Tranh luận ở cafe) → Khung 2 (Web cũ thiếu thông tin P-05) → Khung 3 (Ý tưởng phân tầng & timeline) → Khung 4 (Tra cứu thành công trong vài giây)]**
 
-"Task 2 giải quyết vấn đề **tra cứu chi tiết lịch đấu và kỳ thủ**. Storyboard cho kịch bản này như sau:
+"Task 2 giải quyết vấn đề **tra cứu chi tiết lịch đấu và danh sách kỳ thủ**. Câu chuyện được minh họa qua 4 khung tranh:
 
-Nhân vật là **Phú**, một fan cờ vua đang ngồi cà phê tranh luận với bạn xem giải đấu năm ngoái ở Đức có những kỳ thủ nào và cặp đấu giữa Lê Quang Liêm với Magnus Carlsen diễn ra ra sao. Khi Phú mở trang web cũ, màn hình chỉ hiện vỏn vẹn ngày tháng và tên giải, không có danh sách người chơi hay kết quả chi tiết — đây chính là **nỗi đau P-05**. 
+- **Khung 1 (Bối cảnh):** Bạn **Phú** và bạn của mình đang ngồi cà phê tranh luận sôi nổi về một ván đấu cờ vua trong quá khứ và quyết định mở web để kiểm chứng.
+- **Khung 2 (Nỗi đau P-05):** Khi mở bản web cũ, màn hình chỉ hiện đúng ngày và tên giải chung chung — hoàn toàn không có danh sách kỳ thủ, không có chi tiết cặp đấu hay tỷ số. Cả hai đều bối rối!
+- **Khung 3 (Động lực):** Động lực thiết kế đặt ra là cần cấu trúc dữ liệu phân cấp rõ ràng: phân tách giải sắp tới và giải đã qua, đồng thời hỗ trợ xem nhanh tại chỗ hoặc qua trục thời gian.
+- **Khung 4 (Kết quả):** Với thiết kế mới, Phú và bạn có thể tra cứu ngay danh sách kỳ thủ (Lê Quang Liêm vs Magnus Carlsen) và kết quả trận đấu chỉ trong vài giây.
 
-Vì vậy, động lực thiết kế là phải cung cấp dữ liệu phân cấp rõ ràng: phân tách giải sắp tới và đã qua, đồng thời hỗ trợ xem nhanh hoặc tra cứu chuyên sâu. Sau đây là **3 phương án Paper Prototype** mà nhóm đã phát triển để giải quyết bài toán này."
+Sau đây là **3 phương án Paper Prototype** mà nhóm đã phát triển để giải quyết bài toán này."
 
 **→ Chuyển slide**
 

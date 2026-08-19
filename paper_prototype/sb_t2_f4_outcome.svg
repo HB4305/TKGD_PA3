@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+
+<style>
+  .bg { fill: #faf9f6; }
+  .frame { fill: none; stroke: #1c1712; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+  .ink { fill: none; stroke: #1c1712; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thin { fill: none; stroke: #1c1712; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thick { fill: none; stroke: #1c1712; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+  .head { fill: #ffffff; stroke: #1c1712; stroke-width: 3.2; }
+  .eye { fill: #1c1712; }
+  .shade { fill: #e2e8f0; opacity: 0.7; }
+  .shade-dark { fill: #cbd5e1; opacity: 0.8; }
+  .accent-yellow { fill: #fbbf24; opacity: 0.9; }
+  .accent-amber { fill: #f59e0b; }
+  .accent-red { fill: #ef4444; }
+  .accent-green { fill: #10b981; }
+  .accent-blue { fill: #3b82f6; }
+  .stroke-red { stroke: #ef4444; stroke-width: 3; stroke-dasharray: 6 4; fill: none; stroke-linecap: round; }
+  .stroke-green { stroke: #10b981; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+  .stroke-blue { stroke: #3b82f6; stroke-width: 3; fill: none; stroke-linecap: round; }
+  .phone-body { fill: #ffffff; stroke: #1c1712; stroke-width: 3; rx: 10; }
+  .phone-screen { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 6; }
+</style>
+
+  <rect class="bg" width="400" height="500" rx="16"/>
+  <rect class="frame" x="8" y="8" width="384" height="484" rx="12"/>
+
+  <!-- High-Five / Victory sparkles -->
+  <g transform="translate(180, 50)">
+    <path stroke="#10b981" stroke-width="3" stroke-linecap="round" d="M 20 0 V 12 M 0 20 H 12 M 40 20 H 28 M 6 6 L 14 14 M 34 6 L 26 14" />
+  </g>
+
+  <!-- Left Friend (Phú) smiling happily -->
+  <circle cx="100" cy="150" r="32" class="head" />
+  <circle cx="108" cy="145" r="3" class="eye" />
+  <circle cx="120" cy="145" r="3" class="eye" />
+  <path class="ink-thick" d="M 105 160 Q 115 174 125 160 Z" fill="#1c1712" />
+
+  <!-- Right Friend smiling happily -->
+  <circle cx="300" cy="150" r="32" class="head" />
+  <circle cx="280" cy="145" r="3" class="eye" />
+  <circle cx="292" cy="145" r="3" class="eye" />
+  <path class="ink-thick" d="M 278 160 Q 288 174 298 160 Z" fill="#1c1712" />
+
+  <!-- High Five hands in the middle upper area -->
+  <path class="ink-thick" d="M 100 182 L 175 110 M 300 182 L 225 110" />
+  <!-- High Five impact lines -->
+  <path stroke="#f59e0b" stroke-width="3" stroke-linecap="round" d="M 190 95 L 180 85 M 210 95 L 220 85 M 200 85 V 70" />
+
+  <!-- Phone held in middle by both friends -->
+  <g transform="translate(115, 190)">
+    <rect x="0" y="0" width="170" height="260" rx="16" class="phone-body" />
+    <rect x="8" y="10" width="154" height="240" rx="8" class="phone-screen" />
+
+    <!-- Header: Verified Tournament Roster -->
+    <rect x="18" y="24" width="134" height="32" rx="16" fill="#d1fae5" stroke="#10b981" stroke-width="2" />
+    <circle cx="34" cy="40" r="9" fill="#10b981" />
+    <path d="M 29 40 L 33 44 L 39 36" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none" />
+    <rect x="50" y="35" width="80" height="10" rx="2" fill="#065f46" />
+
+    <!-- Complete Matchup Roster & GM Ratings Displayed -->
+    <g transform="translate(18, 68)">
+      <rect x="0" y="0" width="134" height="160" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+      
+      <!-- Player 1 -->
+      <circle cx="20" cy="25" r="10" class="shade" />
+      <rect x="36" y="20" width="55" height="10" rx="2" fill="#1e293b" />
+      <text x="100" y="28" font-family="sans-serif" font-size="12" font-weight="bold" fill="#3b82f6">2830</text>
+
+      <line x1="10" y1="45" x2="124" y2="45" stroke="#f1f5f9" stroke-width="2" />
+
+      <!-- Score -->
+      <rect x="36" y="55" width="62" height="18" rx="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="1" />
+      <text x="50" y="68" font-family="sans-serif" font-size="12" font-weight="bold" fill="#b45309">1 - 0</text>
+
+      <line x1="10" y1="85" x2="124" y2="85" stroke="#f1f5f9" stroke-width="2" />
+
+      <!-- Player 2 -->
+      <circle cx="20" cy="105" r="10" class="shade" />
+      <rect x="36" y="100" width="55" height="10" rx="2" fill="#1e293b" />
+      <text x="100" y="108" font-family="sans-serif" font-size="12" font-weight="bold" fill="#3b82f6">2795</text>
+
+      <rect x="15" y="130" width="104" height="18" rx="4" fill="#10b981" />
+      <text x="25" y="143" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff">VERIFIED 100%</text>
+    </g>
+  </g>
+</svg>
