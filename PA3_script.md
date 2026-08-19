@@ -62,12 +62,14 @@ Bây giờ xin mời [Tên Người 2] trình bày chi tiết Task 1."
 
 ## 👤 NGƯỜI 2: TASK 1 — NAVIGATION BAR (~2 phút)
 
-### 📌 Slide 5 — Task 1 Overview
-> **[Cue: Slide hiển thị scenario + ảnh phone case & home]**
+### 📌 Slide 5 — Task 1 Overview & Storyboard
+> **[Cue: Slide hiển thị scenario + storyboard 4 khung]**
 
-"Task 1 tập trung vào vấn đề **điều hướng bằng một tay**. Kịch bản đặt ra là: người dùng vừa đi bộ vừa dùng điện thoại bằng một tay — chỉ sử dụng ngón cái — muốn chuyển từ trang Home sang trang Schedule.
+"Task 1 tập trung vào vấn đề **điều hướng bằng một tay**. Nhóm đã xây dựng một kịch bản Storyboard trực quan:
 
-Các bạn có thể thấy ảnh **phone case** mà nhóm đã làm từ giấy để mô phỏng môi trường test thực tế."
+Nhân vật là **Ninh**, vừa đi bộ vừa dùng điện thoại bằng tay phải. Khi cố với ngón cái lên góc trên bên trái để mở menu cũ, ngón tay bị quá tầm với, suýt làm rơi máy — đây chính là **nỗi đau P-01**. Động lực thiết kế đặt ra là cần chuyển toàn bộ khu vực điều hướng xuống vùng đáy màn hình trong tầm với ngón tay cái.
+
+Từ bối cảnh đó, nhóm đề xuất **3 phương án Paper Prototype** giải quyết ở đáy màn hình mà tôi sẽ trình bày ngay sau đây."
 
 **→ Chuyển slide**
 
@@ -110,12 +112,14 @@ Bây giờ xin mời [Tên Người 3] trình bày Task 2."
 
 ## 👤 NGƯỜI 3: TASK 2 — SCHEDULE (~2 phút)
 
-### 📌 Slide 9 — Task 2 Overview
-> **[Cue: Slide hiển thị scenario + 3 variant cards]**
+### 📌 Slide 9 — Task 2 Overview & Storyboard
+> **[Cue: Slide hiển thị scenario + storyboard 4 khung]**
 
-"Task 2 giải quyết vấn đề **tra cứu chi tiết lịch đấu**. Kịch bản: một người hâm mộ cờ vua muốn tìm lại thông tin danh sách kỳ thủ của giải đấu đã diễn ra, hoặc xem chi tiết cặp đấu cụ thể.
+"Task 2 giải quyết vấn đề **tra cứu chi tiết lịch đấu và kỳ thủ**. Storyboard cho kịch bản này như sau:
 
-Nhóm cũng thiết kế **3 phương án** cho task này."
+Nhân vật là **Phú**, một fan cờ vua đang ngồi cà phê tranh luận với bạn xem giải đấu năm ngoái ở Đức có những kỳ thủ nào và cặp đấu giữa Lê Quang Liêm với Magnus Carlsen diễn ra ra sao. Khi Phú mở trang web cũ, màn hình chỉ hiện vỏn vẹn ngày tháng và tên giải, không có danh sách người chơi hay kết quả chi tiết — đây chính là **nỗi đau P-05**. 
+
+Vì vậy, động lực thiết kế là phải cung cấp dữ liệu phân cấp rõ ràng: phân tách giải sắp tới và đã qua, đồng thời hỗ trợ xem nhanh hoặc tra cứu chuyên sâu. Sau đây là **3 phương án Paper Prototype** mà nhóm đã phát triển để giải quyết bài toán này."
 
 **→ Chuyển slide**
 
