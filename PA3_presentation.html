@@ -567,15 +567,116 @@
             box-shadow: 3px 4px 0 rgba(28, 23, 18, 0.2);
         }
 
-        /* App Top Bar (Safe Area Padding) */
-        .live-app-nav {
-            padding: 10px 12px 8px;
-            background: #fffaf0;
+        /* Strict Typography Isolation inside Phone Mockup */
+        .phone-mockup, .phone-mockup * {
+            font-size: unset;
+            line-height: normal;
+        }
+        .phone-mockup p, .phone-mockup span, .phone-mockup div, .phone-mockup button, .phone-mockup li {
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+        }
+        .live-app {
+            font-family: var(--font-body);
+            font-size: 8.5px;
+            line-height: 1.25;
+            color: #1c1712;
+        }
+
+        /* Schedule View (schedule_1_default_collapsed.JPG exact replica) */
+        .live-sched-header {
+            text-align: center;
+            padding: 1px 0 3px;
+            border-bottom: 1.5px solid #1c1712;
+            margin-bottom: 2px;
+        }
+        .live-sched-logo {
+            font-size: 15px;
+            color: #1c1712;
+            line-height: 1;
+            display: inline-block;
+        }
+        .live-sched-section-title {
+            font-family: var(--font-display);
+            font-size: 9px;
+            font-weight: 900;
+            color: #1c1712;
+            margin: 2px 0 1px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .live-sched-card {
+            background: #ffffff;
+            border: 1.5px solid #1c1712;
+            border-radius: 7px;
+            padding: 3px 6px;
+            margin-bottom: 3px;
+            box-shadow: 1px 2px 0 rgba(28, 23, 18, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+        .live-sched-row {
+            font-size: 7.5px;
+            font-weight: 800;
+            color: #1c1712;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .live-sched-row span {
+            font-weight: 600;
+            color: #5a5248;
+        }
+        .live-sched-dots {
+            font-size: 6px;
+            color: #8c8276;
+            line-height: 1;
+            margin-top: -1px;
+        }
+        .live-sched-acc-card {
+            background: #ffffff;
+            border: 1.5px solid #1c1712;
+            border-radius: 7px;
+            margin-bottom: 3px;
+            box-shadow: 1px 2px 0 rgba(28, 23, 18, 0.06);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .live-sched-acc-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 2px solid #1c1712;
-            flex-shrink: 0;
+            padding: 3px 6px;
+            background: #ffffff;
+        }
+        .live-sched-acc-chevron {
+            font-size: 9px;
+            font-weight: 900;
+            color: #1c1712;
+            transition: transform 0.2s ease;
+        }
+        .live-sched-acc-card.expanded .live-sched-acc-chevron {
+            transform: rotate(180deg);
+        }
+        .live-sched-acc-content {
+            display: none;
+            padding: 3px 6px 4px;
+            background: #fdfaf3;
+            border-top: 1px dashed #1c1712;
+        }
+        .live-sched-acc-card.expanded .live-sched-acc-content {
+            display: block;
+        }
+
+        /* Completely Remove Toast Overlay & Search/Bell Header Bar */
+        .phone-toast {
+            display: none !important;
+        }
+        .live-app-nav {
+            display: none !important;
         }
         .live-app-brand {
             font-family: var(--font-display);
@@ -744,10 +845,11 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 4px 2px 8px;
+            padding: 3px 6px 6px;
             flex-shrink: 0;
             z-index: 50;
             width: 100%;
+            gap: 2px;
         }
         .live-nav-item {
             display: flex;
@@ -758,14 +860,15 @@
             min-width: 0;
             color: #6c6256;
             cursor: pointer;
-            transition: all 0.15s ease;
-            height: 100%;
-            border-radius: 6px;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            height: 42px;
+            border-radius: 12px;
             text-align: center;
-            padding: 1px 0;
+            padding: 1px 2px;
+            border: 1.5px solid transparent;
         }
         .live-nav-item span {
-            font-size: 8px;
+            font-size: 7.5px;
             font-weight: 800;
             white-space: nowrap;
             overflow: hidden;
@@ -774,14 +877,26 @@
             display: block;
             line-height: 1.1;
         }
-        .live-nav-item:hover, .live-nav-item.active {
+        .live-nav-item:hover {
             color: var(--accent);
+            background: rgba(255, 51, 0, 0.04);
+        }
+        .live-nav-item.active {
+            border: 2px solid #1c1712;
+            background: #ffe1d4;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 0 rgba(28, 23, 18, 0.16);
+        }
+        .live-nav-item.active span {
+            color: #1c1712;
+            font-weight: 900;
         }
         .live-nav-item.active .live-nav-icon {
-            transform: scale(1.15);
+            transform: scale(1.18);
         }
         .live-nav-icon {
-            font-size: 14px !important;
+            font-size: 13px !important;
             line-height: 1 !important;
             margin-bottom: 2px;
             transition: transform 0.2s ease;
@@ -1673,7 +1788,8 @@
             <section class="slide title-slide active" data-presenter="1">
                 <div class="accent-bar"></div>
                 <div class="slide-content">
-                    <div class="tag reveal" style="margin-bottom: 28px;">CSC13112 — UI/UX DESIGN</div>
+                    <img src="paper_prototype/freestyle_chess_logo.png" alt="Freestyle Chess Logo" class="reveal" style="height: 80px; width: auto; margin-bottom: 24px; object-fit: contain; mix-blend-mode: multiply;">
+                    <div class="tag reveal" style="margin-bottom: 24px;">CSC13112 — UI/UX DESIGN</div>
                     <h1 class="reveal">Paper Prototype &<br><span class="accent">Formative Testing</span></h1>
                     <p class="subtitle reveal">Freestyle Chess Mobile Web — Group 06</p>
                     <p class="meta reveal">Project Assignment 3 · ThS. Phạm Nguyễn Sơn Tùng · 2026</p>
@@ -1744,25 +1860,49 @@
             </section>
 
             <!-- ===========================================
-                 SLIDE 3: PROBLEM RECAP FROM PA2
+                 SLIDE 3: PROBLEM RECAP FROM PA2 (EXISTING SYSTEM ANALYSIS)
                  Presenter: Người 1
                  =========================================== -->
             <section class="slide" data-presenter="1">
                 <div class="accent-bar"></div>
                 <div class="section-num">01</div>
-                <div class="slide-content slide-content--top">
-                    <div class="tag reveal" style="margin-bottom: 20px;">PROBLEM RECAP FROM PA2</div>
-                    <h2 class="reveal" style="font-size: 56px; margin-bottom: 36px;">Top Priority Issues</h2>
-                    <div class="two-col" style="gap: 40px;">
-                        <div class="problem-card reveal">
-                            <div class="problem-card__id">P-01 · Navigation</div>
-                            <div class="problem-card__title">Hamburger Menu Unreachable</div>
-                            <div class="problem-card__desc">Menu button at top-left corner is difficult to reach with one hand while walking. Users struggle with thumb-zone accessibility on mobile.</div>
+                <div class="slide-content" style="justify-content: center; height: 100%; padding: 40px 80px;">
+                    <div class="two-col" style="gap: 50px; align-items: center; grid-template-columns: 1fr 1fr;">
+                        <!-- LEFT SIDE: Problem Descriptions (100% Standard Slide Typography) -->
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
+                                <img src="paper_prototype/freestyle_chess_logo.png" alt="Freestyle Chess Logo" style="height: 42px; width: auto; mix-blend-mode: multiply;">
+                                <div class="tag reveal" style="margin-bottom: 0;">PROBLEM RECAP FROM PA2</div>
+                            </div>
+                            <h2 class="reveal" style="font-size: 56px; margin-bottom: 24px; line-height: 1.1;">Baseline System Issues</h2>
+                            
+                            <!-- Problem 1: Navigation -->
+                            <div class="problem-card reveal" style="margin-bottom: 20px; padding: 28px 32px;">
+                                <div class="problem-card__id">P-01 · NAVIGATION ACCESSIBILITY</div>
+                                <div class="problem-card__title" style="font-size: 32px; margin-bottom: 8px;">Top-Left Hamburger Unreachable</div>
+                                <div class="problem-card__desc">The <strong>≡</strong> hamburger button at the top-left corner is out of thumb reach during one-handed mobile use.</div>
+                            </div>
+                            
+                            <!-- Problem 2: Schedule -->
+                            <div class="problem-card reveal" style="padding: 28px 32px;">
+                                <div class="problem-card__id">P-05 · SCHEDULE INFORMATION DENSITY</div>
+                                <div class="problem-card__title" style="font-size: 32px; margin-bottom: 8px;">Barebones Schedule Details</div>
+                                <div class="problem-card__desc">The baseline schedule displays a plain list of dates & locations, lacking player rosters, match pairings, and scores.</div>
+                            </div>
                         </div>
-                        <div class="problem-card reveal">
-                            <div class="problem-card__id">P-05 · Schedule</div>
-                            <div class="problem-card__title">Incomplete Match Details</div>
-                            <div class="problem-card__desc">Schedule page lacks detailed matchup information: player lists, time details, pairings, and tournament brackets are missing.</div>
+
+                        <!-- RIGHT SIDE: Images of Existing System -->
+                        <div class="reveal-right" style="display: flex; gap: 20px; justify-content: center; align-items: center;">
+                            <!-- Image 1: Existing Nav -->
+                            <div style="text-align: center;">
+                                <span class="metric-badge metric-badge--red" style="font-size: 15px; padding: 5px 16px; margin-bottom: 10px; display: inline-block;">BASELINE NAV (≡)</span>
+                                <img src="paper_prototype/existing_nav.png" alt="Existing Baseline Nav" class="proto-img proto-img--phone" style="height: 580px; width: auto; border: 4px solid #1c1712; border-radius: 26px; box-shadow: 12px 18px 0 rgba(28,23,18,0.18);">
+                            </div>
+                            <!-- Image 2: Existing Schedule -->
+                            <div style="text-align: center;">
+                                <span class="metric-badge metric-badge--red" style="font-size: 15px; padding: 5px 16px; margin-bottom: 10px; display: inline-block;">BASELINE SCHEDULE</span>
+                                <img src="paper_prototype/existing_schedule.png" alt="Existing Baseline Schedule" class="proto-img proto-img--phone" style="height: 580px; width: auto; border: 4px solid #1c1712; border-radius: 26px; box-shadow: 12px 18px 0 rgba(28,23,18,0.18);">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1971,26 +2111,26 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Interactive Bottom Navigation Bar -->
+                                        <!-- Interactive Bottom Navigation Bar (Exact nav_1.JPG replica) -->
                                         <div class="live-bottom-bar" id="live-nav-bar-v1">
-                                            <div class="live-nav-item active" id="v1-nav-home" onclick="PhoneSimulator.v1Nav('home')">
-                                                <span class="live-nav-icon">🏠</span>
-                                                <span>Home</span>
-                                            </div>
                                             <div class="live-nav-item" id="v1-nav-schedule" onclick="PhoneSimulator.v1Nav('schedule')">
                                                 <span class="live-nav-icon">📅</span>
                                                 <span>Schedule</span>
-                                            </div>
-                                            <div class="live-nav-item" id="v1-nav-rating" onclick="PhoneSimulator.v1Nav('rating')">
-                                                <span class="live-nav-icon">🏆</span>
-                                                <span>Rating</span>
                                             </div>
                                             <div class="live-nav-item" id="v1-nav-videos" onclick="PhoneSimulator.v1Nav('videos')">
                                                 <span class="live-nav-icon">🎬</span>
                                                 <span>Videos</span>
                                             </div>
+                                            <div class="live-nav-item active" id="v1-nav-home" onclick="PhoneSimulator.v1Nav('home')">
+                                                <span class="live-nav-icon">🏠</span>
+                                                <span>Home</span>
+                                            </div>
+                                            <div class="live-nav-item" id="v1-nav-news" onclick="PhoneSimulator.v1Nav('news')">
+                                                <span class="live-nav-icon">📰</span>
+                                                <span>News</span>
+                                            </div>
                                             <div class="live-nav-item" id="v1-nav-more" onclick="PhoneSimulator.v1Nav('more')">
-                                                <span class="live-nav-icon">⚙️</span>
+                                                <span class="live-nav-icon">•••</span>
                                                 <span>More</span>
                                             </div>
                                         </div>
@@ -2065,6 +2205,10 @@
                                             <div class="live-app-actions"><span>🔍</span><span>👤</span></div>
                                         </div>
                                         <div class="live-app-body">
+                                            <!-- Top ♟ Logo matching sketch -->
+                                            <div class="live-sched-header">
+                                                <span class="live-sched-logo">♟</span>
+                                            </div>
                                             <!-- Hero Banner (home.JPG replica) -->
                                             <div class="live-hero-card" style="text-align: center;">
                                                 <div style="width: 36px; height: 36px; border-radius: 50%; background: #224f44; color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px; font-size: 14px; border: 2px solid #1c1712;">▶</div>
@@ -2097,19 +2241,19 @@
                                                 <svg id="pie-wheel-l1" viewBox="0 0 210 210" width="210" height="210" style="display: block; filter: drop-shadow(3px 5px 0px rgba(28,23,18,0.2));">
                                                     <!-- Sector 1: Home (Top) -->
                                                     <g onclick="PhoneSimulator.fabSelect('Home')">
-                                                        <path class="pie-sector-path" d="M 92 82.5 L 55 18.4 A 100 100 0 0 1 155 18.4 L 118 82.5 A 26 26 0 0 0 92 82.5 Z"></path>
+                                                        <path class="pie-sector-path" id="pie-sector-Home" d="M 92 82.5 L 55 18.4 A 100 100 0 0 1 155 18.4 L 118 82.5 A 26 26 0 0 0 92 82.5 Z"></path>
                                                         <text class="pie-sector-icon" x="105" y="44">🏠</text>
                                                         <text class="pie-sector-text" x="105" y="58">Home</text>
                                                     </g>
                                                     <!-- Sector 2: Schedule (Top-Right) -->
                                                     <g onclick="PhoneSimulator.fabSelect('Schedule')">
-                                                        <path class="pie-sector-path active" d="M 118 82.5 L 155 18.4 A 100 100 0 0 1 205 105 L 131 105 A 26 26 0 0 0 118 82.5 Z"></path>
+                                                        <path class="pie-sector-path" id="pie-sector-Schedule" d="M 118 82.5 L 155 18.4 A 100 100 0 0 1 205 105 L 131 105 A 26 26 0 0 0 118 82.5 Z"></path>
                                                         <text class="pie-sector-icon" x="156" y="66">📅</text>
                                                         <text class="pie-sector-text" x="156" y="80">Schedule</text>
                                                     </g>
                                                     <!-- Sector 3: Rating (Bottom-Right) -->
                                                     <g onclick="PhoneSimulator.fabSelect('Rating')">
-                                                        <path class="pie-sector-path" d="M 131 105 L 205 105 A 100 100 0 0 1 155 191.6 L 118 127.5 A 26 26 0 0 0 131 105 Z"></path>
+                                                        <path class="pie-sector-path" id="pie-sector-Rating" d="M 131 105 L 205 105 A 100 100 0 0 1 155 191.6 L 118 127.5 A 26 26 0 0 0 131 105 Z"></path>
                                                         <text class="pie-sector-icon" x="156" y="138">📈</text>
                                                         <text class="pie-sector-text" x="156" y="152">Rating</text>
                                                     </g>
@@ -2121,13 +2265,13 @@
                                                     </g>
                                                     <!-- Sector 5: Videos (Bottom-Left) -->
                                                     <g onclick="PhoneSimulator.fabSelect('Videos')">
-                                                        <path class="pie-sector-path" d="M 92 127.5 L 55 191.6 A 100 100 0 0 1 5 105 L 79 105 A 26 26 0 0 0 92 127.5 Z"></path>
+                                                        <path class="pie-sector-path" id="pie-sector-Videos" d="M 92 127.5 L 55 191.6 A 100 100 0 0 1 5 105 L 79 105 A 26 26 0 0 0 92 127.5 Z"></path>
                                                         <text class="pie-sector-icon" x="54" y="138">🎬</text>
                                                         <text class="pie-sector-text" x="54" y="152">Videos</text>
                                                     </g>
                                                     <!-- Sector 6: News (Top-Left) -->
                                                     <g onclick="PhoneSimulator.fabSelect('News')">
-                                                        <path class="pie-sector-path" d="M 79 105 L 5 105 A 100 100 0 0 1 55 18.4 L 92 82.5 A 26 26 0 0 0 79 105 Z"></path>
+                                                        <path class="pie-sector-path" id="pie-sector-News" d="M 79 105 L 5 105 A 100 100 0 0 1 55 18.4 L 92 82.5 A 26 26 0 0 0 79 105 Z"></path>
                                                         <text class="pie-sector-icon" x="54" y="66">📰</text>
                                                         <text class="pie-sector-text" x="54" y="80">News</text>
                                                     </g>
@@ -2278,14 +2422,14 @@
                                             </div>
                                             <div class="live-menu-list">
                                                 <div class="live-menu-row" onclick="PhoneSimulator.drawerSelect('HOME')">HOME</div>
-                                                <div class="live-menu-row active" onclick="PhoneSimulator.drawerSelect('SCHEDULE')">SCHEDULE ∨</div>
+                                                <div class="live-menu-row" data-tab="SCHEDULE" onclick="PhoneSimulator.drawerSelect('SCHEDULE')">SCHEDULE</div>
                                                 <div class="live-menu-row" onclick="PhoneSimulator.drawerSelect('VIDEO & STREAMS')">VIDEO & STREAMS</div>
                                                 <div class="live-menu-row" onclick="PhoneSimulator.drawerSelect('NEWS')">NEWS</div>
                                                 <div class="live-menu-row" onclick="PhoneSimulator.drawerSelect('PRESS & MEDIA')">PRESS & MEDIA</div>
                                                 <div class="live-menu-row" onclick="PhoneSimulator.drawerSelect('RATING')">RATING</div>
                                                 <div class="live-menu-row" onclick="PhoneSimulator.drawerSelect('RULES & FC PLAYERS CLUB')">RULES & FC PLAYERS CLUB</div>
                                                 <div class="live-menu-row" onclick="PhoneSimulator.drawerSelect('MERCH')">MERCH</div>
-                                                <div class="live-menu-row" onclick="PhoneSimulator.drawerSelect('MASTERCLASS')">MASTERCLASS ∨</div>
+                                                <div class="live-menu-row" data-tab="MASTERCLASS" onclick="PhoneSimulator.drawerSelect('MASTERCLASS')">MASTERCLASS</div>
                                             </div>
                                             <div class="live-menu-footer">
                                                 <div class="live-menu-close-circle" onclick="PhoneSimulator.toggleDrawer(false)" title="Close Menu">
@@ -2415,73 +2559,78 @@
                                 <div class="phone-screen" id="phoneScreen-t2v1">
                                     <!-- Paper Image View -->
                                     <img src="paper_prototype/schedule_1_default_collapsed.JPG" alt="Accordion Schedule" id="paper-t2v1" style="display: none;">
-                                    <!-- Live Coded App UI (event.JPG replica + Accordion) -->
+                                    <!-- Live Coded App UI (schedule_1_default_collapsed.JPG replica) -->
                                     <div class="live-app" id="live-t2v1">
-                                        <div class="live-app-nav">
-                                            <div class="live-app-brand"><span>♟</span> FREESTYLE CHESS</div>
-                                            <div class="live-app-actions"><span>🔍</span></div>
-                                        </div>
-                                        <div class="live-app-body">
-                                            <!-- Top Event Banner (event.JPG replica) -->
-                                            <div style="background: #fffaf0; border: 2px solid #1c1712; border-radius: 10px; padding: 6px 8px; margin-bottom: 6px; box-shadow: 2px 3px 0 rgba(28,23,18,0.08);">
-                                                <div style="font-family: var(--font-display); font-size: 10px; font-weight: 900; color: var(--accent);">EVENT: WEISSENHAUS 2026</div>
-                                                <div style="font-size: 7.5px; color: #6c6256; font-weight: 800;">Date: 15/08/2026 · Germany</div>
+                                        <div class="live-app-body" style="padding: 6px 8px;">
+                                            <!-- Top ♟ Logo matching sketch -->
+                                            <div class="live-sched-header">
+                                                <span class="live-sched-logo">♟</span>
                                             </div>
-                                            <!-- SOON Group -->
-                                            <div class="live-accordion-group">
-                                                <div class="live-group-title"><span style="color:#ef4444;">●</span> SOON (Upcoming)</div>
-                                                <div class="live-acc-card" style="border-left: 3px solid #ef4444;">
-                                                    <div class="live-acc-header">
-                                                        <div>
-                                                            <div class="live-acc-title">Weissenhaus Challenge</div>
-                                                            <div class="live-acc-date">Aug 15 - 22, 2026 · Germany</div>
-                                                        </div>
-                                                        <span class="live-hero-tag" style="background:#ef4444; margin:0;">ACTIVE</span>
+
+                                            <!-- SOON. -->
+                                            <div class="live-sched-section-title">SOON.</div>
+
+                                            <!-- SOON Card 1 -->
+                                            <div class="live-sched-card">
+                                                <div class="live-sched-row">Date: <span>Aug 15 - 22, 2026</span></div>
+                                                <div class="live-sched-row">Location: <span>Weissenhaus, Germany</span></div>
+                                                <div class="live-sched-row">Players: <span>M. Carlsen, L.Q. Liêm, F. Caruana</span></div>
+                                                <div class="live-sched-dots">...</div>
+                                            </div>
+
+                                            <!-- SOON Card 2 -->
+                                            <div class="live-sched-card">
+                                                <div class="live-sched-row">Date: <span>Oct 04 - 10, 2026</span></div>
+                                                <div class="live-sched-row">Location: <span>Paris, France</span></div>
+                                                <div class="live-sched-row">Players: <span>H. Nakamura, N. Abdusattorov, D. Gukesh</span></div>
+                                                <div class="live-sched-dots">...</div>
+                                            </div>
+
+                                            <!-- PREVIOUS -->
+                                            <div class="live-sched-section-title" style="margin-top: 3px;">PREVIOUS</div>
+
+                                            <!-- PREVIOUS Card 1 (Collapsible) -->
+                                            <div class="live-sched-acc-card expanded" id="acc-card-1" onclick="PhoneSimulator.toggleLiveAcc('acc-card-1')">
+                                                <div class="live-sched-acc-header">
+                                                    <div>
+                                                        <div class="live-sched-row">Date: <span>Feb 09 - 16, 2023</span></div>
+                                                        <div class="live-sched-row">Location: <span>Germany</span></div>
                                                     </div>
+                                                    <span class="live-sched-acc-chevron">∨</span>
+                                                </div>
+                                                <div class="live-sched-acc-content">
+                                                    <div style="font-size: 7px; font-weight: 700; color: #6c6256;">Players: M. Carlsen, L.Q. Liêm, V. Keymer</div>
+                                                    <div style="font-size: 7px; font-weight: 800; color: #224f44; margin-top: 1px;">Winner: Magnus Carlsen (1st)</div>
                                                 </div>
                                             </div>
-                                            <!-- PREVIOUS Group (Collapsible) -->
-                                            <div class="live-accordion-group">
-                                                <div class="live-group-title"><span style="color:#6c6256;">▼</span> PREVIOUS (Past Tournaments)</div>
-                                                <!-- Card 1: Collapsible Germany 2023 -->
-                                                <div class="live-acc-card" id="acc-card-1" onclick="PhoneSimulator.toggleLiveAcc('acc-card-1')">
-                                                    <div class="live-acc-header">
-                                                        <div>
-                                                            <div class="live-acc-title">Germany Invitational 2023</div>
-                                                            <div class="live-acc-date">Feb 09 - 16, 2023 · Ended</div>
-                                                        </div>
-                                                        <span class="live-acc-chevron">▼</span>
+
+                                            <!-- PREVIOUS Card 2 -->
+                                            <div class="live-sched-acc-card" id="acc-card-2" onclick="PhoneSimulator.toggleLiveAcc('acc-card-2')">
+                                                <div class="live-sched-acc-header">
+                                                    <div>
+                                                        <div class="live-sched-row">Date: <span>Nov 10 - 15, 2024</span></div>
+                                                        <div class="live-sched-row">Location: <span>Paris</span></div>
                                                     </div>
-                                                    <div class="live-acc-content">
-                                                        <div style="font-size:9px; color:#6c6256; font-weight:800; text-transform:uppercase;">Participating Players:</div>
-                                                        <div class="live-player-chips">
-                                                            <span class="live-player-chip highlight">♟ L.Q. Liêm (VIE)</span>
-                                                            <span class="live-player-chip highlight">♚ M. Carlsen (NOR)</span>
-                                                            <span class="live-player-chip">♛ F. Caruana (USA)</span>
-                                                            <span class="live-player-chip">♝ V. Keymer (GER)</span>
-                                                            <span class="live-player-chip">♞ D. Gukesh (IND)</span>
-                                                            <span class="live-player-chip">♟ A. Firouzja (FRA)</span>
-                                                        </div>
-                                                        <div style="font-size:9px; color:#224f44; font-weight:800; margin-top:6px;">Final Winner: Magnus Carlsen (1st)</div>
-                                                    </div>
+                                                    <span class="live-sched-acc-chevron">∨</span>
                                                 </div>
-                                                <!-- Card 2: Collapsible Paris 2024 -->
-                                                <div class="live-acc-card" id="acc-card-2" onclick="PhoneSimulator.toggleLiveAcc('acc-card-2')">
-                                                    <div class="live-acc-header">
-                                                        <div>
-                                                            <div class="live-acc-title">Paris Freestyle Grand Slam</div>
-                                                            <div class="live-acc-date">Nov 10 - 15, 2024 · Ended</div>
-                                                        </div>
-                                                        <span class="live-acc-chevron">▼</span>
+                                                <div class="live-sched-acc-content">
+                                                    <div style="font-size: 7px; font-weight: 700; color: #6c6256;">Players: M. Carlsen, H. Nakamura, F. Caruana</div>
+                                                    <div style="font-size: 7px; font-weight: 800; color: #224f44; margin-top: 1px;">Winner: Magnus Carlsen (1st)</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- PREVIOUS Card 3 -->
+                                            <div class="live-sched-acc-card" id="acc-card-3" onclick="PhoneSimulator.toggleLiveAcc('acc-card-3')">
+                                                <div class="live-sched-acc-header">
+                                                    <div>
+                                                        <div class="live-sched-row">Date: <span>Dec 01 - 06, 2024</span></div>
+                                                        <div class="live-sched-row">Location: <span>Singapore</span></div>
                                                     </div>
-                                                    <div class="live-acc-content">
-                                                        <div style="font-size:9px; color:#6c6256; font-weight:800; text-transform:uppercase;">Participating Players:</div>
-                                                        <div class="live-player-chips">
-                                                            <span class="live-player-chip highlight">♚ M. Carlsen</span>
-                                                            <span class="live-player-chip highlight">♛ H. Nakamura</span>
-                                                            <span class="live-player-chip">♝ N. Abdusattorov</span>
-                                                        </div>
-                                                    </div>
+                                                    <span class="live-sched-acc-chevron">∨</span>
+                                                </div>
+                                                <div class="live-sched-acc-content">
+                                                    <div style="font-size: 7px; font-weight: 700; color: #6c6256;">Players: D. Gukesh, Ding Liren, Carlsen</div>
+                                                    <div style="font-size: 7px; font-weight: 800; color: #224f44; margin-top: 1px;">Winner: D. Gukesh (1st)</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -3036,7 +3185,8 @@
             <section class="slide thankyou-slide" data-presenter="5">
                 <div class="accent-bar"></div>
                 <div class="slide-content" style="text-align: center; align-items: center;">
-                    <div class="tag reveal" style="margin-bottom: 32px;">PA3 — FREESTYLE CHESS MOBILE WEB</div>
+                    <img src="paper_prototype/freestyle_chess_logo.png" alt="Freestyle Chess Logo" class="reveal" style="height: 75px; width: auto; margin-bottom: 28px; object-fit: contain; mix-blend-mode: multiply;">
+                    <div class="tag reveal" style="margin-bottom: 24px;">PA3 — FREESTYLE CHESS MOBILE WEB</div>
                     <h1 class="reveal" style="font-size: 110px; margin-bottom: 16px;">Thank You<span style="color: var(--accent);">.</span></h1>
                     <p class="reveal" style="font-size: 38px; color: var(--text-secondary); margin-bottom: 40px;">Questions & Feedback Welcome</p>
                     <div class="reveal" style="display: flex; gap: 16px; justify-content: center;">
@@ -3082,12 +3232,8 @@
             },
 
             showToast(toastId, text, duration = 2500) {
-                const toast = document.getElementById(toastId);
-                if (!toast) return;
-                if (text) toast.textContent = text;
-                toast.classList.add('show');
-                clearTimeout(toast._timer);
-                toast._timer = setTimeout(() => toast.classList.remove('show'), duration);
+                // Completely disabled toast popups per user request
+                return;
             },
 
             highlightSteps(prefix, activeNum) {
@@ -3118,41 +3264,235 @@
                 }
             },
 
-            // Task 1 - Variant 1 (Bottom Nav Bar)
+            // Task 1 - Variant 1 (Bottom Nav Bar - nav_1.JPG Replica)
             v1Nav(tab) {
                 const liveEl = document.getElementById('live-v1');
                 if (liveEl && liveEl.style.display === 'none') {
                     this.switchView('v1', 'live');
                 }
                 const screen = document.getElementById('phoneScreen-v1');
-                this.createRipple(screen, '35%', '92%');
+                this.createRipple(screen, '50%', '92%');
 
                 document.querySelectorAll('#live-nav-bar-v1 .live-nav-item').forEach(item => item.classList.remove('active'));
                 const activeItem = document.getElementById(`v1-nav-${tab}`);
                 if (activeItem) activeItem.classList.add('active');
 
                 const body = document.getElementById('live-body-v1');
-                if (tab === 'schedule') {
-                    this.showToast('toast-v1', '✓ Schedule Tab Activated (1 Tap)');
-                    this.highlightSteps('step-v1', 3);
-                    if (body) {
-                        body.innerHTML = `
-                            <div style="font-family:var(--font-display); font-size:11px; font-weight:900; margin-bottom:6px; color:var(--accent);">📅 TOURNAMENT SCHEDULE</div>
-                            <div class="live-match-card" style="border-left:3px solid var(--accent); padding:6px 8px; margin-bottom:5px;">
-                                <div class="live-match-header" style="font-size:8px; margin-bottom:3px;"><span>Upcoming</span><span style="color:#ef4444; font-weight:800;">● Aug 15</span></div>
-                                <div style="font-size:10px; font-weight:800; color:#1c1712;">Weissenhaus 2026</div>
-                                <div style="font-size:8px; color:#6c6256; margin-top:2px;">Round 1 · Carlsen vs Keymer</div>
-                            </div>
-                            <div class="live-match-card" style="padding:6px 8px; margin-bottom:5px;">
-                                <div class="live-match-header" style="font-size:8px; margin-bottom:3px;"><span>Past Event</span><span style="color:#6c6256;">Nov 2024</span></div>
-                                <div style="font-size:10px; font-weight:800; color:#1c1712;">Paris Grand Slam</div>
-                                <div style="font-size:8px; color:#6c6256; margin-top:2px;">Winner: Magnus Carlsen</div>
-                            </div>
-                        `;
-                    }
-                } else {
-                    this.showToast('toast-v1', `✓ ${tab.toUpperCase()} Tab Activated`);
+                if (!body) return;
+
+                if (tab === 'home') {
+                    this.showToast('toast-v1', '✓ HOME Screen Active (home.JPG Layout)');
                     this.highlightSteps('step-v1', 1);
+                    body.innerHTML = `
+                        <!-- Top ♟ Logo matching sketch -->
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+
+                        <!-- Hero Banner (home.JPG replica: Big Play + Watch Button) -->
+                        <div class="live-hero-card" style="text-align: center;">
+                            <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px; font-size: 14px; border: 2px solid #1c1712; box-shadow: 0 2px 0 rgba(28,23,18,0.15);">▶</div>
+                            <div class="live-hero-title" style="font-size: 11px;">Weissenhaus GOAT 2026</div>
+                            <div class="live-hero-desc" style="font-size: 8px; margin-bottom: 6px;">Live Round 5 · Rapid Chess 25m+10s</div>
+                            <button style="background: #1c1712; color: #fff; border: 1.5px solid #1c1712; padding: 3px 12px; border-radius: 999px; font-size: 8.5px; font-weight: 800; cursor: pointer; letter-spacing: 0.05em;">▶ WATCH LIVE</button>
+                        </div>
+                        <!-- Mid Card (home.JPG replica: Left Text + Right Thumbnail) -->
+                        <div class="live-match-card" style="display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 6px 8px;">
+                            <div style="flex: 1;">
+                                <div style="font-family: var(--font-display); font-size: 10px; font-weight: 900; color: #1c1712;">L.Q. Liêm vs M. Carlsen</div>
+                                <div style="font-size: 8px; color: #6c6256; margin-top: 1px;">Game 1: 1 - 0 (White won)</div>
+                                <span style="font-size: 7px; background: #224f44; color: #fff; padding: 0 4px; border-radius: 3px; font-weight: 800;">● LIVE NOW</span>
+                            </div>
+                            <div style="width: 38px; height: 38px; border-radius: 6px; background: #e9b44c; border: 1.5px solid #1c1712; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; box-shadow: 1px 2px 0 rgba(28,23,18,0.1);">
+                                <span>♟</span>
+                                <span style="font-size: 6px; font-weight: 900; text-transform: uppercase;">PHOTO</span>
+                            </div>
+                        </div>
+                        <!-- Section Title (home.JPG replica) -->
+                        <div style="font-size: 9px; font-weight: 900; color: var(--accent); margin: 6px 0 3px; text-transform: uppercase; letter-spacing: 0.05em;">Featured Matches</div>
+                        <div class="live-match-card" style="padding: 5px 8px; margin-bottom: 4px;">
+                            <div class="live-match-header" style="font-size: 7.5px; margin-bottom: 3px;"><span>Match 02</span><span style="color: #6c6256;">● Round 4</span></div>
+                            <div class="live-match-players">
+                                <div class="live-player"><div class="live-player-avatar" style="width: 18px; height: 18px; font-size: 9px;">♛</div><div>F. Caruana</div></div>
+                                <div class="live-match-score" style="font-size: 9.5px; padding: 1px 4px;">0.5 - 0.5</div>
+                                <div class="live-player"><div class="live-player-avatar" style="width: 18px; height: 18px; font-size: 9px;">♝</div><div>V. Keymer</div></div>
+                            </div>
+                        </div>
+                    `;
+                } else if (tab === 'schedule') {
+                    this.showToast('toast-v1', '✓ SCHEDULE Active (schedule_1_default_collapsed.JPG)');
+                    this.highlightSteps('step-v1', 3);
+                    body.innerHTML = `
+                        <div>
+                            <!-- Top ♟ Logo matching sketch -->
+                            <div class="live-sched-header">
+                                <span class="live-sched-logo">♟</span>
+                            </div>
+
+                            <!-- SOON. -->
+                            <div class="live-sched-section-title">SOON.</div>
+
+                            <!-- SOON Card 1 -->
+                            <div class="live-sched-card">
+                                <div class="live-sched-row">Date: <span>Aug 15 - 22, 2026</span></div>
+                                <div class="live-sched-row">Location: <span>Weissenhaus, Germany</span></div>
+                                <div class="live-sched-row">Players: <span>M. Carlsen, L.Q. Liêm, F. Caruana</span></div>
+                                <div class="live-sched-dots">...</div>
+                            </div>
+
+                            <!-- SOON Card 2 -->
+                            <div class="live-sched-card">
+                                <div class="live-sched-row">Date: <span>Oct 04 - 10, 2026</span></div>
+                                <div class="live-sched-row">Location: <span>Paris, France</span></div>
+                                <div class="live-sched-row">Players: <span>H. Nakamura, N. Abdusattorov, D. Gukesh</span></div>
+                                <div class="live-sched-dots">...</div>
+                            </div>
+
+                            <!-- PREVIOUS -->
+                            <div class="live-sched-section-title" style="margin-top: 3px;">PREVIOUS</div>
+
+                            <!-- PREVIOUS Card 1 (Collapsible) -->
+                            <div class="live-sched-acc-card" id="v1-acc-1" onclick="PhoneSimulator.toggleV1Acc('v1-acc-1')">
+                                <div class="live-sched-acc-header">
+                                    <div>
+                                        <div class="live-sched-row">Date: <span>Feb 09 - 16, 2023</span></div>
+                                        <div class="live-sched-row">Location: <span>Germany</span></div>
+                                    </div>
+                                    <span class="live-sched-acc-chevron">∨</span>
+                                </div>
+                                <div class="live-sched-acc-content">
+                                    <div style="font-size: 7px; font-weight: 700; color: #6c6256;">Players: M. Carlsen, L.Q. Liêm, V. Keymer</div>
+                                    <div style="font-size: 7px; font-weight: 800; color: #224f44; margin-top: 1px;">Winner: Magnus Carlsen (1st)</div>
+                                </div>
+                            </div>
+
+                            <!-- PREVIOUS Card 2 -->
+                            <div class="live-sched-acc-card" id="v1-acc-2" onclick="PhoneSimulator.toggleV1Acc('v1-acc-2')">
+                                <div class="live-sched-acc-header">
+                                    <div>
+                                        <div class="live-sched-row">Date: <span>Nov 10 - 15, 2024</span></div>
+                                        <div class="live-sched-row">Location: <span>Paris</span></div>
+                                    </div>
+                                    <span class="live-sched-acc-chevron">∨</span>
+                                </div>
+                                <div class="live-sched-acc-content">
+                                    <div style="font-size: 7px; font-weight: 700; color: #6c6256;">Players: M. Carlsen, H. Nakamura, F. Caruana</div>
+                                    <div style="font-size: 7px; font-weight: 800; color: #224f44; margin-top: 1px;">Winner: Magnus Carlsen (1st)</div>
+                                </div>
+                            </div>
+
+                            <!-- PREVIOUS Card 3 -->
+                            <div class="live-sched-acc-card" id="v1-acc-3" onclick="PhoneSimulator.toggleV1Acc('v1-acc-3')">
+                                <div class="live-sched-acc-header">
+                                    <div>
+                                        <div class="live-sched-row">Date: <span>Dec 01 - 06, 2024</span></div>
+                                        <div class="live-sched-row">Location: <span>Singapore</span></div>
+                                    </div>
+                                    <span class="live-sched-acc-chevron">∨</span>
+                                </div>
+                                <div class="live-sched-acc-content">
+                                    <div style="font-size: 7px; font-weight: 700; color: #6c6256;">Players: D. Gukesh, Ding Liren, Carlsen</div>
+                                    <div style="font-size: 7px; font-weight: 800; color: #224f44; margin-top: 1px;">Winner: D. Gukesh (1st)</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else if (tab === 'videos') {
+                    this.showToast('toast-v1', '✓ VIDEOS & STREAMS Screen Active');
+                    this.highlightSteps('step-v1', 2);
+                    body.innerHTML = `
+                        <!-- Top ♟ Logo matching sketch -->
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <div style="font-family:var(--font-display); font-size:10px; font-weight:900; margin-bottom:6px; color:var(--accent);">🎬 VIDEO & STREAMS</div>
+                        <div class="live-match-card" style="padding:6px 8px; margin-bottom:5px;">
+                            <div style="font-size:10px; font-weight:800; color:#1c1712;">Carlsen vs Keymer Game 4 Analysis</div>
+                            <div style="font-size:8px; color:#6c6256; margin-top:2px;">GM Peter Leko breakdown (24 mins)</div>
+                        </div>
+                        <div class="live-match-card" style="padding:6px 8px; margin-bottom:5px;">
+                            <div style="font-size:10px; font-weight:800; color:#1c1712;">Post-Game Press Conference</div>
+                            <div style="font-size:8px; color:#6c6256; margin-top:2px;">Live interview with Le Quang Liem</div>
+                        </div>
+                    `;
+                } else if (tab === 'news') {
+                    this.showToast('toast-v1', '✓ NEWS & PRESS Screen Active');
+                    this.highlightSteps('step-v1', 2);
+                    body.innerHTML = `
+                        <!-- Top ♟ Logo matching sketch -->
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <!-- Latest News Title & Filter matching news.JPG -->
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin:2px 0 4px;">
+                            <div style="font-family:var(--font-display); font-size:10px; font-weight:900; color:#1c1712;">Latest News</div>
+                            <select class="live-select" style="font-size:7.5px; padding:1px 6px; border:1.5px solid #1c1712; border-radius:5px; background:#fff; font-weight:800;">
+                                <option>ALL</option>
+                                <option>Tournaments</option>
+                                <option>Interviews</option>
+                                <option>Rules</option>
+                            </select>
+                        </div>
+                        <!-- News Card List (news.JPG replica) -->
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#ffe1d4; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">📰</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Freestyle Grand Slam Tour 2026</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">5 global stops across 4 continents.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#dfeee4; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">♟</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Carlsen Defeats Keymer in Armageddon</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Game 4 rapid recap & expert analysis.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#fff0bc; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">🎤</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Press Conference: Le Quang Liem</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Post-game interview after game 1 victory.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#e0f2fe; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">🏆</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">FIDE Approves New Rating Rules</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Official rating system effective Sept 2026.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#f3e8ff; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">👕</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Official GOAT Merchandise Released</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Limited edition apparel & custom boards.</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else if (tab === 'more') {
+                    this.showToast('toast-v1', '✓ MORE MENU Screen Active');
+                    this.highlightSteps('step-v1', 2);
+                    body.innerHTML = `
+                        <!-- Top ♟ Logo matching sketch -->
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <div style="font-family:var(--font-display); font-size:10px; font-weight:900; margin-bottom:6px; color:var(--accent);">••• MORE CATEGORIES</div>
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <div class="live-menu-row" style="text-align:left; padding:5px 8px; background:#fff; border-radius:6px;">🎤 Press & Media</div>
+                            <div class="live-menu-row" style="text-align:left; padding:5px 8px; background:#fff; border-radius:6px;">≈ Rules & Clubs</div>
+                            <div class="live-menu-row" style="text-align:left; padding:5px 8px; background:#fff; border-radius:6px;">👕 Merch Store</div>
+                        </div>
+                    `;
+                }
+            },
+            toggleV1Acc(cardId) {
+                const card = document.getElementById(cardId);
+                if (card) {
+                    card.classList.toggle('expanded');
                 }
             },
 
@@ -3191,18 +3531,177 @@
                     this.fabSwitchLayer(1);
                     if (fab) fab.classList.add('open');
                     if (overlay) overlay.classList.add('open');
-                    this.showToast('toast-v2', '✓ Radial Pie Wheel Expanded (Tap 1/2)');
                     this.highlightSteps('step-v2', 2);
+
+                    // Dynamically highlight active sector matching currentV2Tab
+                    document.querySelectorAll('.pie-sector-path').forEach(p => p.classList.remove('active'));
+                    const activeSector = document.getElementById(`pie-sector-${this.currentV2Tab}`);
+                    if (activeSector) activeSector.classList.add('active');
                 } else {
                     if (fab) fab.classList.remove('open');
                     if (overlay) overlay.classList.remove('open');
                     this.highlightSteps('step-v2', 1);
                 }
             },
+            currentV2Tab: 'Home',
             fabSelect(item) {
+                this.currentV2Tab = item;
                 this.toggleFAB(false);
-                this.showToast('toast-v2', `✓ Navigated to ${item} (2 Taps Total!)`);
                 this.highlightSteps('step-v2', 4);
+
+                const body = document.querySelector('#live-v2 .live-app-body');
+                if (!body) return;
+
+                if (item === 'News') {
+                    body.innerHTML = `
+                        <!-- Top ♟ Logo matching sketch -->
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <!-- Latest News Title & Filter matching news.JPG -->
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin:2px 0 4px;">
+                            <div style="font-family:var(--font-display); font-size:10px; font-weight:900; color:#1c1712;">Latest News</div>
+                            <select class="live-select" style="font-size:7.5px; padding:1px 6px; border:1.5px solid #1c1712; border-radius:5px; background:#fff; font-weight:800;">
+                                <option>ALL</option>
+                                <option>Tournaments</option>
+                                <option>Interviews</option>
+                                <option>Rules</option>
+                            </select>
+                        </div>
+                        <!-- News Card List (news.JPG replica: Left Square Thumbnail + Right Content) -->
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#ffe1d4; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">📰</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Freestyle Grand Slam Tour 2026</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">5 global stops across 4 continents.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#dfeee4; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">♟</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Carlsen Defeats Keymer in Armageddon</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Game 4 rapid recap & expert analysis.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#fff0bc; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">🎤</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Press Conference: Le Quang Liem</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Post-game interview after game 1 victory.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#e0f2fe; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">🏆</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">FIDE Approves New Rating Rules</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Official rating system effective Sept 2026.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#f3e8ff; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">👕</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Official GOAT Merchandise Released</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Limited edition apparel & custom boards.</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else if (item === 'Schedule') {
+                    body.innerHTML = `
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <div class="live-sched-section-title">SOON.</div>
+                        <div class="live-sched-card">
+                            <div class="live-sched-row">Date: <span>Aug 15 - 22, 2026</span></div>
+                            <div class="live-sched-row">Location: <span>Weissenhaus, Germany</span></div>
+                            <div class="live-sched-row">Players: <span>M. Carlsen, L.Q. Liêm, F. Caruana</span></div>
+                            <div class="live-sched-dots">...</div>
+                        </div>
+                        <div class="live-sched-card">
+                            <div class="live-sched-row">Date: <span>Oct 04 - 10, 2026</span></div>
+                            <div class="live-sched-row">Location: <span>Paris, France</span></div>
+                            <div class="live-sched-row">Players: <span>H. Nakamura, N. Abdusattorov...</span></div>
+                            <div class="live-sched-dots">...</div>
+                        </div>
+                        <div class="live-sched-section-title" style="margin-top:3px;">PREVIOUS</div>
+                        <div class="live-sched-acc-card" id="v2-acc-1" onclick="PhoneSimulator.toggleV1Acc('v2-acc-1')">
+                            <div class="live-sched-acc-header">
+                                <div>
+                                    <div class="live-sched-row">Date: <span>Feb 09 - 16, 2023</span></div>
+                                    <div class="live-sched-row">Location: <span>Germany</span></div>
+                                </div>
+                                <span class="live-sched-acc-chevron">∨</span>
+                            </div>
+                            <div class="live-sched-acc-content">
+                                <div style="font-size:7px; font-weight:700; color:#6c6256;">Players: M. Carlsen, L.Q. Liêm, V. Keymer</div>
+                                <div style="font-size:7px; font-weight:800; color:#224f44; margin-top:1px;">Winner: Magnus Carlsen (1st)</div>
+                            </div>
+                        </div>
+                    `;
+                } else if (item === 'Home') {
+                    body.innerHTML = `
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <div class="live-hero-card" style="text-align: center;">
+                            <div style="width: 36px; height: 36px; border-radius: 50%; background: #224f44; color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 4px; font-size: 14px; border: 2px solid #1c1712;">▶</div>
+                            <div class="live-hero-title" style="font-size: 11px;">Grand Slam Paris 2026</div>
+                            <div class="live-hero-desc" style="font-size: 8px; margin-bottom: 6px;">Unobstructed Full-Screen Feed</div>
+                            <button style="background: var(--accent); color: #fff; border: 1.5px solid #1c1712; padding: 3px 12px; border-radius: 999px; font-size: 8.5px; font-weight: 800;">▶ WATCH STREAM</button>
+                        </div>
+                        <div class="live-match-card" style="display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 6px 8px;">
+                            <div style="flex: 1;">
+                                <div style="font-family: var(--font-display); font-size: 10px; font-weight: 900; color: #1c1712;">Paris Grand Slam Final</div>
+                                <div style="font-size: 8px; color: #6c6256; margin-top: 1px;">Liem vs Carlsen (1 - 0)</div>
+                                <span style="font-size: 7px; background: #224f44; color: #fff; padding: 0 4px; border-radius: 3px; font-weight: 800;">● LIVE</span>
+                            </div>
+                            <div style="width: 38px; height: 38px; border-radius: 6px; background: #e9b44c; border: 1.5px solid #1c1712; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;">
+                                <span>♟</span>
+                                <span style="font-size: 6px; font-weight: 900;">PHOTO</span>
+                            </div>
+                        </div>
+                    `;
+                } else if (item === 'Videos') {
+                    body.innerHTML = `
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <div style="font-family:var(--font-display); font-size:10px; font-weight:900; margin-bottom:6px; color:var(--accent);">🎬 VIDEO & STREAMS</div>
+                        <div class="live-match-card" style="padding:6px 8px; margin-bottom:5px;">
+                            <div style="font-size:9.5px; font-weight:800; color:#1c1712;">Carlsen vs Keymer Game 4 Analysis</div>
+                            <div style="font-size:7.5px; color:#6c6256; margin-top:2px;">GM Peter Leko breakdown (24 mins)</div>
+                        </div>
+                    `;
+                } else if (item === 'Rating') {
+                    body.innerHTML = `
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <div style="font-family:var(--font-display); font-size:10px; font-weight:900; margin-bottom:6px; color:var(--accent);">🏆 FIDE FREESTYLE RATING</div>
+                        <div class="live-match-card" style="padding:6px 8px; margin-bottom:4px;">
+                            <div style="font-size:9px; font-weight:900;">1. Magnus Carlsen (NOR) — 2823</div>
+                        </div>
+                        <div class="live-match-card" style="padding:6px 8px; margin-bottom:4px;">
+                            <div style="font-size:9px; font-weight:900;">2. Hikaru Nakamura (USA) — 2802</div>
+                        </div>
+                        <div class="live-match-card" style="padding:6px 8px; margin-bottom:4px;">
+                            <div style="font-size:9px; font-weight:900; color:var(--accent);">3. Lê Quang Liêm (VIE) — 2732</div>
+                        </div>
+                    `;
+                } else {
+                    body.innerHTML = `
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <div style="font-family:var(--font-display); font-size:10px; font-weight:900; margin-bottom:6px; color:var(--accent); text-transform:uppercase;">${item} PAGE</div>
+                        <div class="live-match-card" style="padding:8px; text-align:center;">
+                            <div style="font-size:9.5px; font-weight:800; color:#1c1712;">Category: ${item}</div>
+                            <div style="font-size:7.5px; color:#6c6256; margin-top:3px;">Navigated via Draggable Pie Wheel</div>
+                        </div>
+                    `;
+                }
             },
             initDraggableFAB() {
                 const fab = document.getElementById('fab-btn-v2');
@@ -3285,6 +3784,7 @@
             },
 
             // Task 1 - Variant 3 (Bottom Hamburger)
+            currentV3Tab: 'HOME',
             toggleDrawer(isOpen) {
                 const liveEl = document.getElementById('live-v3');
                 if (liveEl && liveEl.style.display === 'none') {
@@ -3296,17 +3796,143 @@
 
                 if (isOpen) {
                     if (drawer) drawer.classList.add('open');
-                    this.showToast('toast-v3', '✓ Full-Screen Navigation Drawer Opened (Tap 1/2)');
                     this.highlightSteps('step-v3', 2);
+
+                    // Dynamically highlight active row matching currentV3Tab
+                    document.querySelectorAll('#menu-drawer-v3 .live-menu-row').forEach(row => {
+                        const tabKey = (row.getAttribute('data-tab') || row.textContent.trim()).replace(' ∨', '').trim();
+                        row.classList.toggle('active', tabKey.toUpperCase() === (this.currentV3Tab || 'HOME').toUpperCase());
+                    });
                 } else {
                     if (drawer) drawer.classList.remove('open');
                     this.highlightSteps('step-v3', 1);
                 }
             },
             drawerSelect(item) {
+                const cleanItem = item.replace(' ∨', '').trim().toUpperCase();
+                this.currentV3Tab = cleanItem;
+
                 this.toggleDrawer(false);
-                this.showToast('toast-v3', `✓ Navigated to ${item} (2 Taps Total)`);
                 this.highlightSteps('step-v3', 4);
+
+                const body = document.querySelector('#live-v3 .live-app-body');
+                if (!body) return;
+
+                if (cleanItem === 'NEWS') {
+                    body.innerHTML = `
+                        <!-- Top ♟ Logo matching sketch -->
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <!-- Latest News Title & Filter matching news.JPG -->
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin:2px 0 4px;">
+                            <div style="font-family:var(--font-display); font-size:10px; font-weight:900; color:#1c1712;">Latest News</div>
+                            <select class="live-select" style="font-size:7.5px; padding:1px 6px; border:1.5px solid #1c1712; border-radius:5px; background:#fff; font-weight:800;">
+                                <option>ALL</option>
+                                <option>Tournaments</option>
+                                <option>Interviews</option>
+                                <option>Rules</option>
+                            </select>
+                        </div>
+                        <!-- News Card List (news.JPG replica: Left Square Thumbnail + Right Content) -->
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#ffe1d4; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">📰</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Freestyle Grand Slam Tour 2026</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">5 global stops across 4 continents.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#dfeee4; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">♟</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Carlsen Defeats Keymer in Armageddon</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Game 4 rapid recap & expert analysis.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#fff0bc; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">🎤</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Press Conference: Le Quang Liem</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Post-game interview after game 1 victory.</div>
+                                </div>
+                            </div>
+                            <div class="live-match-card" style="display:flex; align-items:center; gap:6px; padding:4px 6px; margin:0;">
+                                <div style="width:34px; height:34px; border-radius:6px; background:#e0f2fe; border:1.5px solid #1c1712; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;">🏆</div>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size:8px; font-weight:900; color:#1c1712; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">FIDE Approves New Rating Rules</div>
+                                    <div style="font-size:7px; color:#6c6256; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Official rating system effective Sept 2026.</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else if (cleanItem === 'SCHEDULE') {
+                    body.innerHTML = `
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <div class="live-sched-section-title">SOON.</div>
+                        <div class="live-sched-card">
+                            <div class="live-sched-row">Date: <span>Aug 15 - 22, 2026</span></div>
+                            <div class="live-sched-row">Location: <span>Weissenhaus, Germany</span></div>
+                            <div class="live-sched-row">Players: <span>M. Carlsen, L.Q. Liêm, F. Caruana</span></div>
+                            <div class="live-sched-dots">...</div>
+                        </div>
+                        <div class="live-sched-card">
+                            <div class="live-sched-row">Date: <span>Oct 04 - 10, 2026</span></div>
+                            <div class="live-sched-row">Location: <span>Paris, France</span></div>
+                            <div class="live-sched-row">Players: <span>H. Nakamura, N. Abdusattorov...</span></div>
+                            <div class="live-sched-dots">...</div>
+                        </div>
+                        <div class="live-sched-section-title" style="margin-top:3px;">PREVIOUS</div>
+                        <div class="live-sched-acc-card" id="v3-acc-1" onclick="PhoneSimulator.toggleV1Acc('v3-acc-1')">
+                            <div class="live-sched-acc-header">
+                                <div>
+                                    <div class="live-sched-row">Date: <span>Feb 09 - 16, 2023</span></div>
+                                    <div class="live-sched-row">Location: <span>Germany</span></div>
+                                </div>
+                                <span class="live-sched-acc-chevron">∨</span>
+                            </div>
+                            <div class="live-sched-acc-content">
+                                <div style="font-size:7px; font-weight:700; color:#6c6256;">Players: M. Carlsen, L.Q. Liêm, V. Keymer</div>
+                                <div style="font-size:7px; font-weight:800; color:#224f44; margin-top:1px;">Winner: Magnus Carlsen (1st)</div>
+                            </div>
+                        </div>
+                    `;
+                } else if (cleanItem === 'HOME') {
+                    body.innerHTML = `
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <div class="live-hero-card" style="text-align: center;">
+                            <div style="width: 36px; height: 36px; border-radius: 50%; background: #ffe1d4; color: var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 4px; font-size: 14px; border: 2px solid #1c1712;">▶</div>
+                            <div class="live-hero-title" style="font-size: 11px;">Weissenhaus 2026</div>
+                            <div class="live-hero-desc" style="font-size: 8px; margin-bottom: 6px;">Bottom Thumb-Zone Navigation</div>
+                            <button style="background: #1c1712; color: #fff; border: 1.5px solid #1c1712; padding: 3px 12px; border-radius: 999px; font-size: 8.5px; font-weight: 800;">▶ WATCH STREAM</button>
+                        </div>
+                        <div class="live-match-card" style="display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 6px 8px;">
+                            <div style="flex: 1;">
+                                <div style="font-family: var(--font-display); font-size: 10px; font-weight: 900; color: #1c1712;">Upcoming Grand Slam</div>
+                                <div style="font-size: 8px; color: #6c6256; margin-top: 1px;">Germany · August 2026</div>
+                            </div>
+                            <div style="width: 38px; height: 38px; border-radius: 6px; background: #e9b44c; border: 1.5px solid #1c1712; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;">
+                                <span>♟</span>
+                                <span style="font-size: 6px; font-weight: 900;">EVENT</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    body.innerHTML = `
+                        <div class="live-sched-header">
+                            <span class="live-sched-logo">♟</span>
+                        </div>
+                        <div style="font-family:var(--font-display); font-size:10px; font-weight:900; margin-bottom:6px; color:var(--accent); text-transform:uppercase;">${cleanItem} PAGE</div>
+                        <div class="live-match-card" style="padding:8px; text-align:center;">
+                            <div style="font-size:9.5px; font-weight:800; color:#1c1712;">Category: ${cleanItem}</div>
+                            <div style="font-size:7.5px; color:#6c6256; margin-top:3px;">Navigated via Bottom Hamburger Menu</div>
+                        </div>
+                    `;
+                }
             },
 
             // Task 2 - Variant 1 (Accordion Cards)
