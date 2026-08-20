@@ -182,17 +182,15 @@ Xin mời [Tên Người 4] trình bày phần Formative Testing."
 ## 👤 NGƯỜI 4: FORMATIVE TESTING (~2 phút)
 
 ### 📌 Slide 14 — Testing Plan
-> **[Cue: Slide hiển thị mục tiêu, đối tượng, phương pháp, metrics]**
+> **[Cue: Slide hiển thị mục tiêu, đối tượng người tham gia, phương pháp test và dữ liệu định tính thu thập]**
 
-"Nhóm xây dựng **kế hoạch kiểm thử định hình** với các yếu tố sau:
+"Nhóm xây dựng **kế hoạch kiểm thử định hình (Formative Testing)** với các yếu tố sau:
 
-**Mục tiêu:** Đánh giá khả năng sử dụng của 6 bản lo-fi prototype trước khi tạo hi-fi.
+**Mục tiêu:** Đánh giá khả năng sử dụng của 6 bản lo-fi prototype trước khi phát triển bản hi-fi.
 
-**Đối tượng:** 2-3 người tham gia chưa biết gì về prototype.
+**Đối tượng:** 3 người tham gia chưa có kiến thức trước về các mô hình prototype.
 
-**Phương pháp:** Paper Prototype Testing kết hợp **Think-Aloud Protocol** — người dùng nói ra suy nghĩ khi thao tác.
-
-**Chỉ số đo lường** gồm: số lượt chạm, thời gian hoàn thành, lỗi/ngập ngừng, và phản hồi định tính."
+**Phương pháp:** Paper Prototype Testing kết hợp **Think-Aloud Protocol** — ghi nhận toàn bộ dữ liệu định tính gồm quan sát hành vi, phản hồi và các điểm cải tiến."
 
 **→ Chuyển slide**
 
