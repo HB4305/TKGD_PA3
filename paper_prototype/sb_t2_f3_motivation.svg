@@ -8,25 +8,16 @@
   .ink-thick { fill: none; stroke: #1c1712; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
   .head { fill: #ffffff; stroke: #1c1712; stroke-width: 3.2; }
   .eye { fill: #1c1712; }
-  .shade { fill: #e2e8f0; opacity: 0.7; }
-  .shade-dark { fill: #cbd5e1; opacity: 0.8; }
   .accent-yellow { fill: #fbbf24; opacity: 0.9; }
-  .accent-amber { fill: #f59e0b; }
-  .accent-red { fill: #ef4444; }
-  .accent-green { fill: #10b981; }
-  .accent-blue { fill: #3b82f6; }
-  .stroke-red { stroke: #ef4444; stroke-width: 3; stroke-dasharray: 6 4; fill: none; stroke-linecap: round; }
-  .stroke-green { stroke: #10b981; stroke-width: 3.5; fill: none; stroke-linecap: round; }
-  .stroke-blue { stroke: #3b82f6; stroke-width: 3; fill: none; stroke-linecap: round; }
-  .phone-body { fill: #ffffff; stroke: #1c1712; stroke-width: 3; rx: 10; }
-  .phone-screen { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 6; }
+  .phone-body { fill: #ffffff; stroke: #1c1712; stroke-width: 3; rx: 14; }
+  .phone-screen { fill: #fffaf0; stroke: #1c1712; stroke-width: 2; rx: 8; }
 </style>
 
   <rect class="bg" width="400" height="500" rx="16"/>
   <rect class="frame" x="8" y="8" width="384" height="484" rx="12"/>
 
   <!-- Idea bulb above phone -->
-  <g transform="translate(180, 25)">
+  <g transform="translate(185, 22)">
     <path class="accent-yellow" d="M 20 10 C 5 10, 0 25, 10 38 C 15 44, 18 50, 18 55 H 22 C 22 50, 25 44, 30 38 C 40 25, 35 10, 20 10 Z" />
     <path class="ink" d="M 20 10 C 5 10, 0 25, 10 38 C 15 44, 18 50, 18 55 H 22 C 22 50, 25 44, 30 38 C 40 25, 35 10, 20 10 Z" />
     <rect x="16" y="55" width="8" height="6" class="ink" />
@@ -40,51 +31,84 @@
   <path class="ink" d="M 85 152 Q 93 162 101 152" /> <!-- Happy open smile -->
   <path class="ink-thick" d="M 80 170 V 250 M 80 200 L 130 180" />
 
-  <!-- Phone UI REDESIGN SOLUTION (Past vs Upcoming + Filter Drill Down) -->
-  <g transform="translate(145, 100)">
-    <rect x="0" y="0" width="225" height="360" rx="18" class="phone-body" />
-    <rect x="10" y="15" width="205" height="330" rx="10" class="phone-screen" />
+  <!-- Phone UI Solution Replica (Date Filter + Date Strip + Match Cards) -->
+  <g transform="translate(145, 95)">
+    <rect x="0" y="0" width="225" height="370" rx="18" class="phone-body" />
+    <rect x="10" y="15" width="205" height="340" rx="10" class="phone-screen" />
 
-    <!-- TOP TAB SWITCHER: PAST vs UPCOMING -->
-    <rect x="20" y="30" width="185" height="42" rx="21" fill="#e0f2fe" stroke="#3b82f6" stroke-width="2.5" />
-    <!-- Active Tab Pill (PAST EVENTS) -->
-    <rect x="24" y="34" width="90" height="34" rx="17" fill="#3b82f6" />
-    <rect x="40" y="47" width="58" height="8" rx="2" fill="#ffffff" />
-    <!-- Inactive Tab (UPCOMING) -->
-    <rect x="125" y="47" width="60" height="8" rx="2" fill="#64748b" />
+    <!-- 1. Top Dropdown Filters: Month & Year -->
+    <g transform="translate(20, 28)">
+      <!-- Month Dropdown -->
+      <rect x="0" y="0" width="95" height="22" rx="5" fill="#ffffff" stroke="#1c1712" stroke-width="1.5" />
+      <text x="10" y="15" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1c1712">August</text>
+      <path d="M 78 8 L 83 14 L 88 8 Z" fill="#1c1712" />
 
-    <!-- FILTER BAR (Year/Format/Tournament dropdowns) -->
-    <g transform="translate(20, 82)">
-      <rect x="0" y="0" width="55" height="26" rx="6" fill="#ffffff" stroke="#1c1712" stroke-width="1.5" />
-      <path d="M 12 13 L 20 13 M 35 13 L 42 17 L 42 9 Z" fill="#1c1712" />
-
-      <rect x="62" y="0" width="60" height="26" rx="6" fill="#ffffff" stroke="#1c1712" stroke-width="1.5" />
-      <rect x="128" y="0" width="57" height="26" rx="6" fill="#3b82f6" />
-      <!-- Filter Funnel Icon -->
-      <path d="M 145 7 L 167 7 L 159 15 V 20 L 153 18 V 15 Z" fill="#ffffff" />
+      <!-- Year Dropdown -->
+      <rect x="105" y="0" width="60" height="22" rx="5" fill="#ffffff" stroke="#1c1712" stroke-width="1.5" />
+      <text x="113" y="15" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1c1712">2026</text>
+      <path d="M 150 8 L 155 14 L 160 8 Z" fill="#1c1712" />
     </g>
 
-    <!-- DRILL DOWN HIERARCHY FLOW -->
-    <!-- Card 1: Event Level -->
-    <rect x="20" y="120" width="185" height="55" rx="8" fill="#ffffff" stroke="#1c1712" stroke-width="2" />
-    <circle cx="42" cy="147" r="14" fill="#fbbf24" stroke="#1c1712" stroke-width="1.5" />
-    <rect x="68" y="137" width="90" height="10" rx="2" fill="#1e293b" />
-    <rect x="68" y="152" width="60" height="8" rx="2" fill="#64748b" />
+    <!-- 2. Date Strip Bar (Scrollable chips) -->
+    <g transform="translate(18, 60)">
+      <rect x="0" y="0" width="169" height="34" rx="6" fill="#ffffff" stroke="#1c1712" stroke-width="1.5" />
+      <!-- Chevron Left -->
+      <text x="6" y="21" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1c1712">⟨</text>
+      
+      <!-- Date Chips -->
+      <rect x="18" y="5" width="22" height="24" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+      <text x="24" y="21" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1c1712">19</text>
 
-    <!-- Downward Arrow showing 1-click drill down into Match Roster -->
-    <path class="ink-thick" stroke="#3b82f6" stroke-width="4" d="M 112 180 V 215 M 102 205 L 112 220 L 122 205" />
+      <rect x="44" y="5" width="22" height="24" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+      <text x="50" y="21" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1c1712">20</text>
 
-    <!-- Card 2: Match Roster Detail (Target Outcome) -->
-    <rect x="20" y="228" width="185" height="100" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2.5" />
-    <!-- Player Roster Rows -->
-    <circle cx="42" cy="252" r="10" fill="#10b981" />
-    <rect x="60" y="247" width="70" height="10" rx="2" fill="#064e3b" />
-    <rect x="145" y="247" width="45" height="10" rx="2" fill="#10b981" />
+      <!-- Active Date Chip (21) -->
+      <rect x="70" y="5" width="24" height="24" rx="4" fill="#224f44" stroke="#1c1712" stroke-width="1.5" />
+      <text x="76" y="21" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff">21</text>
 
-    <line x1="30" y1="274" x2="195" y2="274" stroke="#a7f3d0" stroke-width="1.5" />
+      <rect x="98" y="5" width="22" height="24" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+      <text x="104" y="21" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1c1712">22</text>
 
-    <circle cx="42" cy="296" r="10" fill="#10b981" />
-    <rect x="60" y="291" width="75" height="10" rx="2" fill="#064e3b" />
-    <rect x="145" y="291" width="45" height="10" rx="2" fill="#10b981" />
+      <rect x="124" y="5" width="22" height="24" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+      <text x="130" y="21" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1c1712">23</text>
+
+      <!-- Chevron Right -->
+      <text x="153" y="21" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1c1712">⟩</text>
+    </g>
+
+    <!-- 3. Section Title -->
+    <text x="20" y="112" font-family="sans-serif" font-size="10" font-weight="900" fill="#e02e00" letter-spacing="0.05em">MATCHES FOR AUG 21</text>
+
+    <!-- 4. Match Card 1 (World Chess Championship) -->
+    <g transform="translate(18, 122)">
+      <rect x="0" y="0" width="169" height="58" rx="8" fill="#ffffff" stroke="#1c1712" stroke-width="1.5" />
+      <text x="10" y="18" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1c1712">World Chess Championship</text>
+      <text x="10" y="32" font-family="sans-serif" font-size="8" font-weight="600" fill="#64748b">Germany 2026 · Final</text>
+      
+      <!-- Score & Chevron Button -->
+      <rect x="110" y="26" width="48" height="20" rx="4" fill="#fff0bc" stroke="#1c1712" stroke-width="1.2" />
+      <text x="116" y="40" font-family="sans-serif" font-size="10" font-weight="bold" fill="#e02e00">1 - 0  ∨</text>
+    </g>
+
+    <!-- 5. Match Card 2 (Semi-Final Rapid) -->
+    <g transform="translate(18, 190)">
+      <rect x="0" y="0" width="169" height="58" rx="8" fill="#ffffff" stroke="#1c1712" stroke-width="1.5" />
+      <text x="10" y="18" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1c1712">Semi-Final Rapid</text>
+      <text x="10" y="32" font-family="sans-serif" font-size="8" font-weight="600" fill="#64748b">Germany 2026 · Game 2</text>
+      
+      <!-- Score & Chevron Button -->
+      <rect x="100" y="26" width="58" height="20" rx="4" fill="#f1f5f9" stroke="#1c1712" stroke-width="1.2" />
+      <text x="105" y="40" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1c1712">0.5-1.5  ∨</text>
+    </g>
+
+    <!-- Bottom Nav Bar Replica -->
+    <g transform="translate(10, 312)">
+      <line x1="0" y1="0" x2="185" y2="0" stroke="#1c1712" stroke-width="1" />
+      <text x="15" y="20" font-family="sans-serif" font-size="14">📅</text>
+      <text x="50" y="20" font-family="sans-serif" font-size="14">🎬</text>
+      <text x="85" y="20" font-family="sans-serif" font-size="14">🏠</text>
+      <text x="120" y="20" font-family="sans-serif" font-size="14">📰</text>
+      <text x="155" y="20" font-family="sans-serif" font-size="14">•••</text>
+    </g>
   </g>
 </svg>

@@ -76,6 +76,7 @@
         margin: 0;
         overflow: hidden;
         background: var(--stage-bg);
+        font-family: var(--font-body), "Nunito", sans-serif;
       }
 
       .deck-viewport {
@@ -1052,9 +1053,9 @@
         cursor: grabbing;
       }
       .live-fab.open {
-        background: #1c1712;
-        color: #ffffff;
-        transform: scale(0.9);
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.5);
       }
       .live-radial-overlay {
         position: absolute;
@@ -1078,15 +1079,15 @@
         pointer-events: auto;
       }
       .live-pie-container {
-        width: 280px;
-        height: 280px;
-        position: relative;
-        transform: scale(0.7);
+        width: 210px;
+        height: 210px;
+        position: absolute;
+        transform: translate(-50%, -50%) scale(0.2);
         opacity: 0;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
       }
       .live-radial-overlay.open .live-pie-container {
-        transform: scale(1);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
       }
       .pie-sector-path {
@@ -2141,9 +2142,6 @@
                   "
                 >
                   Project Assignment 3 · 2026<br />
-                  <span style="color: var(--accent); font-weight: 800"
-                    >ThS. Phạm Nguyễn Sơn Tùng</span
-                  >
                 </p>
               </div>
 
@@ -2643,7 +2641,8 @@
                 One-Handed Navigation Storyboard
               </h2>
               <div class="scenario-pill reveal">
-                👤 <strong>Persona:</strong> Ninh (22) · Walking across campus · Goal: 1-hand thumb navigation
+                👤 <strong>Persona:</strong> Ninh (22) · Walking across campus ·
+                Goal: 1-hand thumb navigation
               </div>
             </div>
 
@@ -2670,12 +2669,14 @@
               <!-- Frame 2 -->
               <div class="storyboard-cell">
                 <div class="storyboard-cell__header">
-                  <span class="storyboard-cell__badge">02 · PAIN POINT (P-01)</span>
+                  <span class="storyboard-cell__badge"
+                    >02 · PAIN POINT (P-01)</span
+                  >
                   <div class="storyboard-cell__title">Thumb Out of Reach</div>
                 </div>
                 <div class="storyboard-cell__img-wrap">
                   <img
-                    src="paper_prototype/sb_t1_f2_painpoint.jpg"
+                    src="paper_prototype/sb_t1_f2_painpoint.svg"
                     alt="Frame 2: Thumb Out of Reach"
                     class="storyboard-cell__img"
                   />
@@ -2788,9 +2789,6 @@
                 </div>
                 <div class="reveal demo-bar">
                   <span class="metric-badge metric-badge--red">1 Tap</span>
-                  <span class="metric-badge metric-badge--outline"
-                    >Thumb Reach: 95%</span
-                  >
                 </div>
               </div>
               <div
@@ -3557,14 +3555,14 @@
                               ></circle>
                               <text
                                 x="105"
-                                y="110"
+                                y="112"
                                 text-anchor="middle"
                                 font-family="var(--font-display)"
-                                font-size="11"
+                                font-size="18"
                                 font-weight="900"
                                 fill="#1c1712"
                               >
-                                ← Back
+                                ←
                               </text>
                             </g>
                           </svg>
@@ -3945,7 +3943,8 @@
                 Schedule & Tournament Storyboard
               </h2>
               <div class="scenario-pill reveal">
-                👤 <strong>Persona:</strong> Phú (20) & Friend · Debating past chess match at cafe · Goal: Verify roster & details
+                👤 <strong>Persona:</strong> Phú (20) & Friend · Debating past
+                chess match at cafe · Goal: Verify roster & details
               </div>
             </div>
 
@@ -3955,7 +3954,9 @@
               <div class="storyboard-cell">
                 <div class="storyboard-cell__header">
                   <span class="storyboard-cell__badge">01 · CONTEXT</span>
-                  <div class="storyboard-cell__title">Debating Past Matches</div>
+                  <div class="storyboard-cell__title">
+                    Debating Past Matches
+                  </div>
                 </div>
                 <div class="storyboard-cell__img-wrap">
                   <img
@@ -3972,13 +3973,15 @@
               <!-- Frame 2 -->
               <div class="storyboard-cell">
                 <div class="storyboard-cell__header">
-                  <span class="storyboard-cell__badge">02 · PAIN POINT (P-05)</span>
+                  <span class="storyboard-cell__badge"
+                    >02 · PAIN POINT (P-05)</span
+                  >
                   <div class="storyboard-cell__title">Missing Info (P-05)</div>
                 </div>
                 <div class="storyboard-cell__img-wrap">
                   <img
-                    src="paper_prototype/sb_t2_f2_painpoint.jpg"
-                    alt="Frame 2: Missing Roster and Details"
+                    src="paper_prototype/sb_t2_f2_painpoint.svg"
+                    alt="Frame 2: Baseline Web Schedule Pain Point (P-05)"
                     class="storyboard-cell__img"
                   />
                 </div>
@@ -3991,12 +3994,14 @@
               <div class="storyboard-cell">
                 <div class="storyboard-cell__header">
                   <span class="storyboard-cell__badge">03 · MOTIVATION</span>
-                  <div class="storyboard-cell__title">Hierarchical Drill-Down</div>
+                  <div class="storyboard-cell__title">
+                    Hierarchical Drill-Down
+                  </div>
                 </div>
                 <div class="storyboard-cell__img-wrap">
                   <img
-                    src="paper_prototype/sb_t2_f3_motivation.jpg"
-                    alt="Frame 3: Hierarchical Event Hierarchy Idea"
+                    src="paper_prototype/sb_t2_f3_motivation.svg"
+                    alt="Frame 3: Date Filter & Strip Solution Idea"
                     class="storyboard-cell__img"
                   />
                 </div>
@@ -5391,82 +5396,361 @@
                         id="timeline-body-t2v3"
                         style="scroll-behavior: smooth"
                       >
-                        <div class="live-timeline-container" style="position: relative; padding-left: 24px; padding-top: 10px;">
+                        <div
+                          class="live-timeline-container"
+                          style="
+                            position: relative;
+                            padding-left: 24px;
+                            padding-top: 10px;
+                          "
+                        >
                           <!-- Vertical Axis Line with Arrow Heads -->
-                          <div style="position: absolute; left: 10px; top: 15px; bottom: 15px; width: 3px; background: #1c1712;"></div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 10px;
+                              top: 15px;
+                              bottom: 15px;
+                              width: 3px;
+                              background: #1c1712;
+                            "
+                          ></div>
 
                           <!-- TOP AXIS HEADER: Past -->
-                          <div style="margin-left: -14px; margin-bottom: 12px; font-family: var(--font-display); font-size: 14px; font-weight: 900; color: #1c1712;">
+                          <div
+                            style="
+                              margin-left: -14px;
+                              margin-bottom: 12px;
+                              font-family: var(--font-display);
+                              font-size: 14px;
+                              font-weight: 900;
+                              color: #1c1712;
+                            "
+                          >
                             ⏫ Past
                           </div>
 
                           <!-- Past Event 1 (schedule_3_scroll_up.JPG: 2020, Jun, 09 China) -->
-                          <div class="live-timeline-item" id="tl-past-2020" style="margin-bottom: 14px; position: relative;">
-                            <div style="position: absolute; left: -19px; top: 3px; width: 11px; height: 11px; border-radius: 50%; background: #fff; border: 2px solid #1c1712;"></div>
-                            <div style="font-size: 12px; color: #1c1712; font-weight: 900;">2020, Jun, 09 &nbsp;&nbsp; China</div>
-                            <div class="live-match-card" style="margin: 4px 0 0 0; padding: 10px 12px;">
-                              <div class="live-acc-title" style="font-size: 14px;">China Invitational 2020</div>
-                              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Players: Ding Liren, Carlsen, Nakamura</div>
+                          <div
+                            class="live-timeline-item"
+                            id="tl-past-2020"
+                            style="margin-bottom: 14px; position: relative"
+                          >
+                            <div
+                              style="
+                                position: absolute;
+                                left: -19px;
+                                top: 3px;
+                                width: 11px;
+                                height: 11px;
+                                border-radius: 50%;
+                                background: #fff;
+                                border: 2px solid #1c1712;
+                              "
+                            ></div>
+                            <div
+                              style="
+                                font-size: 12px;
+                                color: #1c1712;
+                                font-weight: 900;
+                              "
+                            >
+                              2020, Jun, 09 &nbsp;&nbsp; China
+                            </div>
+                            <div
+                              class="live-match-card"
+                              style="margin: 4px 0 0 0; padding: 10px 12px"
+                            >
+                              <div
+                                class="live-acc-title"
+                                style="font-size: 14px"
+                              >
+                                China Invitational 2020
+                              </div>
+                              <div
+                                style="
+                                  font-size: 11px;
+                                  color: #64748b;
+                                  margin-top: 2px;
+                                "
+                              >
+                                Players: Ding Liren, Carlsen, Nakamura
+                              </div>
                             </div>
                           </div>
 
                           <!-- Past Event 2 (schedule_3_scroll_up.JPG: 2023, Feb, 14 Norway) -->
-                          <div class="live-timeline-item" id="tl-past-2023feb" style="margin-bottom: 14px; position: relative;">
-                            <div style="position: absolute; left: -19px; top: 3px; width: 11px; height: 11px; border-radius: 50%; background: #fff; border: 2px solid #1c1712;"></div>
-                            <div style="font-size: 12px; color: #1c1712; font-weight: 900;">2023, Feb, 14 &nbsp;&nbsp; Norway</div>
-                            <div class="live-match-card" style="margin: 4px 0 0 0; padding: 10px 12px;">
-                              <div class="live-acc-title" style="font-size: 14px;">Norway Chess Challenge 2023</div>
-                              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Players: Carlsen, Firouzja, So</div>
+                          <div
+                            class="live-timeline-item"
+                            id="tl-past-2023feb"
+                            style="margin-bottom: 14px; position: relative"
+                          >
+                            <div
+                              style="
+                                position: absolute;
+                                left: -19px;
+                                top: 3px;
+                                width: 11px;
+                                height: 11px;
+                                border-radius: 50%;
+                                background: #fff;
+                                border: 2px solid #1c1712;
+                              "
+                            ></div>
+                            <div
+                              style="
+                                font-size: 12px;
+                                color: #1c1712;
+                                font-weight: 900;
+                              "
+                            >
+                              2023, Feb, 14 &nbsp;&nbsp; Norway
+                            </div>
+                            <div
+                              class="live-match-card"
+                              style="margin: 4px 0 0 0; padding: 10px 12px"
+                            >
+                              <div
+                                class="live-acc-title"
+                                style="font-size: 14px"
+                              >
+                                Norway Chess Challenge 2023
+                              </div>
+                              <div
+                                style="
+                                  font-size: 11px;
+                                  color: #64748b;
+                                  margin-top: 2px;
+                                "
+                              >
+                                Players: Carlsen, Firouzja, So
+                              </div>
                             </div>
                           </div>
 
                           <!-- Past Event 3 (schedule_3_default.JPG: 2023, Aug, 17 Germany) -->
-                          <div class="live-timeline-item" id="tl-past-2023aug" style="margin-bottom: 14px; position: relative;">
-                            <div style="position: absolute; left: -19px; top: 3px; width: 11px; height: 11px; border-radius: 50%; background: #fff; border: 2px solid #1c1712;"></div>
-                            <div style="font-size: 12px; color: #1c1712; font-weight: 900;">2023, Aug, 17 &nbsp;&nbsp; Germany</div>
-                            <div class="live-match-card" style="margin: 4px 0 0 0; padding: 10px 12px;">
-                              <div class="live-acc-title" style="font-size: 14px;">Germany Masters 2023</div>
-                              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Players: Liêm, Carlsen, Caruana</div>
+                          <div
+                            class="live-timeline-item"
+                            id="tl-past-2023aug"
+                            style="margin-bottom: 14px; position: relative"
+                          >
+                            <div
+                              style="
+                                position: absolute;
+                                left: -19px;
+                                top: 3px;
+                                width: 11px;
+                                height: 11px;
+                                border-radius: 50%;
+                                background: #fff;
+                                border: 2px solid #1c1712;
+                              "
+                            ></div>
+                            <div
+                              style="
+                                font-size: 12px;
+                                color: #1c1712;
+                                font-weight: 900;
+                              "
+                            >
+                              2023, Aug, 17 &nbsp;&nbsp; Germany
+                            </div>
+                            <div
+                              class="live-match-card"
+                              style="margin: 4px 0 0 0; padding: 10px 12px"
+                            >
+                              <div
+                                class="live-acc-title"
+                                style="font-size: 14px"
+                              >
+                                Germany Masters 2023
+                              </div>
+                              <div
+                                style="
+                                  font-size: 11px;
+                                  color: #64748b;
+                                  margin-top: 2px;
+                                "
+                              >
+                                Players: Liêm, Carlsen, Caruana
+                              </div>
                             </div>
                           </div>
 
                           <!-- TODAY ANCHOR (RED HORIZONTAL LINE & NODE MATCHING EXACT SKETCH) -->
-                          <div class="live-timeline-item today" id="tl-today" style="margin: 16px 0; position: relative;">
-                            <div style="position: absolute; left: -21px; top: 4px; width: 15px; height: 15px; border-radius: 50%; background: #ef4444; border: 2px solid #1c1712; z-index: 5;"></div>
-                            <div style="border-top: 3.5px solid #ef4444; margin-left: -20px; padding-top: 6px; padding-left: 20px;">
-                              <span style="font-family: var(--font-display); font-size: 15px; font-weight: 900; color: #ef4444; background: #fff; padding: 2px 8px; border-radius: 6px; border: 1.5px solid #ef4444; box-shadow: 2px 2px 0 rgba(239, 68, 68, 0.2);">
+                          <div
+                            class="live-timeline-item today"
+                            id="tl-today"
+                            style="margin: 16px 0; position: relative"
+                          >
+                            <div
+                              style="
+                                position: absolute;
+                                left: -21px;
+                                top: 4px;
+                                width: 15px;
+                                height: 15px;
+                                border-radius: 50%;
+                                background: #ef4444;
+                                border: 2px solid #1c1712;
+                                z-index: 5;
+                              "
+                            ></div>
+                            <div
+                              style="
+                                border-top: 3.5px solid #ef4444;
+                                margin-left: -20px;
+                                padding-top: 6px;
+                                padding-left: 20px;
+                              "
+                            >
+                              <span
+                                style="
+                                  font-family: var(--font-display);
+                                  font-size: 15px;
+                                  font-weight: 900;
+                                  color: #ef4444;
+                                  background: #fff;
+                                  padding: 2px 8px;
+                                  border-radius: 6px;
+                                  border: 1.5px solid #ef4444;
+                                  box-shadow: 2px 2px 0 rgba(239, 68, 68, 0.2);
+                                "
+                              >
                                 Today
                               </span>
                             </div>
                           </div>
 
                           <!-- Future Event 1 (schedule_3_default.JPG: 2027, Jan, 11 N. America) -->
-                          <div class="live-timeline-item" id="tl-future-2027" style="margin-top: 14px; margin-bottom: 14px; position: relative;">
-                            <div style="position: absolute; left: -19px; top: 3px; width: 11px; height: 11px; border-radius: 50%; background: #fff; border: 2px solid #1c1712;"></div>
-                            <div style="font-size: 12px; color: #1c1712; font-weight: 900;">2027, Jan, 11 &nbsp;&nbsp; N. America</div>
-                            <div class="live-match-card" style="margin: 4px 0 0 0; padding: 10px 12px;">
-                              <div class="live-acc-title" style="font-size: 14px;">N. America Open 2027</div>
-                              <div style="font-size: 11px; color: #2563eb; margin-top: 2px; font-weight: 700;">Registration Open</div>
+                          <div
+                            class="live-timeline-item"
+                            id="tl-future-2027"
+                            style="
+                              margin-top: 14px;
+                              margin-bottom: 14px;
+                              position: relative;
+                            "
+                          >
+                            <div
+                              style="
+                                position: absolute;
+                                left: -19px;
+                                top: 3px;
+                                width: 11px;
+                                height: 11px;
+                                border-radius: 50%;
+                                background: #fff;
+                                border: 2px solid #1c1712;
+                              "
+                            ></div>
+                            <div
+                              style="
+                                font-size: 12px;
+                                color: #1c1712;
+                                font-weight: 900;
+                              "
+                            >
+                              2027, Jan, 11 &nbsp;&nbsp; N. America
+                            </div>
+                            <div
+                              class="live-match-card"
+                              style="margin: 4px 0 0 0; padding: 10px 12px"
+                            >
+                              <div
+                                class="live-acc-title"
+                                style="font-size: 14px"
+                              >
+                                N. America Open 2027
+                              </div>
+                              <div
+                                style="
+                                  font-size: 11px;
+                                  color: #2563eb;
+                                  margin-top: 2px;
+                                  font-weight: 700;
+                                "
+                              >
+                                Registration Open
+                              </div>
                             </div>
                           </div>
 
                           <!-- Future Event 2 (schedule_3_scroll_down.JPG: 2028, Mar, 27 France) -->
-                          <div class="live-timeline-item" id="tl-future-2028" style="margin-bottom: 14px; position: relative;">
-                            <div style="position: absolute; left: -19px; top: 3px; width: 11px; height: 11px; border-radius: 50%; background: #fff; border: 2px solid #1c1712;"></div>
-                            <div style="font-size: 12px; color: #1c1712; font-weight: 900;">2028, Mar, 27 &nbsp;&nbsp; France</div>
-                            <div class="live-match-card" style="margin: 4px 0 0 0; padding: 10px 12px;">
-                              <div class="live-acc-title" style="font-size: 14px;">France World Tour 2028</div>
-                              <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Upcoming Event</div>
+                          <div
+                            class="live-timeline-item"
+                            id="tl-future-2028"
+                            style="margin-bottom: 14px; position: relative"
+                          >
+                            <div
+                              style="
+                                position: absolute;
+                                left: -19px;
+                                top: 3px;
+                                width: 11px;
+                                height: 11px;
+                                border-radius: 50%;
+                                background: #fff;
+                                border: 2px solid #1c1712;
+                              "
+                            ></div>
+                            <div
+                              style="
+                                font-size: 12px;
+                                color: #1c1712;
+                                font-weight: 900;
+                              "
+                            >
+                              2028, Mar, 27 &nbsp;&nbsp; France
+                            </div>
+                            <div
+                              class="live-match-card"
+                              style="margin: 4px 0 0 0; padding: 10px 12px"
+                            >
+                              <div
+                                class="live-acc-title"
+                                style="font-size: 14px"
+                              >
+                                France World Tour 2028
+                              </div>
+                              <div
+                                style="
+                                  font-size: 11px;
+                                  color: #64748b;
+                                  margin-top: 2px;
+                                "
+                              >
+                                Upcoming Event
+                              </div>
                             </div>
                           </div>
 
                           <!-- END OF TIMELINE TEXT (schedule_3_scroll_down.JPG: No More :() -->
-                          <div style="text-align: center; margin: 24px 0 14px; font-family: var(--font-display); font-size: 16px; font-weight: 900; color: #64748b;">
+                          <div
+                            style="
+                              text-align: center;
+                              margin: 24px 0 14px;
+                              font-family: var(--font-display);
+                              font-size: 16px;
+                              font-weight: 900;
+                              color: #64748b;
+                            "
+                          >
                             No More :(
                           </div>
 
                           <!-- BOTTOM AXIS FOOTER: Future -->
-                          <div style="margin-left: -14px; margin-top: 10px; margin-bottom: 20px; font-family: var(--font-display); font-size: 14px; font-weight: 900; color: #1c1712;">
+                          <div
+                            style="
+                              margin-left: -14px;
+                              margin-top: 10px;
+                              margin-bottom: 20px;
+                              font-family: var(--font-display);
+                              font-size: 14px;
+                              font-weight: 900;
+                              color: #1c1712;
+                            "
+                          >
                             ⏬ Future
                           </div>
                         </div>
@@ -5756,12 +6040,12 @@
                   Encourages think-aloud protocol. Does not hint or assist.
                 </p>
               </div>
-              <div class="role-card" style="border-color: var(--accent)">
-                <div class="role-card__icon">🖥️</div>
-                <h3>Computer</h3>
+              <div class="role-card" style="border-color: var(--accent); box-shadow: 6px 6px 0 var(--accent);">
+                <div class="role-card__icon">📱</div>
+                <h3>Mobile</h3>
                 <p>
-                  Stands behind the paper prototype. Swaps paper pieces when
-                  user taps an element. Simulates system feedback silently.
+                  Operates the paper phone prototype. Swaps paper screens and overlays when
+                  user taps an element. Simulates mobile UI responses silently.
                 </p>
               </div>
               <div class="role-card">
@@ -5774,19 +6058,22 @@
                 </p>
               </div>
             </div>
-            <div class="reveal" style="margin-top: 36px">
+            <div class="reveal" style="margin-top: 36px; display: flex; justify-content: center; width: 100%;">
               <div
                 style="
                   background: var(--bg-secondary);
-                  padding: 28px 36px;
+                  padding: 28px 48px;
                   border-radius: 12px;
+                  border: 2px solid var(--border-color);
                   display: flex;
                   align-items: center;
-                  gap: 40px;
+                  justify-content: center;
+                  gap: 48px;
+                  width: 100%;
                 "
               >
-                <div style="text-align: center">
-                  <div class="stat-big" style="font-size: 64px">2—3</div>
+                <div style="text-align: center; flex: 1;">
+                  <div class="stat-big" style="font-size: 56px">3</div>
                   <div class="stat-label">Participants</div>
                 </div>
                 <div
@@ -5796,7 +6083,7 @@
                     background: var(--border-color);
                   "
                 ></div>
-                <div style="text-align: center">
+                <div style="text-align: center; flex: 1;">
                   <div class="stat-big" style="font-size: 56px">2</div>
                   <div class="stat-label">Tasks Per Session</div>
                 </div>
@@ -5807,7 +6094,7 @@
                     background: var(--border-color);
                   "
                 ></div>
-                <div style="text-align: center">
+                <div style="text-align: center; flex: 1;">
                   <div class="stat-big" style="font-size: 56px">3</div>
                   <div class="stat-label">Variants Per Task</div>
                 </div>
@@ -5818,7 +6105,7 @@
                     background: var(--border-color);
                   "
                 ></div>
-                <div style="text-align: center">
+                <div style="text-align: center; flex: 1;">
                   <div class="stat-big" style="font-size: 56px">6</div>
                   <div class="stat-label">Total Test Rounds</div>
                 </div>
@@ -5830,72 +6117,68 @@
         </section>
 
         <!-- ===========================================
-                 SLIDE 16: TESTING RESULTS (PLACEHOLDER)
+                 SLIDE 16: QUALITATIVE TESTING RESULTS
                  Presenter: Người 4
                  =========================================== -->
         <section class="slide" data-presenter="4">
           <div class="accent-bar"></div>
           <div class="section-num">04</div>
           <div class="slide-content slide-content--top">
-            <h2 class="reveal" style="font-size: 56px; margin-bottom: 32px">
-              Testing Results
+            <div class="tag tag--filled reveal" style="margin-bottom: 16px">
+              FORMATIVE QUALITATIVE STUDY
+            </div>
+            <h2 class="reveal" style="font-size: 56px; margin-bottom: 28px">
+              Observations & Qualitative Feedback
             </h2>
-            <div class="two-col reveal" style="gap: 40px; align-items: start">
-              <div>
-                <div class="tag" style="margin-bottom: 16px">
-                  QUANTITATIVE DATA
+            <!-- 4-Row Sequential Layout (Standardized Bullet & Bold Typography) -->
+            <div class="reveal" style="display: flex; flex-direction: column; gap: 18px; width: 100%;">
+              <!-- Row 1: Task 1 Behavioral Observations -->
+              <div style="background: #ffffff; border: 2.5px solid #1c1712; border-left: 8px solid var(--accent); border-radius: 14px; padding: 20px 28px; box-shadow: 4px 4px 0 #1c1712;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+                  <span class="tag" style="font-size: 16px; padding: 4px 14px; font-weight: 800; border-color: #1c1712; color: #1c1712;">01 · TASK 1 OBSERVATIONS</span>
+                  <span style="font-family: var(--font-display); font-size: 26px; font-weight: 800; color: var(--text-primary);">Navigation Bar Behaviors</span>
                 </div>
-                <div class="placeholder-box" style="margin-bottom: 20px">
-                  📊 Tap count, completion time, error rate<br />per variant —
-                  to be filled after testing
+                <div style="font-size: 23px; color: var(--text-secondary); line-height: 1.45;">
+                  • <strong>Bottom Nav (V1):</strong> Natural thumb reach while walking with zero phone-grip shifting; immediate 1-tap reaction.<br />
+                  • <strong>FAB (V2) & Hamburger (V3):</strong> Noticeable hesitation locating menu; full-screen overlay disoriented users and caused context loss.
                 </div>
-                <table class="compare-table" style="font-size: 22px">
-                  <thead>
-                    <tr>
-                      <th>Metric</th>
-                      <th>V1</th>
-                      <th>V2</th>
-                      <th>V3</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Avg. Taps</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td>—</td>
-                    </tr>
-                    <tr>
-                      <td>Avg. Time (s)</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td>—</td>
-                    </tr>
-                    <tr>
-                      <td>Error Count</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td>—</td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
-              <div>
-                <div class="tag" style="margin-bottom: 16px">
-                  QUALITATIVE FEEDBACK
+
+              <!-- Row 2: Task 2 Behavioral Observations -->
+              <div style="background: #ffffff; border: 2.5px solid #1c1712; border-left: 8px solid var(--accent); border-radius: 14px; padding: 20px 28px; box-shadow: 4px 4px 0 #1c1712;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+                  <span class="tag" style="font-size: 16px; padding: 4px 14px; font-weight: 800; border-color: #1c1712; color: #1c1712;">02 · TASK 2 OBSERVATIONS</span>
+                  <span style="font-family: var(--font-display); font-size: 26px; font-weight: 800; color: var(--text-primary);">Schedule Lookup Behaviors</span>
                 </div>
-                <div class="placeholder-box">
-                  💬 User observations, pain points, positive reactions,
-                  think-aloud notes — to be filled after testing
+                <div style="font-size: 23px; color: var(--text-secondary); line-height: 1.45;">
+                  • <strong>Accordion Cards (V1):</strong> Users immediately understood the ▼ chevron for instant inline player lookups without reloading.<br />
+                  • <strong>Date Filter (V2) & Timeline (V3):</strong> Loved chessboard analysis on detail view, but multi-step dropdowns added friction.
                 </div>
-                <div style="margin-top: 20px">
-                  <div class="tag" style="margin-bottom: 16px">
-                    KEY FINDINGS
-                  </div>
-                  <div class="placeholder-box">
-                    🔍 Top insights from formative testing sessions — to be
-                    filled after testing
-                  </div>
+              </div>
+
+              <!-- Row 3: Think-Aloud User Quotes -->
+              <div style="background: #ffffff; border: 2.5px solid #1c1712; border-left: 8px solid var(--accent); border-radius: 14px; padding: 20px 28px; box-shadow: 4px 4px 0 #1c1712;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+                  <span class="tag" style="font-size: 16px; padding: 4px 14px; font-weight: 800; border-color: #1c1712; color: #1c1712;">03 · USER FEEDBACK</span>
+                  <span style="font-family: var(--font-display); font-size: 26px; font-weight: 800; color: var(--text-primary);">Think-Aloud Quotes</span>
+                </div>
+                <div style="font-size: 23px; color: var(--text-secondary); line-height: 1.45;">
+                  • <strong>Participant 1 (T1-V1):</strong> "Bottom Nav is effortless — my thumb rests right there while walking."<br />
+                  • <strong>Participant 2 (T2-V1):</strong> "Inline card expansion is instant — I don't lose my reading context."<br />
+                  • <strong>Participant 3 (T2-V2):</strong> "The chessboard analysis on the detail screen looks professional."
+                </div>
+              </div>
+
+              <!-- Row 4: Usability Issues & Breakdowns -->
+              <div style="background: #ffffff; border: 2.5px solid #1c1712; border-left: 8px solid var(--accent); border-radius: 14px; padding: 20px 28px; box-shadow: 4px 4px 0 #1c1712;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+                  <span class="tag" style="font-size: 16px; padding: 4px 14px; font-weight: 800; border-color: var(--accent); color: var(--accent);">04 · KEY BREAKDOWNS</span>
+                  <span style="font-family: var(--font-display); font-size: 26px; font-weight: 800; color: var(--accent);">Usability Issues Identified</span>
+                </div>
+                <div style="font-size: 23px; color: var(--text-secondary); line-height: 1.45;">
+                  • <strong>Discoverability Issue:</strong> FAB hides menu items until tapped, causing trial-and-error.<br />
+                  • <strong>Context Loss:</strong> Full-screen overlay breaks page continuity with current reading screen.<br />
+                  • <strong>Filter Friction:</strong> Mandatory date pickers add unnecessary steps for casual browsing.
                 </div>
               </div>
             </div>
@@ -5905,58 +6188,91 @@
         </section>
 
         <!-- ===========================================
-                 SLIDE 17: BEST VARIANT SELECTION (PLACEHOLDER)
+                 SLIDE 17: BEST VARIANT SELECTION
                  Presenter: Người 5
                  =========================================== -->
         <section class="slide" data-presenter="5">
           <div class="accent-bar"></div>
           <div class="section-num">05</div>
           <div class="slide-content slide-content--top">
-            <div class="tag tag--filled reveal" style="margin-bottom: 20px">
-              CONCLUSION
+            <div class="tag tag--filled reveal" style="margin-bottom: 16px">
+              CONCLUSION & NEXT STEPS
             </div>
-            <h2 class="reveal" style="font-size: 56px; margin-bottom: 32px">
+            <h2 class="reveal" style="font-size: 56px; margin-bottom: 28px">
               Best Variant Selection
             </h2>
-            <div class="two-col reveal" style="gap: 40px; align-items: start">
-              <div>
-                <h3
-                  style="
-                    font-size: 32px;
-                    margin-bottom: 16px;
-                    color: var(--accent);
-                  "
-                >
-                  Task 1: Navigation
-                </h3>
-                <div class="placeholder-box" style="min-height: 180px">
-                  🏆 Selected variant & rationale<br />based on testing results
-                  — to be filled
+            <!-- Top: 2 Selected Variant Cards (Unified Palette) -->
+            <div class="two-col reveal" style="gap: 40px; align-items: stretch; margin-bottom: 28px;">
+              <!-- Task 1 Decision Card -->
+              <div style="background: #ffffff; border: 3px solid #1c1712; border-radius: 16px; padding: 26px 32px; box-shadow: 6px 6px 0 #1c1712; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                    <span class="metric-badge metric-badge--red" style="font-size: 16px; padding: 6px 16px; font-weight: 800;">SELECTED VARIANT · TASK 1</span>
+                    <span style="font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--accent);">100% SUCCESS</span>
+                  </div>
+                  <h3 style="font-size: 30px; margin-bottom: 14px; color: var(--text-primary);">
+                    Variant 1: Fixed Bottom Nav Bar
+                  </h3>
+                  <div style="font-size: 23px; color: var(--text-secondary); line-height: 1.5;">
+                    • <strong>1-Tap Instant Reach:</strong> Zero hierarchical menus needed; instant 1-handed completion.<br />
+                    • <strong>Optimal Thumb Zone:</strong> Eliminates phone slip risk while walking on campus.<br />
+                    • <strong>Zero Cognitive Load:</strong> Primary sections (Schedule, Videos, News) always visible.
+                  </div>
                 </div>
               </div>
-              <div>
-                <h3
-                  style="
-                    font-size: 28px;
-                    margin-bottom: 16px;
-                    color: var(--accent);
-                  "
-                >
-                  Task 2: Schedule
-                </h3>
-                <div class="placeholder-box" style="min-height: 180px">
-                  🏆 Selected variant & rationale<br />based on testing results
-                  — to be filled
+
+              <!-- Task 2 Decision Card -->
+              <div style="background: #ffffff; border: 3px solid #1c1712; border-radius: 16px; padding: 26px 32px; box-shadow: 6px 6px 0 #1c1712; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                    <span class="metric-badge metric-badge--red" style="font-size: 16px; padding: 6px 16px; font-weight: 800;">SELECTED VARIANT · TASK 2</span>
+                    <span style="font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--accent);">100% SUCCESS</span>
+                  </div>
+                  <h3 style="font-size: 30px; margin-bottom: 14px; color: var(--text-primary);">
+                    Variant 2: Date Filter + Detail Page
+                  </h3>
+                  <div style="font-size: 23px; color: var(--text-secondary); line-height: 1.5;">
+                    • <strong>Rapid Date Lookup:</strong> Dropdown filters for Month & Year + interactive date strip for quick searching.<br />
+                    • <strong>Rich Dedicated Match Details:</strong> "Detail →" button reveals full match view with 8x8 chessboard.<br />
+                    • <strong>Intuitive Drill-Down:</strong> Clear separation between quick date selection and deep game analysis.
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="reveal" style="margin-top: 32px">
-              <div class="tag" style="margin-bottom: 16px">
-                IMPROVEMENTS IDENTIFIED
+
+            <!-- Bottom: 3 Improvements as 3 Unified Rows -->
+            <div class="reveal">
+              <div class="tag" style="margin-bottom: 14px">
+                IMPROVEMENTS IDENTIFIED FOR PA4 (HI-FI PROTOTYPE)
               </div>
-              <div class="placeholder-box">
-                📋 List of specific improvements to apply in the hi-fi prototype
-                (PA4) — to be filled after peer review
+              <div style="display: flex; flex-direction: column; gap: 14px;">
+                <!-- Row 1 -->
+                <div style="background: #ffffff; border: 2.5px solid #1c1712; border-left: 8px solid var(--accent); border-radius: 12px; padding: 16px 26px; box-shadow: 3px 3px 0 #1c1712; display: flex; align-items: center; justify-content: space-between;">
+                  <div style="font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--accent); width: 340px; flex-shrink: 0;">
+                    1. Touch Target Compliance
+                  </div>
+                  <div style="font-size: 22px; color: var(--text-secondary); line-height: 1.4; flex: 1;">
+                    Ensure all nav items, buttons, and card chevrons strictly meet minimum 48×48px touch targets (WCAG standards).
+                  </div>
+                </div>
+                <!-- Row 2 -->
+                <div style="background: #ffffff; border: 2.5px solid #1c1712; border-left: 8px solid var(--accent); border-radius: 12px; padding: 16px 26px; box-shadow: 3px 3px 0 #1c1712; display: flex; align-items: center; justify-content: space-between;">
+                  <div style="font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--accent); width: 340px; flex-shrink: 0;">
+                    2. Motion & Active Feedback
+                  </div>
+                  <div style="font-size: 22px; color: var(--text-secondary); line-height: 1.4; flex: 1;">
+                    Implement smooth accordion expand/collapse transitions and clear active tab highlight indicators.
+                  </div>
+                </div>
+                <!-- Row 3 -->
+                <div style="background: #ffffff; border: 2.5px solid #1c1712; border-left: 8px solid var(--accent); border-radius: 12px; padding: 16px 26px; box-shadow: 3px 3px 0 #1c1712; display: flex; align-items: center; justify-content: space-between;">
+                  <div style="font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--accent); width: 340px; flex-shrink: 0;">
+                    3. Quick Search & Category Filters
+                  </div>
+                  <div style="font-size: 22px; color: var(--text-secondary); line-height: 1.4; flex: 1;">
+                    Add instant player search bar and tournament category filter tags (Open, Rapid, Blitz) for rapid lookup.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -6008,9 +6324,6 @@
             >
               <span class="metric-badge metric-badge--red">Group 06</span>
               <span class="metric-badge metric-badge--outline">CSC13112</span>
-              <span class="metric-badge metric-badge--outline"
-                >ThS. Phạm Nguyễn Sơn Tùng</span
-              >
             </div>
             <p
               class="reveal"
@@ -6399,12 +6712,44 @@
           const fab = document.getElementById("fab-btn-v2");
           const overlay = document.getElementById("radial-overlay-v2");
           const screen = document.getElementById("phoneScreen-v2");
+          const pieContainer = document.querySelector(
+            "#radial-overlay-v2 .live-pie-container",
+          );
 
           this.isFabOpen =
             typeof forceState === "boolean" ? forceState : !this.isFabOpen;
           this.createRipple(screen, "85%", "90%");
 
           if (this.isFabOpen) {
+            if (fab && screen && pieContainer) {
+              const fabLeft = fab.offsetLeft;
+              const fabTop = fab.offsetTop;
+              const fabW = fab.offsetWidth || 58;
+              const fabH = fab.offsetHeight || 58;
+              const fabCenterX = fabLeft + fabW / 2;
+              const fabCenterY = fabTop + fabH / 2;
+              const screenW = screen.offsetWidth || 340;
+              const screenH = screen.offsetHeight || 620;
+
+              const pieR = 105; // half of 210px width/height
+              const clampX = Math.max(
+                pieR + 10,
+                Math.min(screenW - pieR - 10, fabCenterX),
+              );
+              const clampY = Math.max(
+                pieR + 10,
+                Math.min(screenH - pieR - 10, fabCenterY),
+              );
+
+              pieContainer.style.position = "absolute";
+              pieContainer.style.left = `${clampX}px`;
+              pieContainer.style.top = `${clampY}px`;
+
+              const originX = fabCenterX - clampX + pieR;
+              const originY = fabCenterY - clampY + pieR;
+              pieContainer.style.transformOrigin = `${originX}px ${originY}px`;
+            }
+
             this.fabSwitchLayer(1);
             if (fab) fab.classList.add("open");
             if (overlay) overlay.classList.add("open");
@@ -6419,6 +6764,7 @@
             );
             if (activeSector) activeSector.classList.add("active");
           } else {
+            this.fabSwitchLayer(1);
             if (fab) fab.classList.remove("open");
             if (overlay) overlay.classList.remove("open");
             this.highlightSteps("step-v2", 1);
@@ -6600,7 +6946,10 @@
             maxTop = 0;
 
           const onPointerDown = (e) => {
-            if (PhoneSimulator.isFabOpen) return;
+            if (PhoneSimulator.isFabOpen) {
+              PhoneSimulator.toggleFAB(false);
+              return;
+            }
             if (e.button !== undefined && e.button !== 0) return;
 
             isDragging = true;
@@ -7052,49 +7401,55 @@
 
         /* --- Drag-to-Scroll & Mouse Wheel Isolation for Mobile UI Demo --- */
         initDragAndScroll() {
-          const bodies = document.querySelectorAll('.live-app-body, #timeline-body-t2v3, .phone-screen');
+          const bodies = document.querySelectorAll(
+            ".live-app-body, #timeline-body-t2v3, .phone-screen",
+          );
           bodies.forEach((el) => {
             if (!el || el.dataset.dragInit) return;
             el.dataset.dragInit = "true";
 
             // Prevent main presentation wheel listener from changing slides when scrolling inside phone
-            el.addEventListener('wheel', (e) => {
-              e.stopPropagation();
-            }, { passive: false });
+            el.addEventListener(
+              "wheel",
+              (e) => {
+                e.stopPropagation();
+              },
+              { passive: false },
+            );
 
             let isDown = false;
             let startY = 0;
             let scrollTop = 0;
 
-            el.addEventListener('mousedown', (e) => {
+            el.addEventListener("mousedown", (e) => {
               if (
-                e.target.tagName === 'BUTTON' ||
-                e.target.tagName === 'SELECT' ||
-                e.target.tagName === 'INPUT' ||
-                e.target.closest('.live-nav-item') ||
-                e.target.closest('.live-fab') ||
-                e.target.closest('.live-fab-center') ||
-                e.target.closest('.view-toggle-btn')
+                e.target.tagName === "BUTTON" ||
+                e.target.tagName === "SELECT" ||
+                e.target.tagName === "INPUT" ||
+                e.target.closest(".live-nav-item") ||
+                e.target.closest(".live-fab") ||
+                e.target.closest(".live-fab-center") ||
+                e.target.closest(".view-toggle-btn")
               ) {
                 return;
               }
               isDown = true;
-              el.style.cursor = 'grabbing';
+              el.style.cursor = "grabbing";
               startY = e.pageY - el.offsetTop;
               scrollTop = el.scrollTop;
             });
 
-            el.addEventListener('mouseleave', () => {
+            el.addEventListener("mouseleave", () => {
               isDown = false;
-              el.style.cursor = 'grab';
+              el.style.cursor = "grab";
             });
 
-            el.addEventListener('mouseup', () => {
+            el.addEventListener("mouseup", () => {
               isDown = false;
-              el.style.cursor = 'grab';
+              el.style.cursor = "grab";
             });
 
-            el.addEventListener('mousemove', (e) => {
+            el.addEventListener("mousemove", (e) => {
               if (!isDown) return;
               e.preventDefault();
               const y = e.pageY - el.offsetTop;
@@ -7105,17 +7460,25 @@
             // Touch support
             let touchStartY = 0;
             let touchStartScrollTop = 0;
-            el.addEventListener('touchstart', (e) => {
-              touchStartY = e.touches[0].pageY;
-              touchStartScrollTop = el.scrollTop;
-            }, { passive: true });
+            el.addEventListener(
+              "touchstart",
+              (e) => {
+                touchStartY = e.touches[0].pageY;
+                touchStartScrollTop = el.scrollTop;
+              },
+              { passive: true },
+            );
 
-            el.addEventListener('touchmove', (e) => {
-              e.stopPropagation();
-              const touchY = e.touches[0].pageY;
-              const diff = touchStartY - touchY;
-              el.scrollTop = touchStartScrollTop + diff;
-            }, { passive: true });
+            el.addEventListener(
+              "touchmove",
+              (e) => {
+                e.stopPropagation();
+                const touchY = e.touches[0].pageY;
+                const diff = touchStartY - touchY;
+                el.scrollTop = touchStartScrollTop + diff;
+              },
+              { passive: true },
+            );
           });
         },
         timelineScroll(target) {
@@ -7129,7 +7492,8 @@
           const paperImg = document.getElementById("paper-t2v3");
           if (target === "up") {
             this.createRipple(screen, "50%", "20%");
-            if (paperImg) paperImg.src = "paper_prototype/schedule_3_scroll_up.JPG";
+            if (paperImg)
+              paperImg.src = "paper_prototype/schedule_3_scroll_up.JPG";
             if (body) body.scrollTo({ top: 0, behavior: "smooth" });
             this.showToast(
               "toast-t2v3",
@@ -7138,7 +7502,8 @@
             this.highlightSteps("step-t2v3", 1);
           } else if (target === "down") {
             this.createRipple(screen, "50%", "80%");
-            if (paperImg) paperImg.src = "paper_prototype/schedule_3_scroll_down.JPG";
+            if (paperImg)
+              paperImg.src = "paper_prototype/schedule_3_scroll_down.JPG";
             if (body)
               body.scrollTo({ top: body.scrollHeight, behavior: "smooth" });
             this.showToast(
@@ -7148,7 +7513,8 @@
             this.highlightSteps("step-t2v3", 3);
           } else {
             this.createRipple(screen, "50%", "50%");
-            if (paperImg) paperImg.src = "paper_prototype/schedule_3_default.JPG";
+            if (paperImg)
+              paperImg.src = "paper_prototype/schedule_3_default.JPG";
             const todayEl = document.getElementById("tl-today");
             if (todayEl)
               todayEl.scrollIntoView({ behavior: "smooth", block: "center" });

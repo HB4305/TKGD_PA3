@@ -63,9 +63,6 @@
     <path d="M 37 42 L 53 58 M 53 42 L 37 58" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round" />
 
     <!-- Hand holding phone from bottom right -->
-    <!-- Hand base -->
-    <path class="shade" d="M 120 280 Q 180 250 230 270 L 240 350 L 100 350 Z" />
-    <path class="ink-thick" d="M 140 350 C 140 310, 170 270, 220 285" />
     
     <!-- Thumb stretching upwards desperately -->
     <path class="ink-thick" stroke="#1c1712" d="M 175 290 Q 150 240 155 205" />

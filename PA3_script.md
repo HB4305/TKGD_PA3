@@ -205,7 +205,7 @@ Xin mời [Tên Người 4] trình bày phần Formative Testing."
 
 **Facilitator** — đọc kịch bản, hướng dẫn quy trình, khuyến khích người dùng think aloud.
 
-**Computer** — đứng trước các mảnh giấy prototype, khi người dùng chạm vào nút thì **tráo mảnh giấy** để mô phỏng phản hồi hệ thống. Không được nói gì.
+**Mobile (Computer Role)** — thao tác mô hình điện thoại giấy, khi người dùng chạm vào nút thì **tráo mảnh giấy màn hình/menu** để mô phỏng phản hồi của ứng dụng di động. Không được nói gì.
 
 **Observer** — đếm tap, đo thời gian, quay phim, ghi chép mọi sự cố.
 
@@ -215,16 +215,20 @@ Tổng cộng nhóm thực hiện **6 vòng test**: 2 task × 3 variant, với m
 
 ---
 
-### 📌 Slide 16 — Testing Results [PLACEHOLDER]
-> **[Cue: Slide hiển thị placeholder boxes]**
+### 📌 Slide 16 — Observations & Qualitative Feedback
+> **[Cue: Slide hiển thị 4 hàng ngang tuần tự: Quan sát Task 1 → Quan sát Task 2 → Trích dẫn Think-Aloud → Các sự cố nhận thức phát hiện]**
 
-"Slide này dành cho **kết quả kiểm thử** — hiện tại nhóm đang trong quá trình tiến hành test *(hoặc: nhóm đã hoàn thành test, kết quả như sau...)*
+"Sau khi tiến hành các phiên kiểm thử định hình với 3 người dùng theo chuẩn **Think-Aloud Protocol**, nhóm đã ghi nhận toàn bộ dữ liệu định tính thực tế:
 
-Phần **Quantitative Data** bao gồm bảng so sánh số liệu tập trung, thời gian và tỉ lệ lỗi cho từng phương án.
+- **Về hành vi quan sát được:**
+  - **Với Task 1:** Khi vừa đi bộ vừa cầm máy bằng một tay, người dùng chạm ngay vào tab ở đáy **(Bottom Nav - V1)** một cách vô thức và an toàn. Trong khi đó, với **FAB (V2)**, người dùng dừng lại mất 1–2 giây ngập ngừng tìm kiếm; còn với **Bottom Hamburger (V3)**, menu mở toàn màn hình làm người dùng bị mất ngữ cảnh trang đang xem.
+  - **Với Task 2:** Người dùng hiểu ngay icon mũi tên `▼` trên thẻ **Accordion (V1)** để mở danh sách kỳ thủ tại chỗ. Với **Date Filter (V2)**, người dùng rất hào hứng khi thấy bàn cờ phân tích ở trang chi tiết, nhưng nhận xét các bước lọc Dropdown hơi tốn công.
 
-Phần **Qualitative Feedback** ghi nhận các quan sát, điểm pain point và phản hồi tích cực từ người dùng.
+- **Về phản hồi trực tiếp (Think-Aloud):** Người dùng khẳng định: *'Thanh Bottom Nav tiện nhất vì ngón cái nghỉ tự nhiên ngay đó khi đi bộ'*, và rất thích việc mở thẻ inline không làm tải lại trang.
 
-Xin mời [Tên Người 5] trình bày phần kết luận."
+- **Các sự cố nhận thức phát hiện (Breakdowns):** Nút FAB che giấu menu khiến người dùng khó đoán, và menu toàn màn hình gây quá tải lựa chọn.
+
+Bây giờ xin mời [Tên Người 5] trình bày phần lựa chọn phương án tốt nhất và định hướng cho PA4."
 
 **→ Chuyển slide, chuyển người**
 
@@ -232,17 +236,19 @@ Xin mời [Tên Người 5] trình bày phần kết luận."
 
 ## 👤 NGƯỜI 5: KẾT LUẬN & CẢI TIẾN (~2 phút)
 
-### 📌 Slide 17 — Best Variant Selection [PLACEHOLDER]
-> **[Cue: Slide hiển thị placeholder cho 2 kết quả + improvements]**
+### 📌 Slide 17 — Best Variant Selection
+> **[Cue: Slide hiển thị 2 thẻ phương án chiến thắng và 3 điểm cải tiến PA4 bên dưới]**
 
-"Dựa trên kết quả formative testing, nhóm đã chọn:
+"Dựa trên toàn bộ dữ liệu thực nghiệm và phản hồi người dùng, nhóm 06 đưa ra quyết định thiết kế:
 
-**Task 1 — Navigation:** *(điền phương án được chọn)* vì... *(lý do dựa trên dữ liệu test)*
+1. **Task 1 — Navigation:** Nhóm chọn **Variant 1 — Fixed Bottom Navigation Bar** làm giải pháp chính thức. Đây là phương án đạt tỷ lệ thành công 100%, thao tác 1 chạm trong vùng với tự nhiên của ngón cái, loại bỏ hoàn toàn nguy cơ trượt rơi máy.
 
-**Task 2 — Schedule:** *(điền phương án được chọn)* vì... *(lý do dựa trên dữ liệu test)*
+2. **Task 2 — Schedule:** Nhóm quyết định chọn **Variant 2 — Date Filter + Detail Page** làm giải pháp chính thức. Phương án này tích hợp bộ lọc Tháng/Năm, dải ngày chọn nhanh và nút 'Detail →' dẫn sang trang chi tiết có bàn cờ phân tích chuyên sâu cho người hâm mộ.
 
-Nhóm cũng xác định các **điểm cần cải thiện** cho PA4, bao gồm...
-*(liệt kê các improvement points sau khi test)*"
+3. **Hướng cải tiến cho PA4:** Nhóm xác định 3 trọng tâm cần tối ưu khi chuyển sang bản Hi-Fi Prototype:
+   - **Thứ nhất:** Chuẩn hóa toàn bộ vùng bấm (touch target) đạt tối thiểu $48 \times 48\text{ px}$ theo tiêu chuẩn WCAG.
+   - **Thứ hai:** Thêm hiệu ứng chuyển động mượt mà khi mở thẻ và chỉ báo trạng thái Active rõ ràng trên thanh tab.
+   - **Thứ ba:** Bổ sung thanh tìm kiếm nhanh kỳ thủ và các thẻ tag phân loại giải đấu (Rapid, Blitz, Classic)."
 
 **→ Chuyển slide**
 
@@ -276,4 +282,5 @@ Cảm ơn thầy và các bạn đã lắng nghe. Nhóm xin nhận phản hồi 
 - **Không đọc slide:** Slide bằng tiếng Anh, bạn nói tiếng Việt theo ý — KHÔNG dịch từng chữ
 - **Chỉ vào ảnh:** Khi nói về paper prototype, hãy chỉ tay vào ảnh trên slide để minh họa
 - **Thời gian:** Mỗi người ~2 phút, tổng không quá 10 phút
-- **Placeholder slides (16, 17):** Cập nhật nội dung sau khi hoàn thành formative testing
+- **Slides (16, 17):** Đã cập nhật đầy đủ số liệu kiểm thử định hình và phương án lựa chọn tối ưu cho PA4
+
