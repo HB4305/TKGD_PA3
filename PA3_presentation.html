@@ -411,7 +411,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 40px;
-        align-items: start;
+        align-items: stretch;
       }
 
       /* Paper prototype image styling */
@@ -1812,6 +1812,11 @@
         border-radius: 14px;
         padding: 34px 28px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+        box-sizing: border-box;
       }
       .role-card__icon {
         font-size: 56px;
@@ -2219,7 +2224,7 @@
           </div>
 
           <!-- Số slide hiển thị đồng bộ 100% với Slide 2 trở đi -->
-          <div class="slide-number">01 / 18</div>
+          <div class="slide-number">01 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -2350,7 +2355,7 @@
           </div>
 
           <div class="presenter-tag">Presenter 1</div>
-          <div class="slide-number">02 / 18</div>
+          <div class="slide-number">02 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -2501,7 +2506,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 1</div>
-          <div class="slide-number">03 / 18</div>
+          <div class="slide-number">03 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -2614,7 +2619,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 1</div>
-          <div class="slide-number">04 / 18</div>
+          <div class="slide-number">04 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -2724,7 +2729,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 2</div>
-          <div class="slide-number">05 / 18</div>
+          <div class="slide-number">05 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -3070,7 +3075,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 2</div>
-          <div class="slide-number">06 / 18</div>
+          <div class="slide-number">06 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -3588,7 +3593,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 2</div>
-          <div class="slide-number">07 / 18</div>
+          <div class="slide-number">07 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -3916,7 +3921,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 2</div>
-          <div class="slide-number">08 / 18</div>
+          <div class="slide-number">08 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -3995,18 +4000,18 @@
                 <div class="storyboard-cell__header">
                   <span class="storyboard-cell__badge">03 · MOTIVATION</span>
                   <div class="storyboard-cell__title">
-                    Hierarchical Drill-Down
+                    Date Filter & Detail Button
                   </div>
                 </div>
                 <div class="storyboard-cell__img-wrap">
                   <img
                     src="paper_prototype/sb_t2_f3_motivation.svg"
-                    alt="Frame 3: Date Filter & Strip Solution Idea"
+                    alt="Frame 3: Date Filter & Detail Button Solution Idea"
                     class="storyboard-cell__img"
                   />
                 </div>
                 <div class="storyboard-cell__caption">
-                  Need past vs future split & quick filters
+                  Filter by date & tap "Detail →" for deep match info
                 </div>
               </div>
 
@@ -4030,7 +4035,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 3</div>
-          <div class="slide-number">09 / 18</div>
+          <div class="slide-number">09 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -4394,7 +4399,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 3</div>
-          <div class="slide-number">10 / 18</div>
+          <div class="slide-number">10 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -5224,7 +5229,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 3</div>
-          <div class="slide-number">11 / 18</div>
+          <div class="slide-number">11 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -5789,99 +5794,13 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 3</div>
-          <div class="slide-number">12 / 18</div>
+          <div class="slide-number">12 / 17</div>
         </section>
 
-        <!-- ===========================================
-                 SLIDE 13: COMPARISON TABLE
-                 Presenter: Người 3
-                 =========================================== -->
-        <section class="slide" data-presenter="3">
-          <div class="accent-bar"></div>
-          <div class="section-num">03</div>
-          <div class="slide-content slide-content--top">
-            <h2 class="reveal" style="font-size: 56px; margin-bottom: 32px">
-              Variants Comparison
-            </h2>
 
-            <div class="reveal" style="margin-bottom: 28px">
-              <div class="tag" style="margin-bottom: 16px">
-                TASK 1 — NAVIGATION BAR
-              </div>
-              <table class="compare-table">
-                <thead>
-                  <tr>
-                    <th style="width: 25%">Criteria</th>
-                    <th>V1: Bottom Nav</th>
-                    <th>V2: FAB Menu</th>
-                    <th>V3: Bottom Hamburger</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Tap Count</td>
-                    <td class="highlight">1 Tap ★</td>
-                    <td>2 Taps</td>
-                    <td>2 Taps</td>
-                  </tr>
-                  <tr>
-                    <td>Thumb Reachability</td>
-                    <td class="highlight">Very High</td>
-                    <td class="highlight">Very High</td>
-                    <td>High</td>
-                  </tr>
-                  <tr>
-                    <td>Cognitive Load</td>
-                    <td class="highlight">Low</td>
-                    <td>Medium</td>
-                    <td>Higher</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="reveal">
-              <div class="tag" style="margin-bottom: 16px">
-                TASK 2 — SCHEDULE
-              </div>
-              <table class="compare-table">
-                <thead>
-                  <tr>
-                    <th style="width: 25%">Criteria</th>
-                    <th>V1: Accordion</th>
-                    <th>V2: Date Filter</th>
-                    <th>V3: Timeline</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Lookup Speed</td>
-                    <td class="highlight">Very Fast</td>
-                    <td>Medium</td>
-                    <td>Fast</td>
-                  </tr>
-                  <tr>
-                    <td>Info Completeness</td>
-                    <td>Adequate</td>
-                    <td class="highlight">Very High ★</td>
-                    <td>Adequate</td>
-                  </tr>
-                  <tr>
-                    <td>Interaction UX</td>
-                    <td>Simple, Familiar</td>
-                    <td>Professional</td>
-                    <td class="highlight">Unique, Visual</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="presenter-tag">Presenter 3</div>
-          <div class="slide-number">13 / 18</div>
-        </section>
 
         <!-- ===========================================
-                 SLIDE 14: FORMATIVE TESTING PLAN
+                 SLIDE 13: FORMATIVE TESTING PLAN
                  Presenter: Người 4
                  =========================================== -->
         <section class="slide" data-presenter="4">
@@ -5922,7 +5841,7 @@
                     Target Participants
                   </h3>
                   <p style="font-size: 26px; color: var(--text-secondary); line-height: 1.5">
-                    3 participants with no prior knowledge of the prototypes.
+                    3 participants (21 years old, university students) with no prior knowledge of the prototypes.
                     Chess followers and mobile web users.
                   </p>
                 </div>
@@ -5964,11 +5883,11 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 4</div>
-          <div class="slide-number">14 / 18</div>
+          <div class="slide-number">13 / 17</div>
         </section>
 
         <!-- ===========================================
-                 SLIDE 15: TESTING PROCEDURE & ROLES
+                 SLIDE 14: TESTING PROCEDURE & ROLES
                  Presenter: Người 4
                  =========================================== -->
         <section class="slide" data-presenter="4">
@@ -5987,7 +5906,7 @@
                   Encourages think-aloud protocol. Does not hint or assist.
                 </p>
               </div>
-              <div class="role-card" style="border-color: var(--accent); box-shadow: 6px 6px 0 var(--accent);">
+              <div class="role-card">
                 <div class="role-card__icon">📱</div>
                 <h3>Mobile</h3>
                 <p>
@@ -5999,9 +5918,8 @@
                 <div class="role-card__icon">📝</div>
                 <h3>Observer</h3>
                 <p>
-                  Counts taps, measures time. Notes errors, hesitations, rage
-                  clicks. Records video for analysis. Captures qualitative
-                  feedback.
+                  Systematically observes qualitative behaviors. Notes hesitations & verbal
+                  feedback. Records video for qualitative analysis.
                 </p>
               </div>
             </div>
@@ -6060,7 +5978,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 4</div>
-          <div class="slide-number">15 / 18</div>
+          <div class="slide-number">14 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -6085,9 +6003,10 @@
                   <span class="tag" style="font-size: 16px; padding: 4px 14px; font-weight: 800; border-color: #1c1712; color: #1c1712;">01 · TASK 1 OBSERVATIONS</span>
                   <span style="font-family: var(--font-display); font-size: 26px; font-weight: 800; color: var(--text-primary);">Navigation Bar Behaviors</span>
                 </div>
-                <div style="font-size: 23px; color: var(--text-secondary); line-height: 1.45;">
+                <div style="font-size: 22px; color: var(--text-secondary); line-height: 1.45;">
                   • <strong>Bottom Nav (V1):</strong> Natural thumb reach while walking with zero phone-grip shifting; immediate 1-tap reaction.<br />
-                  • <strong>FAB (V2) & Hamburger (V3):</strong> Noticeable hesitation locating menu; full-screen overlay disoriented users and caused context loss.
+                  • <strong>FAB (V2):</strong> Noticeable hesitation locating menu before tapping.<br />
+                  • <strong>Bottom Hamburger (V3):</strong> Full-screen overlay disoriented users and caused context loss.
                 </div>
               </div>
 
@@ -6097,9 +6016,10 @@
                   <span class="tag" style="font-size: 16px; padding: 4px 14px; font-weight: 800; border-color: #1c1712; color: #1c1712;">02 · TASK 2 OBSERVATIONS</span>
                   <span style="font-family: var(--font-display); font-size: 26px; font-weight: 800; color: var(--text-primary);">Schedule Lookup Behaviors</span>
                 </div>
-                <div style="font-size: 23px; color: var(--text-secondary); line-height: 1.45;">
+                <div style="font-size: 22px; color: var(--text-secondary); line-height: 1.45;">
                   • <strong>Accordion Cards (V1):</strong> Users immediately understood the ▼ chevron for instant inline player lookups without reloading.<br />
-                  • <strong>Date Filter (V2) & Timeline (V3):</strong> Loved chessboard analysis on detail view, but multi-step dropdowns added friction.
+                  • <strong>Date Filter (V2):</strong> Loved chessboard analysis on detail view, but multi-step dropdowns added friction.<br />
+                  • <strong>Timeline (V3):</strong> Users had to scroll up multiple times to locate past tournaments/events in chronological order.
                 </div>
               </div>
 
@@ -6131,7 +6051,7 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 4</div>
-          <div class="slide-number">16 / 18</div>
+          <div class="slide-number">15 / 17</div>
         </section>
 
         <!-- ===========================================
@@ -6224,11 +6144,11 @@
             </div>
           </div>
           <div class="presenter-tag">Presenter 5</div>
-          <div class="slide-number">17 / 18</div>
+          <div class="slide-number">16 / 17</div>
         </section>
 
         <!-- ===========================================
-                 SLIDE 18: THANK YOU & Q&A
+                 SLIDE 17: THANK YOU & Q&A
                  Presenter: Người 5
                  =========================================== -->
         <section class="slide thankyou-slide" data-presenter="5">
@@ -6313,7 +6233,7 @@
             "
           ></div>
           <div class="presenter-tag">Presenter 5</div>
-          <div class="slide-number">18 / 18</div>
+          <div class="slide-number">17 / 17</div>
         </section>
       </main>
     </div>

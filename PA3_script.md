@@ -160,35 +160,20 @@ Như các bạn thấy trong ảnh bên phải — trang detail hiển thị **c
 
 Đây là phương án **trực quan nhất** — trải nghiệm cuộn 2 chiều rất mượt mà và dễ hiểu. Tuy nhiên, lượng thông tin hiển thị ở mức vừa đủ."
 
-**→ Chuyển slide**
-
----
-
-### 📌 Slide 13 — Comparison Table
-> **[Cue: Slide hiển thị 2 bảng so sánh]**
-
-"Slide này tổng hợp **bảng so sánh** cho cả 2 Task.
-
-Với **Task 1**: Phương án Bottom Nav Bar nổi bật nhất về số lượt chạm — chỉ 1 tap — và cognitive load thấp.
-
-Với **Task 2**: Phương án Date Filter + Detail Page cung cấp thông tin đầy đủ nhất, trong khi Accordion nhanh nhất, và Timeline độc đáo nhất về trải nghiệm.
-
-Xin mời [Tên Người 4] trình bày phần Formative Testing."
-
 **→ Chuyển slide, chuyển người**
 
 ---
 
 ## 👤 NGƯỜI 4: FORMATIVE TESTING (~2 phút)
 
-### 📌 Slide 14 — Testing Plan
+### 📌 Slide 13 — Testing Plan
 > **[Cue: Slide hiển thị mục tiêu, đối tượng người tham gia, phương pháp test và dữ liệu định tính thu thập]**
 
 "Nhóm xây dựng **kế hoạch kiểm thử định hình (Formative Testing)** với các yếu tố sau:
 
 **Mục tiêu:** Đánh giá khả năng sử dụng của 6 bản lo-fi prototype trước khi phát triển bản hi-fi.
 
-**Đối tượng:** 3 người tham gia chưa có kiến thức trước về các mô hình prototype.
+**Đối tượng:** 3 người tham gia (21 tuổi, sinh viên đại học) chưa có kiến thức trước về các mô hình prototype.
 
 **Phương pháp:** Paper Prototype Testing kết hợp **Think-Aloud Protocol** — ghi nhận toàn bộ dữ liệu định tính gồm quan sát hành vi, phản hồi và các điểm cải tiến."
 
@@ -196,7 +181,7 @@ Xin mời [Tên Người 4] trình bày phần Formative Testing."
 
 ---
 
-### 📌 Slide 15 — Testing Procedure & Roles
+### 📌 Slide 14 — Testing Procedure & Roles
 > **[Cue: Slide hiển thị 3 role cards + số liệu tổng quan]**
 
 "Trong mỗi phiên test, nhóm phân công **3 vai trò**:
@@ -205,7 +190,7 @@ Xin mời [Tên Người 4] trình bày phần Formative Testing."
 
 **Mobile (Computer Role)** — thao tác mô hình điện thoại giấy, khi người dùng chạm vào nút thì **tráo mảnh giấy màn hình/menu** để mô phỏng phản hồi của ứng dụng di động. Không được nói gì.
 
-**Observer** — đếm tap, đo thời gian, quay phim, ghi chép mọi sự cố.
+**Observer** — quan sát và ghi chép toàn bộ dữ liệu định tính: các cử chỉ ngập ngừng, điểm gây bối rối, phản hồi bằng lời và quay video để phân tích định tính.
 
 Tổng cộng nhóm thực hiện **6 vòng test**: 2 task × 3 variant, với mỗi người tham gia."
 
@@ -213,14 +198,14 @@ Tổng cộng nhóm thực hiện **6 vòng test**: 2 task × 3 variant, với m
 
 ---
 
-### 📌 Slide 16 — Observations & Qualitative Feedback
+### 📌 Slide 15 — Observations & Qualitative Feedback
 > **[Cue: Slide hiển thị 4 hàng ngang tuần tự: Quan sát Task 1 → Quan sát Task 2 → Trích dẫn Think-Aloud → Các sự cố nhận thức phát hiện]**
 
 "Sau khi tiến hành các phiên kiểm thử định hình với 3 người dùng theo chuẩn **Think-Aloud Protocol**, nhóm đã ghi nhận toàn bộ dữ liệu định tính thực tế:
 
 - **Về hành vi quan sát được:**
   - **Với Task 1:** Khi vừa đi bộ vừa cầm máy bằng một tay, người dùng chạm ngay vào tab ở đáy **(Bottom Nav - V1)** một cách vô thức và an toàn. Trong khi đó, với **FAB (V2)**, người dùng dừng lại mất 1–2 giây ngập ngừng tìm kiếm; còn với **Bottom Hamburger (V3)**, menu mở toàn màn hình làm người dùng bị mất ngữ cảnh trang đang xem.
-  - **Với Task 2:** Người dùng hiểu ngay icon mũi tên `▼` trên thẻ **Accordion (V1)** để mở danh sách kỳ thủ tại chỗ. Với **Date Filter (V2)**, người dùng rất hào hứng khi thấy bàn cờ phân tích ở trang chi tiết, nhưng nhận xét các bước lọc Dropdown hơi tốn công.
+  - **Với Task 2:** Người dùng hiểu ngay icon mũi tên `▼` trên thẻ **Accordion (V1)** để mở danh sách kỳ thủ tại chỗ. Với **Date Filter (V2)**, người dùng rất hào hứng khi thấy bàn cờ phân tích ở trang chi tiết, nhưng thao tác lọc Dropdown hơi tốn công. Với **Timeline (V3)**, người dùng phải cuộn màn hình lên nhiều lần mới tìm thấy các giải đấu/tin tức trong quá khứ.
 
 - **Về phản hồi trực tiếp (Think-Aloud):** Người dùng khẳng định: *'Thanh Bottom Nav tiện nhất vì ngón cái nghỉ tự nhiên ngay đó khi đi bộ'*, và rất thích việc mở thẻ inline không làm tải lại trang.
 
@@ -252,7 +237,7 @@ Bây giờ xin mời [Tên Người 5] trình bày phần lựa chọn phương 
 
 ---
 
-### 📌 Slide 18 — Thank You & Q&A
+### 📌 Slide 17 — Thank You & Q&A
 > **[Cue: Slide hiển thị Thank You + thông tin nhóm]**
 
 "Đó là toàn bộ nội dung PA3 của nhóm 06. Tóm lại, nhóm đã:
