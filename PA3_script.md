@@ -173,7 +173,7 @@ Như các bạn thấy trong ảnh bên phải — trang detail hiển thị **c
 
 **Mục tiêu:** Đánh giá khả năng sử dụng của 6 bản lo-fi prototype trước khi phát triển bản hi-fi.
 
-**Đối tượng:** 3 người tham gia (21 tuổi, sinh viên đại học) chưa có kiến thức trước về các mô hình prototype.
+**Đối tượng:** 3 người tham gia (18–25 tuổi, sinh viên đại học) chưa có kiến thức trước về các mô hình prototype.
 
 **Phương pháp:** Paper Prototype Testing kết hợp **Think-Aloud Protocol** — ghi nhận toàn bộ dữ liệu định tính gồm quan sát hành vi, phản hồi và các điểm cải tiến."
 
@@ -198,18 +198,31 @@ Tổng cộng nhóm thực hiện **6 vòng test**: 2 task × 3 variant, với m
 
 ---
 
-### 📌 Slide 15 — Observations & Qualitative Feedback
-> **[Cue: Slide hiển thị 4 hàng ngang tuần tự: Quan sát Task 1 → Quan sát Task 2 → Trích dẫn Think-Aloud → Các sự cố nhận thức phát hiện]**
+### 📌 Slide 15 — Task Behavioral Observations
+> **[Cue: Slide hiển thị 2 khối quan sát hành vi cho Task 1 và Task 2]**
 
-"Sau khi tiến hành các phiên kiểm thử định hình với 3 người dùng theo chuẩn **Think-Aloud Protocol**, nhóm đã ghi nhận toàn bộ dữ liệu định tính thực tế:
+"Tiếp theo, về **quan sát hành vi thực tế (Behavioral Observations)** qua 6 vòng test:
 
-- **Về hành vi quan sát được:**
-  - **Với Task 1:** Khi vừa đi bộ vừa cầm máy bằng một tay, người dùng chạm ngay vào tab ở đáy **(Bottom Nav - V1)** một cách vô thức và an toàn. Trong khi đó, với **FAB (V2)**, người dùng dừng lại mất 1–2 giây ngập ngừng tìm kiếm; còn với **Bottom Hamburger (V3)**, menu mở toàn màn hình làm người dùng bị mất ngữ cảnh trang đang xem.
-  - **Với Task 2:** Người dùng hiểu ngay icon mũi tên `▼` trên thẻ **Accordion (V1)** để mở danh sách kỳ thủ tại chỗ. Với **Date Filter (V2)**, người dùng rất hào hứng khi thấy bàn cờ phân tích ở trang chi tiết, nhưng thao tác lọc Dropdown hơi tốn công. Với **Timeline (V3)**, người dùng phải cuộn màn hình lên nhiều lần mới tìm thấy các giải đấu/tin tức trong quá khứ.
+- **Với Task 1 (Navigation Bar):** Khi vừa đi bộ vừa cầm máy 1 tay, người dùng chạm ngay vào tab ở đáy **(Bottom Nav - V1)** một cách vô thức và an toàn. Với **FAB (V2)**, người dùng bị ngập ngừng mất 1–2 giây để tìm nút. Còn với **Bottom Hamburger (V3)**, menu mở tràn toàn màn hình gây mất ngữ cảnh đọc.
 
-- **Về phản hồi trực tiếp (Think-Aloud):** Người dùng khẳng định: *'Thanh Bottom Nav tiện nhất vì ngón cái nghỉ tự nhiên ngay đó khi đi bộ'*, và rất thích việc mở thẻ inline không làm tải lại trang.
+- **Với Task 2 (Schedule Lookup):** Người dùng hiểu ngay icon `▼` trên thẻ **Accordion (V1)** để mở danh sách kỳ thủ tại chỗ. Với **Date Filter (V2)**, người dùng rất thích bàn cờ phân tích ở trang chi tiết nhưng nhận xét các bước lọc Dropdown hơi tốn công. Còn với **Timeline (V3)**, người dùng phải cuộn màn hình lên nhiều lần mới tìm thấy các giải đấu trong quá khứ."
 
-- **Các sự cố nhận thức phát hiện (Breakdowns):** Nút FAB che giấu menu khiến người dùng khó đoán, và menu toàn màn hình gây quá tải lựa chọn.
+**→ Chuyển slide**
+
+---
+
+### 📌 Slide 16 — User Feedback & Usability Breakdowns
+> **[Cue: Slide hiển thị trích dẫn phản hồi Think-Aloud và 4 sự cố nhận thức chính]**
+
+"Về **phản hồi định tính và các sự cố nhận thức (Breakdowns)**:
+
+- **Ý kiến phản hồi trực tiếp (Think-Aloud):** Người dùng đánh giá rất cao sự tiện lợi của thanh Bottom Nav vì ngón cái nghỉ tự nhiên khi di chuyển, đồng thời phản hồi tích cực với giao diện bàn cờ phân tích trận đấu chuyên nghiệp trên trang chi tiết.
+
+- **Các sự cố nhận thức phát hiện (Breakdowns):**
+  1. Nút FAB ẩn chứa menu làm người dùng phải thử-sai để khám phá.
+  2. Overlay toàn màn hình gây ngắt đứt dòng đọc (Context Loss).
+  3. Lượng thông tin hiển thị bị quá tải khi mở rộng thẻ.
+  4. Thiếu thao tác tìm kiếm làm người dùng phải cuộn trang nhiều lần để tìm trận đấu cũ.
 
 Bây giờ xin mời [Tên Người 5] trình bày phần lựa chọn phương án tốt nhất và định hướng cho PA4."
 
@@ -237,7 +250,7 @@ Bây giờ xin mời [Tên Người 5] trình bày phần lựa chọn phương 
 
 ---
 
-### 📌 Slide 17 — Thank You & Q&A
+### 📌 Slide 18 — Thank You & Q&A
 > **[Cue: Slide hiển thị Thank You + thông tin nhóm]**
 
 "Đó là toàn bộ nội dung PA3 của nhóm 06. Tóm lại, nhóm đã:
