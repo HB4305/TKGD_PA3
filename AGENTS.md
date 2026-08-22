@@ -4,7 +4,7 @@
 
 This repository is a presentation and documentation package for PA3. The main deliverable is `PA3_presentation.html`, a self-contained HTML/CSS/JavaScript slide deck. Presentation narration lives in `PA3_script.md`, and the assignment/workflow reference is `PA3_Task_Workflow_Specification.md`.
 
-Use `resource/` for source assignment materials, including the PDF and Vietnamese/English Markdown versions. Use `paper_prototype/` for prototype photos referenced by the presentation; keep image filenames descriptive and stable because the HTML links to them directly. `scripts/` and `output/` are available for helper scripts and generated artifacts, but are currently empty.
+Use `resource/` for source assignment materials, including the PDF and Vietnamese/English Markdown versions. Use `img/` for prototype photos referenced by the presentation; keep image filenames descriptive and stable because the HTML links to them directly. `scripts/` and `output/` are available for helper scripts and generated artifacts, but are currently empty.
 
 ## Build, Test, and Development Commands
 
@@ -36,7 +36,7 @@ Name new prototype images with lowercase, descriptive words separated by undersc
 
 ## Testing Guidelines
 
-No automated test framework is configured. Manually verify the presentation after changes by opening the deck, navigating with arrow keys, and checking that all images load from `paper_prototype/`. For layout changes, test a normal browser view and print/export behavior, since print styles are defined in the HTML.
+No automated test framework is configured. Manually verify the presentation after changes by opening the deck, navigating with arrow keys, and checking that all images load from `img/`. For layout changes, test a normal browser view and print/export behavior, since print styles are defined in the HTML.
 
 ## Commit & Pull Request Guidelines
 

@@ -78,17 +78,17 @@ _Nhóm vẽ 3 khung hình độc lập (4A, 4B, 4C) tương ứng với 3 phươ
 - **🔹 Nhánh 4A (Variant 1 - Fixed Bottom Navigation Bar):**
   - **Hình ảnh vẽ:** Cận cảnh màn hình điện thoại có thanh **Bottom Nav Bar** cố định ở đáy. Ngón cái của Ninh nhẹ nhàng chạm ngay vào icon `Schedule` (Lịch đấu). Màn hình lập tức đổi sang trang Schedule.
   - **Lời thoại:** Ninh cười: _"Chỉ 1 chạm ngay đáy màn hình, cực kỳ nhanh!"_
-  - **Liên kết Paper Prototype:** Minh họa ảnh [`nav_1.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/paper_prototype/nav_1.JPG).
+  - **Liên kết Paper Prototype:** Minh họa ảnh [`nav_1.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/img/nav_1.JPG).
 
 - **🔹 Nhánh 4B (Variant 2 - Floating Action Button Menu):**
   - **Hình ảnh vẽ:** Nút tròn nổi **FAB** nằm ở góc dưới bên phải. Ngón cái chạm vào FAB $\rightarrow$ một vòng tròn menu xòe ra $\rightarrow$ chạm chọn `Schedule`.
   - **Lời thoại:** Ninh nghĩ: _"Menu xòe gọn gàng ở góc phải, màn hình rộng rãi không bị vướng mắt."_
-  - **Liên kết Paper Prototype:** Minh họa ảnh [`nav_2.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/paper_prototype/nav_2.JPG).
+  - **Liên kết Paper Prototype:** Minh họa ảnh [`nav_2.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/img/nav_2.JPG).
 
 - **🔹 Nhánh 4C (Variant 3 - Bottom Hamburger Menu):**
   - **Hình ảnh vẽ:** Nút Hamburger `[≡]` được dời xuống góc dưới bên trái. Ninh chạm ngón cái vào đáy $\rightarrow$ mở ra màn hình menu lớn phủ kín dễ bấm.
   - **Lời thoại:** Ninh nói: _"Nút 3 gạch ở dưới bấm rất êm, danh mục hiện to rõ ràng!"_
-  - **Liên kết Paper Prototype:** Minh họa ảnh [`nav_3_menu.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/paper_prototype/nav_3_menu.JPG).
+  - **Liên kết Paper Prototype:** Minh họa ảnh [`nav_3_menu.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/img/nav_3_menu.JPG).
 
 ---
 
@@ -159,17 +159,17 @@ _Nhóm vẽ 3 khung hình độc lập (4A, 4B, 4C) tương ứng với 3 phươ
 - **🔹 Nhánh 4A (Variant 1 - Accordion / Collapsible Cards):**
   - **Hình ảnh vẽ:** Phú cuộn xuống mục `PREVIOUS`, bấm vào icon mũi tên xuống `[\v/]` trên thẻ giải đấu Đức. Thẻ trượt mở rộng tại chỗ thành `[^]`, hiển thị ngay danh sách: `Players: L.Q.Liem, Magnus Carlsen, Caruana...` mà không cần tải lại trang.
   - **Lời thoại:** Phú vui mừng: _"Bấm mở thẻ tại chỗ là thấy ngay danh sách kỳ thủ, tiện quá!"_
-  - **Liên kết Paper Prototype:** Minh họa ảnh [`schedule_1_default_collapsed.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/paper_prototype/schedule_1_default_collapsed.JPG) và [`schedule_1_default_expanded.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/paper_prototype/schedule_1_default_expanded.JPG).
+  - **Liên kết Paper Prototype:** Minh họa ảnh [`schedule_1_default_collapsed.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/img/schedule_1_default_collapsed.JPG) và [`schedule_1_default_expanded.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/img/schedule_1_default_expanded.JPG).
 
 - **🔹 Nhánh 4B (Variant 2 - Date Dropdown Filter + Dedicated Detail Page):**
   - **Hình ảnh vẽ:** Phú bấm chọn bộ lọc Dropdown `[August v]` và `[2026 v]`, sau đó bấm nút `[Detail ->]` trên thẻ trận đấu. Hệ thống chuyển sang **Trang chi tiết riêng** có thông tin cặp đấu `L.Q.Liem vs Magnus Carlsen` và hình bàn cờ phân tích thế trận.
   - **Lời thoại:** Phú trầm trồ: _"Có cả trang chi tiết cặp đấu và bàn cờ phân tích chuyên sâu luôn này!"_
-  - **Liên kết Paper Prototype:** Minh họa ảnh [`schedule_2_dropdowns.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/paper_prototype/schedule_2_dropdowns.JPG), [`match.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/paper_prototype/match.JPG).
+  - **Liên kết Paper Prototype:** Minh họa ảnh [`schedule_2_dropdowns.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/img/schedule_2_dropdowns.JPG), [`match.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/img/match.JPG).
 
 - **🔹 Nhánh 4C (Variant 3 - Vertical Infinite Timeline):**
   - **Hình ảnh vẽ:** Màn hình có trục thời gian dọc với vạch đỏ `Today` ở giữa. Phú dùng ngón tay vuốt ngược màn hình lên trên (`Scroll UP hướng về Past`). Trục thời gian trượt mượt mà hiển thị các giải đấu quá khứ theo thứ tự năm 2023, 2020.
   - **Lời thoại:** Phú thích thú: _"Vuốt dòng thời gian lên quá khứ như lướt story, siêu trực quan!"_
-  - **Liên kết Paper Prototype:** Minh họa ảnh [`schedule_3_default.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/paper_prototype/schedule_3_default.JPG), [`schedule_3_scroll_up.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/paper_prototype/schedule_3_scroll_up.JPG).
+  - **Liên kết Paper Prototype:** Minh họa ảnh [`schedule_3_default.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/img/schedule_3_default.JPG), [`schedule_3_scroll_up.JPG`](file:///d:/LEARNING/CNTT_CLC(2023-2027)/NamBa/HK3/Thiết kế giao diện/PA3/TKGD_PA3/img/schedule_3_scroll_up.JPG).
 
 ---
 
