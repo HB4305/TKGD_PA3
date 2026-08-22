@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+
+<style>
+  .bg { fill: #faf9f6; }
+  .frame { fill: none; stroke: #1c1712; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+  .ink { fill: none; stroke: #1c1712; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thin { fill: none; stroke: #1c1712; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thick { fill: none; stroke: #1c1712; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+  .head { fill: #ffffff; stroke: #1c1712; stroke-width: 3.2; }
+  .eye { fill: #1c1712; }
+  .shade { fill: #e2e8f0; opacity: 0.7; }
+  .shade-dark { fill: #cbd5e1; opacity: 0.8; }
+  .accent-yellow { fill: #fbbf24; opacity: 0.9; }
+  .accent-amber { fill: #f59e0b; }
+  .accent-red { fill: #ef4444; }
+  .accent-green { fill: #10b981; }
+  .accent-blue { fill: #3b82f6; }
+  .stroke-red { stroke: #ef4444; stroke-width: 3; stroke-dasharray: 6 4; fill: none; stroke-linecap: round; }
+  .stroke-green { stroke: #10b981; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+  .stroke-blue { stroke: #3b82f6; stroke-width: 3; fill: none; stroke-linecap: round; }
+  .phone-body { fill: #ffffff; stroke: #1c1712; stroke-width: 3; rx: 10; }
+  .phone-screen { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 6; }
+</style>
+
+  <rect class="bg" width="400" height="500" rx="16"/>
+  <rect class="frame" x="8" y="8" width="384" height="484" rx="12"/>
+
+  <!-- Character head on top left showing strain/frustration -->
+  <circle cx="100" cy="100" r="35" class="head" />
+  <!-- Strained eyes -->
+  <path class="ink" d="M 88 95 L 98 99 M 88 99 L 98 95" />
+  <path class="ink" d="M 110 95 L 120 99 M 110 99 L 120 95" />
+  <!-- Wavy frustrated mouth -->
+  <path class="ink" d="M 94 120 Q 102 112 114 122" />
+  <!-- Sweat drop -->
+  <path class="accent-blue" d="M 140 85 C 140 75, 148 85, 140 95 C 135 90, 135 85, 140 85 Z" />
+  <!-- Floating Question Mark -->
+  <text x="155" y="75" font-family="sans-serif" font-size="38" font-weight="bold" fill="#ef4444">?</text>
+
+  <!-- Large Phone mockup held in right hand -->
+  <g transform="translate(130, 120)">
+    <!-- Phone body -->
+    <rect x="0" y="0" width="220" height="340" rx="18" class="phone-body" />
+    <rect x="10" y="15" width="200" height="310" rx="10" class="phone-screen" />
+    
+    <!-- Top-left hamburger menu (Target out of reach) -->
+    <rect x="22" y="30" width="45" height="40" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="2" />
+    <!-- Hamburger lines -->
+    <path class="ink-thick" stroke="#ef4444" d="M 32 42 H 57 M 32 50 H 57 M 32 58 H 50" />
+    
+    <!-- Rest of unreachable top web interface sketch -->
+    <rect x="75" y="35" width="120" height="14" rx="4" class="shade" />
+    <rect x="75" y="55" width="80" height="10" rx="3" class="shade" />
+
+    <rect x="22" y="85" width="176" height="70" rx="6" class="shade" />
+    <rect x="22" y="165" width="80" height="60" rx="6" class="shade" />
+    <rect x="110" y="165" width="88" height="60" rx="6" class="shade" />
+
+    <!-- Unreachable Red Arc & Highlight -->
+    <path class="stroke-red" stroke-width="3.5" d="M 45 50 Q 80 120 160 210" />
+    <!-- Red Cross on Top Left -->
+    <circle cx="45" cy="50" r="18" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="4 3" />
+    <path d="M 37 42 L 53 58 M 53 42 L 37 58" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round" />
+
+    <!-- Hand holding phone from bottom right -->
+    
+    <!-- Thumb stretching upwards desperately -->
+    <path class="ink-thick" stroke="#1c1712" d="M 175 290 Q 150 240 155 205" />
+    <circle cx="155" cy="205" r="14" class="head" />
+    <!-- Thumb stress lines -->
+    <path d="M 140 195 L 125 185 M 135 210 L 120 210 M 145 225 L 132 235" stroke="#ef4444" stroke-width="3" stroke-linecap="round" />
+  </g>
+</svg>

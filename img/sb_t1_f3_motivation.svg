@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+
+<style>
+  .bg { fill: #faf9f6; }
+  .frame { fill: none; stroke: #1c1712; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+  .ink { fill: none; stroke: #1c1712; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thin { fill: none; stroke: #1c1712; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ink-thick { fill: none; stroke: #1c1712; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+  .head { fill: #ffffff; stroke: #1c1712; stroke-width: 3.2; }
+  .eye { fill: #1c1712; }
+  .shade { fill: #e2e8f0; opacity: 0.7; }
+  .shade-dark { fill: #cbd5e1; opacity: 0.8; }
+  .accent-yellow { fill: #fbbf24; opacity: 0.9; }
+  .accent-amber { fill: #f59e0b; }
+  .accent-red { fill: #ef4444; }
+  .accent-green { fill: #10b981; }
+  .accent-blue { fill: #3b82f6; }
+  .stroke-red { stroke: #ef4444; stroke-width: 3; stroke-dasharray: 6 4; fill: none; stroke-linecap: round; }
+  .stroke-green { stroke: #10b981; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+  .stroke-blue { stroke: #3b82f6; stroke-width: 3; fill: none; stroke-linecap: round; }
+  .phone-body { fill: #ffffff; stroke: #1c1712; stroke-width: 3; rx: 10; }
+  .phone-screen { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 6; }
+</style>
+
+  <rect class="bg" width="400" height="500" rx="16"/>
+  <rect class="frame" x="8" y="8" width="384" height="484" rx="12"/>
+
+  <!-- Character with big IDEA bulb -->
+  <!-- Idea Lightbulb above head -->
+  <g transform="translate(180, 25)">
+    <path class="accent-yellow" d="M 20 10 C 5 10, 0 25, 10 38 C 15 44, 18 50, 18 55 H 22 C 22 50, 25 44, 30 38 C 40 25, 35 10, 20 10 Z" />
+    <path class="ink" d="M 20 10 C 5 10, 0 25, 10 38 C 15 44, 18 50, 18 55 H 22 C 22 50, 25 44, 30 38 C 40 25, 35 10, 20 10 Z" />
+    <rect x="16" y="55" width="8" height="6" class="ink" />
+    <!-- Glow Rays -->
+    <path stroke="#f59e0b" stroke-width="3" stroke-linecap="round" d="M 20 -2 V 6 M -2 20 H 6 M 34 20 H 42 M 4 4 L 10 10 M 36 4 L 30 10" />
+  </g>
+
+  <!-- Happy Character Head -->
+  <circle cx="85" cy="130" r="32" class="head" />
+  <circle cx="94" cy="125" r="3.5" class="eye" />
+  <circle cx="106" cy="125" r="3.5" class="eye" />
+  <!-- Big smiling mouth -->
+  <path class="ink" d="M 90 140 Q 100 152 110 140" />
+
+  <!-- Pointing arm towards phone concept -->
+  <path class="ink-thick" d="M 85 162 L 85 220 L 135 220" />
+  <circle cx="138" cy="220" r="6" class="head" />
+
+  <!-- Phone UI Redesign Concept Diagram -->
+  <g transform="translate(150, 110)">
+    <rect x="0" y="0" width="210" height="340" rx="18" class="phone-body" />
+    <rect x="10" y="15" width="190" height="310" rx="10" class="phone-screen" />
+
+    <!-- Top Area (Dimmed/Greyed out) -->
+    <rect x="20" y="30" width="170" height="160" rx="8" class="shade" opacity="0.4" />
+    <!-- Downward Arrow showing migration to bottom -->
+    <path class="ink-thick" stroke="#f59e0b" stroke-width="5" d="M 105 80 V 180 M 90 165 L 105 185 L 120 165" />
+    
+    <!-- GREEN / AMBER HIGHLIGHTED BOTTOM THUMB ZONE -->
+    <rect x="20" y="205" width="170" height="105" rx="12" fill="#d1fae5" stroke="#10b981" stroke-width="3" />
+
+    <!-- Bottom Navigation Bar inside Thumb Zone -->
+    <rect x="30" y="250" width="150" height="48" rx="24" fill="#ffffff" stroke="#1c1712" stroke-width="2.5" />
+    <!-- Nav Icons -->
+    <circle cx="55" cy="274" r="10" class="accent-amber" />
+    <circle cx="105" cy="274" r="10" class="shade" />
+    <circle cx="155" cy="274" r="10" class="shade" />
+
+    <!-- Comfortable Natural Thumb Reach Arc -->
+    <path class="stroke-green" stroke-width="3" stroke-dasharray="5 3" d="M 30 300 Q 105 215 180 300" />
+    <!-- Check mark in bottom zone -->
+    <circle cx="105" cy="225" r="12" fill="#10b981" />
+    <path d="M 99 225 L 103 229 L 111 220" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+</svg>
